@@ -35,3 +35,11 @@ for (const value of arr) {
   console.log(value);
   //Output: 1 2 3
 }
+
+// for loops
+let sum = 0;
+const t = 50;
+for (let i = 1; i <= t; i++) {
+  sum += i;
+}
+console.log('sum: ', sum); // Output: sum: 1275
