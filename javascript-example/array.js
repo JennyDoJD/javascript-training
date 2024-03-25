@@ -1,5 +1,16 @@
-const fruits = [];
+// 'animals' array created using array literal notation.
+const animals = ["dog", "cat"];
+console.log(animals);
 
+// 'animals2' array created using the Array() constructor.
+const animals2 = new Array("dog", "cat");
+console.log(animals2);
+
+// 'animals3' array created using String.prototype.split().
+const animals3 = "dog, cat".split(", ");
+console.log(animals3);
+
+const fruits = [];
 // add an item to an array
 fruits.push("apple", "coconut", "banana");
 
@@ -10,7 +21,7 @@ console.log(fruits.length); //3
 console.log(fruits.toString()); // apple, coconut, banana
 
 // removes the last element from an array
-console.log(fruits.pop()); // banana
+console.log(fruits.pop()); // 'banana'
 console.log(fruits); // [ 'apple', 'coconut' ]
 
 const matrix = [
@@ -54,3 +65,50 @@ function isPrime(element, index, array) {
 
 console.log([4, 6, 8, 12].find(isPrime)); // undefined
 console.log([4, 5, 8, 12].find(isPrime)); // 5
+
+const colors = ["red", "yellow", "blue"];
+colors[5] = "purple";
+colors.forEach((item, index) => {
+  console.log(`${index}: ${item}`);
+//   0: red
+//   1: yellow
+//   2: blue
+//   5: purple
+});
+
+// reverse the order of the array
+colors.reverse();
+console.log(colors); // [ 'purple', <2 empty items>, 'blue', 'yellow', 'red' ]
+
+// remove multiple items from the end of an array
+const fruits1 = ["Apple", "Banana", "Strawberry", "Mango"];
+const start = -3;
+const removedItems = fruits1.splice(start);
+console.log(fruits1); // [ 'Apple' ]
+console.log(removedItems); // [ 'Banana', 'Strawberry', 'Mango' ]
+
+// remove the first item from an array
+const removedItem = fruits1.shift();
+console.log(removedItem); // Apple
+
+// add a new first item to an array
+const color = ["pink", "yellow"];
+console.log(color); // [ 'pink', 'yellow' ]
+const newLength = color.unshift("red");
+console.log(newLength); // 3
+
+// iterate over an array
+for(const color1 of color) {
+  console.log(color1);
+// red
+// pink
+// yellow
+}
+
+// call a function on each element in an array
+color.forEach((item, index, array) => {
+  console.log(item, index);
+// red 0
+// pink 1
+// yellow 2
+});
