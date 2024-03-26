@@ -25,7 +25,7 @@ console.log(multiply()); // Output: 6
 function getScore() {
   const num3 = 4;
   const num4 = 5;
-  const name = "Fubao";
+  const name = 'Fubao';
 
   function add() {
     return `${name} scored ${num3 + num4}`;
@@ -35,11 +35,11 @@ function getScore() {
 console.log(getScore()); // Output: Fubao scored 9
 
 // arrow function
-const foods = ["Banana", "Chips", "Grapes", "Jam"];
+const foods = ['Banana', 'Chips', 'Grapes', 'Jam'];
 console.log(foods.map((food) => food.length)); // Output: [ 6, 5, 6, 3 ]
 
 let age = 5;
-let welcome = age < 18 ? () => console.log("Baby") : () => console.log("Adult");
+let welcome = age < 18 ? () => console.log('Baby') : () => console.log('Adult');
 
 welcome(); // Output: Baby
 
