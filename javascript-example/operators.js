@@ -18,18 +18,17 @@ const multiplication = x * 5;
 // the exponentiation operator (**)
 const exponentiation = x ** 2;
 
-
 console.log(
   addition +
-    "\n" +
+    '\n' +
     subtraction +
-    "\n" +
+    '\n' +
     division +
-    "\n" +
+    '\n' +
     remainder +
-    "\n" +
+    '\n' +
     multiplication +
-    "\n" +
+    '\n' +
     exponentiation +
-    "\n"
+    '\n'
 );
