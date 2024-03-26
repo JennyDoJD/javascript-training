@@ -4,10 +4,18 @@ const student = {
   name: 'Van B', // same key come later will take precedence
   isHero: true,
   'avg mark': 9,
-}
+  getName: function() {
+    return this.name;
+  }
+};
+
+const myKey = 'id';
+
 console.log(student.name); // Output: Van B
 console.log(student.avg mark); // SyntaxError
 console.log(student["avg mark"]); // Output: 9
+console.log(student[myKey]); // Output: 1
+console.log(student.getName()); // Output: Van B
 
 const key = 'avg mark';
 console.log(student.key); // Output: undefined
