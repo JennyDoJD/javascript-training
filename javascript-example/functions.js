@@ -43,6 +43,7 @@ let welcome = age < 18 ? () => console.log("Baby") : () => console.log("Adult");
 
 welcome(); // Output: Baby
 
+// the difference between arrow function and function
 function total (num1, num2) {
   console.log(arguments);
   return num1 + num2;
