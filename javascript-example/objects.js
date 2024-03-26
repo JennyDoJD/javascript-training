@@ -12,7 +12,7 @@ const student = {
 const myKey = 'id';
 
 console.log(student.name); // Output: Van B
-//console.log(student.avg mark); // SyntaxError
+console.log(student.avg mark); // SyntaxError
 console.log(student["avg mark"]); // Output: 9
 console.log(student[myKey]); // Output: 1
 console.log(student.getName()); // Output: Van B
