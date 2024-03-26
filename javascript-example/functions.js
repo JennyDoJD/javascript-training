@@ -1,18 +1,18 @@
 // regular function
 function getData() {
-  return "This is a function!";
+  return 'This is a function!';
 }
 console.log(getData()); // Output: This is a function!
 
 //another regular function
 function myFunc(theArr) {
-    theArr[0] = 30;
-  }
-  const arr = [45];
-  console.log(arr[0]); // Output: 45
+  theArr[0] = 30;
+}
+const arr = [45];
+console.log(arr[0]); // Output: 45
 
-  myFunc(arr);
-  console.log(arr[0]); // Output: 30
+myFunc(arr);
+console.log(arr[0]); // Output: 30
 
 const num1 = 3;
 const num2 = 2;
@@ -42,3 +42,16 @@ let age = 5;
 let welcome = age < 18 ? () => console.log("Baby") : () => console.log("Adult");
 
 welcome(); // Output: Baby
+
+function total (num1, num2) {
+  console.log(arguments);
+  return num1 + num2;
+}
+total(1,2);
+
+const test = (num1, num2) => {
+  console.log(arguments);
+  let total = num1 + num2;
+  return total.toFixed(2);
+}
+test(1,2);
