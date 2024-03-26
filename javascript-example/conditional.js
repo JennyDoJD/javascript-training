@@ -1,11 +1,11 @@
 const size = 10;
 
 if (size > 100) {
-  console.log("Big");
+  console.log('Big');
 } else if (size > 20) {
-  console.log("Medium");
+  console.log('Medium');
 } else if (size > 4) {
-  console.log("Small");
+  console.log('Small');
 } else {
-  console.log("Tiny");
+  console.log('Tiny');
 }
