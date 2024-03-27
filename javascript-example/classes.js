@@ -54,13 +54,22 @@ console.log(rex.dinner); // Output: Rex eats anything for dinner.
 
 class Dog extends Animal {
   constructor(name) {
+    // call the Animal constructor
     super(name, 4, 'woof');
     this.type = 'dog';
+
+    // update count of Dog objects
+    Dog.count++;
   }
 
   speak(to) {
     super.speak();
     if (to) console.log(`to ${to}`); // Output: Sun says 'woof' to everyone
+  }
+
+  // return number of dog objects
+  static get COUNT() {
+    return Dog.count;
   }
 }
 
@@ -68,3 +77,13 @@ const sun = new Dog('Sun');
 sun.speak('everyone');
 sun.eats = 'anything';
 console.log(sun.dinner); // Output: Sun eats anything for dinner
+
+// static property (added after class is defined)
+Dog.count = 0;
+console.log(`Dogs defined: ${Dog.COUNT}`); // Output: Dogs defined: 0
+
+const don = new Dog('Don');
+console.log(`Dogs defined: ${Dog.COUNT}`); // Output: Dogs defined: 1
+
+const kim = new Dog('Kim');
+console.log(`Dogs defined: ${Dog.COUNT}`); // Output: Dogs defined: 2
