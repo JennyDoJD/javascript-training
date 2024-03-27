@@ -51,3 +51,20 @@ rex.noise = 'growl';
 rex.speak(); // Output: Rex says 'growl'
 rex.eats = 'anything';
 console.log(rex.dinner); // Output: Rex eats anything for dinner.
+
+class Dog extends Animal {
+  constructor(name) {
+    super(name, 4, 'woof');
+    this.type = 'dog';
+  }
+
+  speak(to) {
+    super.speak();
+    if (to) console.log(`to ${to}`); // Output: Sun says 'woof' to everyone
+  }
+}
+
+const sun = new Dog('Sun');
+sun.speak('everyone');
+sun.eats = 'anything';
+console.log(sun.dinner); // Output: Sun eats anything for dinner
