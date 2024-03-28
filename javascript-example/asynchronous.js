@@ -8,9 +8,9 @@ console.log('Hello World');
 networkRequest();
 console.log('The end');
 // Output:
-// Hello World
-// The end
-// Async Code
+//   Hello World
+//   The end
+//   Async Code
 
 // we have 2 asynchronous functions that take 3 and 5 seconds respectively,
 // because asyncFunction uses await in turn,
