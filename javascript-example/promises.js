@@ -1,4 +1,4 @@
-//callback hell
+// callback hell
 setTimeout(function () {
   console.log(1);
   setTimeout(function () {
@@ -12,36 +12,36 @@ setTimeout(function () {
   }, 1000);
 }, 1000);
 
-// SIMPLE EXAMPLE
+// simple example
 // create Promise :
-//      step1: new Promise
-//      step2: Executor function has 2 parameters
-//      step3: call resolve or reject
+//   step1: new Promise
+//   step2: Executor function has 2 parameters
+//   step3: call resolve or reject
 
 var promise = new Promise(
-  //Executor
+  // Executor
   function (resolve, reject) {
-    //logic
-    // call resolve
-    // call reject
-    // reject("error");
+    // logic
+    //   call resolve
+    //   call reject
+    //   reject("error");
     resolve();
   }
 );
 
 promise
   .then(function () {
-    console.log("Success!");
+    console.log('Success!');
   })
   .catch(function (error) {
     console.log(error);
   })
   .finally(function () {
-    console.log("Done!");
+    console.log('Done!');
   });
 
 // more concise: default is always success or failure (Promise.resolve and Promise.reject)
-var promise = Promise.resolve("Success!");
+var promise = Promise.resolve('Success!');
 promise.then(function (result) {
   console.log(result);
 });
@@ -79,7 +79,7 @@ prom(1000)
   .then(function () {
     console.log(2);
     return new Promise((reject) => {
-      reject("err");
+      reject('err');
     });
   })
   .then(function () {
@@ -98,11 +98,11 @@ prom(1000)
 var users = [
   {
     id: 1,
-    name: "Loi Do",
+    name: 'Loi Do',
   },
   {
     id: 2,
-    name: "Nga Nguyen",
+    name: 'Nga Nguyen',
   },
 ];
 
@@ -110,12 +110,12 @@ var comments = [
   {
     id: 1,
     user_id: 1,
-    content: "What day is it today?",
+    content: 'What day is it today?',
   },
   {
     id: 2,
     user_id: 2,
-    content: "It's Thursday.",
+    content: 'Thursday.',
   },
 ];
 
