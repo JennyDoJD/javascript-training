@@ -58,8 +58,8 @@ const getData = () => {
 };
 
 const getError = () => {
-return new Promise((resolve, reject) => {
-  setTimeout(() => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
       resolve('Error: data is not available from getError');
     }, 2000);
   });
