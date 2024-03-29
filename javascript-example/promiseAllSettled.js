@@ -1,7 +1,7 @@
 const getData = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve('Data from getData1');
+      resolve('Data from getData');
     }, 2000);
   });
 };
@@ -9,7 +9,7 @@ const getData = () => {
 const getError = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve('Error: data is not available from getError1');
+      resolve('Error: data is not available from getError');
     }, 2000);
   });
 };
@@ -30,5 +30,5 @@ Promise.allSettled([
   })
 })
 // Output:
-//   value:  Data from getData1
-//   value:  Error: data is not available from getError1
+//   value:  Data from getData
+//   value:  Error: data is not available from getError
