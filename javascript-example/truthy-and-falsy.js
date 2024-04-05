@@ -7,7 +7,7 @@ console.log(typeof a); // boolean
 // Example: checks whether a variable is assigned a value or undefined
 let salary;
 console.log(salary); // undefined
-if(salary) {
+if (salary) {
   console.log('Salary is defined');
 } else {
   console.log('Salary is undefined');
