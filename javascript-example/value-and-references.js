@@ -5,7 +5,7 @@ b = 12;
 console.log(a); // Output: 10
 console.log(b); // Output: 12
 
-// Object => By references
+// object, array, function => By references
 // Example 1
 const obj = { str: 'hello' };
 const objRef = obj;
