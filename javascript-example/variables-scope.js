@@ -38,7 +38,7 @@ function getColor() {
   if (true) {
     var color = 'Red';
   }
-    console.log(color);
+  console.log(color);
 }
 getColor(); // Output: Red
 
