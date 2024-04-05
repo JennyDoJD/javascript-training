@@ -12,7 +12,7 @@ function anotherFunction() {
   var functionVariable = 'I am in function scope';
   console.log(functionVariable); // accessible inside the function
 
-  if(true) {
+  if (true) {
     console.log(functionVariable); // still accessible inside nested block
   }
 }
@@ -48,12 +48,11 @@ function getFruit() {
   }
   console.log(fruit);
 }
-
-//getFruit(); // ReferenceError: fruit is not defined
+getFruit(); // ReferenceError: fruit is not defined
 
 function getData() {
   console.log(data);
-  if(true) {
+  if (true) {
     var data = 'some data';
     // let data = 'some data';
   }
