@@ -3,42 +3,40 @@ const books = [
   {
     title: 'The Design of EveryDay Things',
     author: 'Don Norman',
+    img: 'https://salt.tikicdn.com/cache/w1200/ts/product/bb/8e/21/8622d78f10b85cf520709d8ce29ac983.jpg',
     alreadyRead: false
   },
   {
     title: 'The Most Human Human',
     author: 'Brian Christian',
+    img: 'https://brianchristian.org/images/The-Most-Human-Human-Paperback-Front-Cover.jpg',
     alreadyRead: true
   }
 ];
 
-// Iterate through the array of books. For each book, create a p element with the book title and author and append it to the page.
-for (const i = 0; i < books.length; i++) {
-  const book = books[i];
-  const paragraph = document.createElement('p');
-  const bookInfo = book.title + ' by ' + book.author;
-  paragraph.textContent = bookInfo;
-  document.body.appendChild(paragraph);
-}
+// Iterate through the array of books and append them to the page
+const h1Element = document.querySelector('h1');
+const ul = document.createElement('ul'); // Create a ul element to contain the list of books
 
-// Bonus: Use a ul and li to display the books.
-const ulElement = document.createElement("ul");
-ulElement.id = "bookList";
-document.body.appendChild(ulElement);
-const ulElement = document.getElementById("bookList");
-for (const i = 0; i < books.length; i++) {
-  const book = books[i];
-  const liElement = document.createElement("li");
-  const bookInfo = book.title + " by " + book.author;
-  liElement.textContent = bookInfo;
-  const imgElement = document.createElement("img");
-  imgElement.src = book.img;
-  imgElement.alt = book.title + " Cover";
-  liElement.appendChild(imgElement);
-  ulElement.appendChild(liElement);
+books.forEach(book => {
+  const li = document.createElement('li'); // Create a li element for each book
+  const p = document.createElement('p');
+  p.textContent = `${book.title} by ${book.author}`;
+
+  // Bonus: Add an img element for each book on the page
+  const img = document.createElement('img');
+  img.src = book.img;
+  img.width = "200";
+  img.alt = book.title;
+
+  // Bonus: Change the style of the book depending on whether you have read it or not
   if (book.alreadyRead) {
-    liElement.style.color = "blue";
-  } else {
-    liElement.style.color = "pink";
+    p.style.color = 'grey';
   }
-}
+
+  li.appendChild(p); // Append the paragraph to the list item
+  li.appendChild(img); // Append the image to the list item
+  ul.appendChild(li); // Append the list item to the ul
+});
+
+document.body.appendChild(ul);
