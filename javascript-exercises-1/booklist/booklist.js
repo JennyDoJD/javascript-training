@@ -15,7 +15,6 @@ const books = [
 ];
 
 // Iterate through the array of books and append them to the page
-const h1Element = document.querySelector('h1');
 const ul = document.createElement('ul'); // Create a ul element to contain the list of books
 
 books.forEach(book => {
