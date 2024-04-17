@@ -4,7 +4,7 @@ function insertRow() {
   // get a reference to the table
   const table = document.getElementById('sampleTable');
 
-  // check if the table exists
+  // if the table doesn't exist, create a new table and append it to the document
   if (!table) {
     table = document.createElement('table');
     table.id = 'sampleTable';
