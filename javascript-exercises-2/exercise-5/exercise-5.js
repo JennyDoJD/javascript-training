@@ -4,6 +4,13 @@ function insertRow() {
   // get a reference to the table
   const table = document.getElementById('sampleTable');
 
+  // check if the table exists
+  if (!table) {
+    table = document.createElement('table');
+    table.id = 'sampleTable';
+    document.body.appendChild(table);
+  }
+
   // create a new row and two data cells
   const newRow = table.insertRow();
   const cell1 = newRow.insertCell(0);
