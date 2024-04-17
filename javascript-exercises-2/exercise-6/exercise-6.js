@@ -9,6 +9,12 @@ function changeContent() {
   // get the table
   const table = document.getElementById('myTable');
 
+  // check if the table exists
+  if (!table) {
+    alert('Table not found!');
+    return;
+  }
+
   // check if the row and column are within valid range
   if (row >= 0 && row < table.rows.length && column >= 0 && column < table.rows[row].cells.length) {
     // update the content of the specified cell
