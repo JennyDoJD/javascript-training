@@ -2,7 +2,7 @@
 
 function changeText() {
   // get the paragraph element by its id
-  let paragraph = document.getElementById('text');
+  const paragraph = document.getElementById('text');
 
   // modify the style properties
   paragraph.style.font = 'Arial, sans-serif';
