@@ -14,6 +14,6 @@ for (let i = 0; i < items.length; i++) {
 }
 
 // Create a new img element and set its src attribute to a picture of you. Append that element to the page.
-let myImage = document.createElement('img');
-myImage.src = 'https://i.pinimg.com/550x/a9/a1/cd/a9a1cd1c70b35363e6b13903544f0935.jpg';
-document.body.appendChild(myImage);
+const newImage = document.createElement('img');
+newImage.src = 'https://i.pinimg.com/550x/a9/a1/cd/a9a1cd1c70b35363e6b13903544f0935.jpg';
+document.body.appendChild(newImage);
