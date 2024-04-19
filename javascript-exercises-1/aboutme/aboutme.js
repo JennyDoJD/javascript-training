@@ -7,7 +7,7 @@ document.getElementById('favorites').textContent = 'Fubao';
 document.getElementById('hometown').textContent = 'Da Nang';
 
 // Iterate through each li and change the class to "listitem". Add a style tag that sets a rule for "listitem" to make the color red.
-let items = document.getElementsByTagName('li');
+const items = document.getElementsByTagName('li');
 for (let i = 0; i < items.length; i++) {
   items[i].className = 'listitem';
   items[i].style.color = 'red';
