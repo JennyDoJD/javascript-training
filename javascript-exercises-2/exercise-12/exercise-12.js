@@ -1,6 +1,4 @@
 // Write a JavaScript program to highlight the bold words of the following paragraph, on mouse over a certain link.
-
-
 function highlightText() {
   // get all the strong elements within the document
   const boldText = document.querySelectorAll('strong');
