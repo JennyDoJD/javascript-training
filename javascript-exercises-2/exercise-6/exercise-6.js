@@ -1,6 +1,4 @@
 // Write a JavaScript function that accepts a row, column (to identify a particular cell) and a string to update the cell's contents.
-
-
 function changeContent() {
   const row = parseInt(prompt('Enter the row index(0,1,2):'));
   const column = parseInt(prompt('Enter the column index(0,1):'));
