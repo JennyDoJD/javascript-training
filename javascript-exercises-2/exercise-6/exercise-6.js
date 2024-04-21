@@ -5,7 +5,7 @@ function changeContent() {
   const content = prompt('Enter the new content for the cell:');
 
   // Get the table
-  const table = document.getElementById('myTable');
+  const table = document.getElementById('get-table');
 
   // Check if the table exists
   if (!table) {
