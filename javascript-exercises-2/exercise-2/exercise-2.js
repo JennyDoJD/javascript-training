@@ -1,5 +1,4 @@
 // Write a JavaScript function to get the values of First and Last names of the following form.
-
 function getFormvalue() {
   // get the form element
   let form = document.getElementById('form1');
