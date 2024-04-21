@@ -3,15 +3,15 @@ function updateWindowSize() {
   const widthElement = document.getElementById('wd-width');
   const heightElement = document.getElementById('wd-height');
 
-  // get window width and height
+  // Get window width and height
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
 
-  // update the text content of the span elements
+  // Update the text content of the span elements
   widthElement.textContent = windowWidth + 'px';
   heightElement.textContent = windowHeight + 'px';
 }
 updateWindowSize();
 
-// attach event listener for window size
+// Attach event listener for window size
 window.addEventListener('resize', updateWindowSize);
