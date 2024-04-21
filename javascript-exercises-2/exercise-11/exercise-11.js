@@ -18,16 +18,16 @@ function displayImage() {
     }
   ];
 
-  // get a random index within the range of images array
+  // Get a random index within the range of images array
   const randomIndex = Math.floor(Math.random() * images.length);
 
-  // get the random image object from the array
+  // Get the random image object from the array
   const randomImage = images[randomIndex];
 
-  // get the <img> element
+  // Get the <img> element
   const imgElement = document.getElementById('randomImage');
 
-  // set the src attribute of the <img> element to the random image URL
+  // Set the src attribute of the <img> element to the random image URL
   imgElement.src = randomImage.url;
   imgElement.width = randomImage.width;
   imgElement.height = randomImage.height;
