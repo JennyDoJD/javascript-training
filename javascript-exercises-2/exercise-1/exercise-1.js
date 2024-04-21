@@ -1,5 +1,4 @@
 // Clicking on the button the font, font size, and color of the paragraph text will be changed.
-
 function changeText() {
   // get the paragraph element by its id
   const paragraph = document.getElementById('text');
