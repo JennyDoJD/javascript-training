@@ -25,7 +25,7 @@ function displayImage() {
   const randomImage = images[randomIndex];
 
   // Get the <img> element
-  const imgElement = document.getElementById('randomImage');
+  const imgElement = document.querySelector('.get-image');
 
   // Set the src attribute of the <img> element to the random image URL
   imgElement.src = randomImage.url;
