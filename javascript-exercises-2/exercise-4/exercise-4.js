@@ -1,16 +1,16 @@
 // Write a JavaScript function to get the value of the href, hreflang, rel, target, and type attributes of the specified link.
 function getAttributes() {
-  // getting anchor element
+  // Getting anchor element
   const link = document.getElementById('w3r');
 
-  // getting the values of the attributes
+  // Getting the values of the attributes
   const hrefLink = link.href;
   const hreflangLink = link.hreflang;
   const relLink = link.rel;
   const targetLink = link.target;
   const typeLink = link.type;
 
-  // display the values
+  // Display the values
   alert('Collect the value of href, hreflang, rel, target, and type attributes of a link is: ' +
     '\n' +
     'href: ' +  hrefLink +
