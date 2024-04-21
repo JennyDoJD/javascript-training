@@ -1,6 +1,4 @@
 // Write a JavaScript program to get the window width and height (any time the window is resized).
-
-
 function updateWindowSize() {
   const widthElement = document.getElementById('wd-width');
   const heightElement = document.getElementById('wd-height');
