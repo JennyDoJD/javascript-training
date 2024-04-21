@@ -4,18 +4,18 @@ function changeContent() {
   const column = parseInt(prompt('Enter the column index(0,1):'));
   const content = prompt('Enter the new content for the cell:');
 
-  // get the table
+  // Get the table
   const table = document.getElementById('myTable');
 
-  // check if the table exists
+  // Check if the table exists
   if (!table) {
     alert('Table not found!');
     return;
   }
 
-  // check if the row and column are within valid range
+  // Check if the row and column are within valid range
   if (row >= 0 && row < table.rows.length && column >= 0 && column < table.rows[row].cells.length) {
-    // update the content of the specified cell
+    // Update the content of the specified cell
     table.rows[row].cells[column].innerHTML = content;
   } else {
     alert('Invalid row or column index!');
