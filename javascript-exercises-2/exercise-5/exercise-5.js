@@ -1,5 +1,4 @@
 // Write a JavaScript function to add rows to a table.
-
 function insertRow() {
   // get a reference to the table
   const table = document.getElementById('sampleTable');
