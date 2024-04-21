@@ -1,6 +1,4 @@
 // Write a JavaScript program to count and display dropdown list items in an alert window.
-
-
 function getOptions() {
   let selectElement = document.getElementById('mySelect');
   let options = selectElement.options;
