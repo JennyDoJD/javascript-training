@@ -2,7 +2,7 @@ function createTable() {
   let rows = parseInt(prompt('Enter the number of rows:'));
   let cols = parseInt(prompt('Enter the number of columns:'));
 
-  const table = document.getElementById('myTable');
+  const table = document.getElementById('get-table');
   // Clear existing table content
   table.innerHTML = '';
   // Create rows and cells
