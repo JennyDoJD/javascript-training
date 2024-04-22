@@ -1,5 +1,5 @@
 // Write a JavaScript function to get the values of First and Last names of the following form.
-function getFormvalue() {
+function getFormValue() {
   // Get the form element
   const form = document.getElementById('user-profile');
 
