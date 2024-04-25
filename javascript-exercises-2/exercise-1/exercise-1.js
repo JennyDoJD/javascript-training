@@ -4,7 +4,10 @@ function changeText() {
   const paragraph = document.getElementById('get-text');
 
   // Modify the style properties
-  paragraph.style.font = 'Arial, sans-serif';
-  paragraph.style.fontSize = '20px';
-  paragraph.style.color = 'pink';
+  // paragraph.style.font = 'Arial, sans-serif';
+  // paragraph.style.fontSize = '20px';
+  // paragraph.style.color = 'pink';
+
+  // Use repaint
+  paragraph.style.cssText = 'font: Arial, sans-serif; font-size: 20px; color: pink';
 }
