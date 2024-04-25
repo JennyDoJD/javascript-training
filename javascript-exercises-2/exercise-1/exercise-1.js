@@ -8,6 +8,5 @@ function changeText() {
   // paragraph.style.fontSize = '20px';
   // paragraph.style.color = 'pink';
 
-  // Use repaint
   paragraph.style.cssText = 'font: Arial, sans-serif; font-size: 20px; color: pink';
 }
