@@ -33,7 +33,7 @@ books.forEach(book => {
 
   // Bonus: Change the style of the book depending on whether you have read it or not
   if (book.alreadyRead) {
-    p.style.color = 'grey';
+    p.classList.add('book-read');
   }
 
   li.appendChild(p); // Append the paragraph to the list item
