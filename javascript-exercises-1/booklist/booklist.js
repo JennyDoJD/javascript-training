@@ -15,7 +15,10 @@ const books = [
 ];
 
 // Iterate through the array of books and append them to the page
-const ul = document.createElement('ul'); // Create a ul element to contain the list of books
+// const ul = document.createElement('ul'); // Create a ul element to contain the list of books
+
+// Create a DocumentFragment to contain the list of books
+const fragment = document.createDocumentFragment();
 
 books.forEach(book => {
   const li = document.createElement('li'); // Create a li element for each book
@@ -35,7 +38,10 @@ books.forEach(book => {
 
   li.appendChild(p); // Append the paragraph to the list item
   li.appendChild(img); // Append the image to the list item
-  ul.appendChild(li); // Append the list item to the ul
+  // ul.appendChild(li); // Append the list item to the ul
+  fragment.appendChild(li); // Append the list item to the DocumentFragment
 });
 
-document.body.appendChild(ul);
+// document.body.appendChild(ul);
+// Append the DocumentFragment containing all books to the body
+document.body.appendChild(fragment);
