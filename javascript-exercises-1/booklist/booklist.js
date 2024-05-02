@@ -28,7 +28,7 @@ books.forEach(book => {
   // Bonus: Add an img element for each book on the page
   const img = document.createElement('img');
   img.src = book.img;
-  img.width = '200';
+  img.classList.add('book-image');
   img.alt = book.title;
 
   // Bonus: Change the style of the book depending on whether you have read it or not
