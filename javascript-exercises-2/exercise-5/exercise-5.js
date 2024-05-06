@@ -1,0 +1,21 @@
+// Write a JavaScript function to add rows to a table.
+function insertRow() {
+  // Get a reference to the table
+  const table = document.getElementById('get-table');
+
+  // If the table doesn't exist, create a new table and append it to the document
+  if (!table) {
+    table = document.createElement('table');
+    table.id = 'get-table';
+    document.body.appendChild(table);
+  }
+
+  // Create a new row and two data cells
+  const newRow = table.insertRow();
+  const cell1 = newRow.insertCell(0);
+  const cell2 = newRow.insertCell(1);
+
+  // Set content for the data cells
+  cell1.innerHTML = 'New row cell1';
+  cell2.innerHTML = 'New row cell2';
+};
