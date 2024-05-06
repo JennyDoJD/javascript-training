@@ -1,0 +1,36 @@
+:root {
+  --primary-font: "Barlow";
+
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+
+  --primary-text-color: #fff;
+  --secondary-text-color: #ea7c69;
+  --tertiary-text-color: #3b5162;
+
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-md: 20px;
+  --font-size-lg: 28px;
+
+  --primary-background-color: #1f1d2b;
+  --secondary-background-color: #ea7c69;
+  --tertiary-background-color: #2d303e;
+  --dark-background-color: #252836;
+  --green-background-color: #4b965b;
+
+  --primary-border-color: #1f1d2b;
+  --secondary-border-color: #ea7c69;
+  --tertiary-border-color: #393c49;
+
+  --line-height-xs: 14px;
+  --line-height-sm: 16px;
+  --line-height-md: 18px;
+  --line-height-lg: 20px;
+  --line-height-xl: 28px;
+  --line-height-2xl: 40px;
+
+  --primary-border-radius: 8px;
+  --secondary-border-radius: 16px;
+}
