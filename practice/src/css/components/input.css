@@ -1,0 +1,15 @@
+.input-form {
+  margin-bottom: 10px;
+  border: 1px solid var(--tertiary-border-color);
+  border-radius: 8px;
+  padding: 14px;
+  background-color: var(--tertiary-background-color);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-lg);
+  color: var(--primary-text-colors);
+
+  &:nth-last-child(1) {
+    width: 207px;
+  }
+}
