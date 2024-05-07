@@ -1,0 +1,38 @@
+.form-wrapper {
+  border-radius: 16px 16px 0;
+  width: 445px;
+  padding: 40px 50px 30px 50px;
+  background-color: var(--primary-background-color);
+}
+
+.form-heading-confirm {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--tertiary-border-color);
+  width: 70%;
+}
+
+.form-modal {
+  padding-top: 20px;
+}
+
+.form-info {
+  padding-top: 5px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 60px;
+}
+
+.form-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.btn-confirm {
+  width: 175px;
+}
