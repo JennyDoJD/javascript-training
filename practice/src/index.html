@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Products Management</title>
+</head>
+
+<body>
+  <!-- Edit Feature -->
+  <div class="form-wrapper">
+    <h2 class="secondary-heading form-heading-confirm">Edit</h2>
+    <form action="javascript:void(0)" class="form-modal">
+      <div class="form-info">
+        <div class="form-group">
+          <label for="editName" class="main-title">Name</label>
+          <input type="text" class="input-form" required="">
+          <label for="editPrice" class="main-title">Price</label>
+          <input type="number" class="input-form" required="">
+          <label for="editImage" class="main-title">Image URL</label>
+          <input type="url" class="input-form" required="">
+          <label for="editQuantity" class="main-title">Quantity</label>
+          <input type="number" class="input-form" required="">
+        </div>
+        <div class="form-button">
+          <button class="btn btn-primary btn-confirm" type="reset">Cancel</button>
+          <button class="btn btn-secondary btn-confirm" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Add Feature -->
+  <div class="form-wrapper">
+    <h2 class="secondary-heading form-heading-confirm">Create new a product</h2>
+    <form action="javascript:void(0)" class="form-modal">
+      <div class="form-info">
+        <div class="form-group">
+          <label for="editName" class="main-title">Name</label>
+          <input type="text" class="input-form" required="">
+          <label for="editPrice" class="main-title">Price</label>
+          <input type="number" class="input-form" required="">
+          <label for="editImage" class="main-title">Image URL</label>
+          <input type="url" class="input-form" required="">
+          <label for="editQuantity" class="main-title">Quantity</label>
+          <input type="number" class="input-form" required="">
+        </div>
+        <div class="form-button">
+          <button class="btn btn-primary btn-confirm" type="reset">Cancel</button>
+          <button class="btn btn-secondary btn-confirm" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Delete Feature -->
+  <form action="javascript:void(0)" class="form-wrapper form-delete">
+    <p class="secondary-heading form-heading-delete">Are you sure you want to delete this food?</p>
+    <div class="form-button">
+      <button class="btn btn-primary btn-confirm" type="reset">Cancel</button>
+      <button class="btn btn-secondary btn-confirm" type="submit">Yes</button>
+    </div>
+  </form>
+</body>
+</html>
