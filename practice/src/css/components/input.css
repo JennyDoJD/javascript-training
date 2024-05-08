@@ -7,7 +7,7 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-lg);
-  color: var(--primary-text-colors);
+  color: var(--primary-text-color);
 }
 
 .input-quantity {
