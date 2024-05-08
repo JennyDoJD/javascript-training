@@ -1,17 +1,23 @@
 @font-face {
   font-family: "Barlow";
   src: url("../../assets/fonts/Barlow-SemiBold.woff") format("woff");
+  font-weight: var(--font-weight-semibold);
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Barlow";
   src: url("../../assets/fonts/Barlow-Medium.woff") format("woff");
+  font-weight: var(--font-weight-medium);
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Barlow";
   src: url("../../assets/fonts/Barlow-Regular.woff") format("woff");
+  font-weight: var(--font-weight-regular);
+  font-style: normal;
   font-display: swap;
 }
