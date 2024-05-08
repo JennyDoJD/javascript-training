@@ -8,8 +8,8 @@
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-lg);
   color: var(--primary-text-colors);
+}
 
-  &:nth-last-child(1) {
-    width: 207px;
-  }
+.input-quantity {
+  width: 207px;
 }
