@@ -1,14 +1,13 @@
 .form-wrapper {
   border-radius: 16px 16px 0;
-  width: 445px;
   padding: 40px 50px 30px 50px;
   background-color: var(--primary-background-color);
 }
 
 .form-heading-feature {
-  padding-bottom: 24px;
+  padding-bottom: 26px;
   border-bottom: 1px solid var(--tertiary-border-color);
-  width: 70%;
+  width: 280px;
 }
 
 .form-control {
@@ -27,7 +26,7 @@
 }
 
 .form-input {
-  padding-bottom: 60px;
+  padding-bottom: 70px;
 }
 
 .form-button {
@@ -38,5 +37,14 @@
 }
 
 .btn-confirm {
-  width: 175px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .btn-confirm {
+    padding-left: 67px;
+    padding-right: 67px;
+  }
 }
