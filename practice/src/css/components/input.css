@@ -6,16 +6,15 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-lg);
+  color: var(--primary-text-color);
 }
 
 .input-form-lg {
   margin-bottom: 16px;
-  color: var(--primary-text-color);
 }
 
 .input-form-sm {
   margin-right: 127px;
-  color: var(--primary-text-color);
 }
 
 /* Tablet */
