@@ -5,13 +5,13 @@
   background-color: var(--primary-background-color);
 }
 
-.form-heading-confirm {
+.form-heading-feature {
   padding-bottom: 24px;
   border-bottom: 1px solid var(--tertiary-border-color);
   width: 70%;
 }
 
-.form-modal {
+.form-control {
   padding-top: 20px;
 }
 
@@ -23,6 +23,10 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding-bottom: 8px;
+}
+
+.form-input {
   padding-bottom: 60px;
 }
 
