@@ -1,5 +1,4 @@
 .input-form {
-  margin-bottom: 10px;
   border: 1px solid var(--tertiary-border-color);
   border-radius: 8px;
   padding: 14px;
@@ -7,9 +6,21 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-lg);
-  color: var(--primary-text-colors);
 }
 
-.input-quantity {
-  width: 207px;
+.input-form-lg {
+  margin-bottom: 16px;
+  color: var(--primary-text-color);
+}
+
+.input-form-sm {
+  margin-right: 127px;
+  color: var(--primary-text-color);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .input-form-sm {
+    margin-right: 228px;
+  }
 }
