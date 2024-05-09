@@ -8,18 +8,3 @@
   line-height: var(--line-height-lg);
   color: var(--primary-text-color);
 }
-
-.input-form-lg {
-  margin-bottom: 16px;
-}
-
-.input-form-sm {
-  margin-right: 127px;
-}
-
-/* Tablet */
-@media (min-width: 768px) {
-  .input-form-sm {
-    margin-right: 228px;
-  }
-}
