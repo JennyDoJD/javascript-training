@@ -1,0 +1,50 @@
+.form-wrapper {
+  border-radius: 16px 16px 0;
+  padding: 40px 50px 30px 50px;
+  background-color: var(--primary-background-color);
+}
+
+.form-heading-feature {
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--tertiary-border-color);
+  width: 280px;
+}
+
+.form-control {
+  padding-top: 20px;
+}
+
+.form-info {
+  padding-top: 5px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.form-input {
+  padding-bottom: 70px;
+}
+
+.form-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.btn-confirm {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .btn-confirm {
+    padding-left: 67px;
+    padding-right: 67px;
+  }
+}
