@@ -1,0 +1,100 @@
+.sidebar {
+  background-color: #1f1d2b;
+  border-radius: 8px;
+  height: 100vh;
+  display: inline-block;
+}
+
+.sidebar-header {
+  padding-top: 24px;
+  border-radius: 12px;
+  padding-left: 10px;
+  display: inline-block;
+}
+
+.side-bar-logo {
+  background-color: rgba(235, 150, 106, 0.26);
+  display: inline-block;
+  padding: 11px;
+  border-radius: 12px;
+}
+
+.sidebar-body {
+  padding-top: 39px;
+  padding-bottom: 46px;
+}
+
+.sidebar-footer {
+  padding: 18px 19px 18px 18px;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.active {
+  padding: 18px 19px;
+
+  &:hover {
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(234, 124, 105, 0.32);
+  }
+}
+
+.nav-item {
+  padding-top: 23px;
+  padding-left: 12px;
+  padding-bottom: 23px;
+  padding-right: 24px;
+  position: relative;
+}
+
+.nav-item:hover {
+  background-color: #252836;
+  border-radius: 12px 0px 0px 12px;
+}
+
+.nav-item:hover::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: -12px;
+  right: 0;
+  border-bottom-right-radius: 16px;
+  box-shadow: 7.5px 7.5px 0 7.5px #252836;
+}
+
+.nav-item:hover::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  bottom: -12px;
+  right: 0;
+  border-top-right-radius: 16px;
+  box-shadow: 7.5px -7.5px 0 7.5px #252836;
+}
+
+.sidebar-header-item {
+  display: inline-block;
+  padding: 3px;
+}
+
+.sidebar-wrapper {
+  padding-top: 14px;
+  padding-left: 14px;
+}
+
+/* Tablet */
+/* @media (min-width: 768px) {
+  .sidebar {
+    border-radius: 16px;
+  }
+
+  .sidebar-wrapper {
+    padding: 24px;
+  }
+} */
