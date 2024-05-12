@@ -34,10 +34,7 @@
 }
 
 .circle {
-  background-color: var(--gray-background-color);
-  border-radius: 50%;
-  width: 4px;
-  height: 4px;
+  color: var(--gray-background-color);
 }
 
 .card-desc {
