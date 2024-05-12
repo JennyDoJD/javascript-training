@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/main.css" />
+    <script
+      src="./javascripts/sidebar.js"
+      type="text/javascript"
+      defer
+    ></script>
     <title>Products Management</title>
   </head>
 
@@ -47,89 +52,71 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <div class="sidebar-wrapper">
-        <div class="sidebar-header">
-          <a href="javascript:void(0)" class="side-bar-logo">
-            <img src="./assets/images/logo.png" alt="logo" />
-          </a>
-        </div>
-        <div class="sidebar-body">
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a href="javascript:void(0)">
-                <span class="active">
-                  <svg width="24" height="24">
-                    <use
-                      xlink:href="./assets/images/icons/icons.svg#home-icon"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)">
-                <span class="active">
-                  <svg width="24" height="24">
-                    <use
-                      xlink:href="./assets/images/icons/icons.svg#discount-icon"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)">
-                <span class="active">
-                  <svg width="24" height="24">
-                    <use
-                      xlink:href="./assets/images/icons/icons.svg#graph-icon"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)">
-                <span class="active">
-                  <svg width="24" height="24">
-                    <use
-                      xlink:href="./assets/images/icons/icons.svg#message-icon"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)">
-                <span class="active">
-                  <svg width="24" height="24">
-                    <use
-                      xlink:href="./assets/images/icons/icons.svg#notification-icon"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)">
-                <span class="active">
-                  <svg width="24" height="24">
-                    <use
-                      xlink:href="./assets/images/icons/icons.svg#setting-icon"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="sidebar-footer">
-          <a href="javascript:void(0)">
-            <svg width="24" height="24">
-              <use xlink:href="./assets/images/icons/icons.svg#logout-icon" />
-            </svg>
-          </a>
-        </div>
+      <div class="sidebar-header">
+        <a href="javascript:void(0)" class="side-bar-logo">
+          <img src="./assets/images/logo.png" alt="logo" />
+        </a>
+      </div>
+      <div class="sidebar-body">
+        <ul class="nav-list">
+          <li class="nav-item active">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg width="24" height="24">
+                <use xlink:href="./assets/images/icons/icons.svg#home-icon" />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg width="24" height="24">
+                <use
+                  xlink:href="./assets/images/icons/icons.svg#discount-icon"
+                />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg width="24" height="24">
+                <use xlink:href="./assets/images/icons/icons.svg#graph-icon" />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg width="24" height="24">
+                <use
+                  xlink:href="./assets/images/icons/icons.svg#message-icon"
+                />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg width="24" height="24">
+                <use
+                  xlink:href="./assets/images/icons/icons.svg#notification-icon"
+                />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg width="24" height="24">
+                <use
+                  xlink:href="./assets/images/icons/icons.svg#setting-icon"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-footer">
+        <a href="javascript:void(0)" class="sidebar-footer-link">
+          <svg width="24" height="24">
+            <use xlink:href="./assets/images/icons/icons.svg#logout-icon" />
+          </svg>
+        </a>
       </div>
     </div>
   </body>
