@@ -76,6 +76,9 @@
 
 .sidebar-footer {
   padding-left: 12px;
+  padding-bottom: 24px;
+  position: absolute;
+  bottom: 0;
 }
 
 .sidebar-footer-link {
