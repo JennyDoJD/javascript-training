@@ -1,0 +1,62 @@
+.card {
+  cursor: pointer;
+  background-color: var(--primary-background-color);
+  width: 221px;
+  border-radius: var(--primary-border-radius);
+}
+
+.card-product {
+  border: 1px solid var(--tertiary-border-color);
+
+  &:hover > .card-header {
+    visibility: visible;
+  }
+}
+
+.card-header {
+  float: right;
+  visibility: hidden;
+  padding-top: 10px;
+  padding-right: 11px;
+}
+
+.card-image {
+  padding: 24px 47px 16px;
+}
+
+.card-title {
+  padding: 0 38px 16px 39px;
+  text-align: center;
+}
+
+.card-name {
+  padding-bottom: 8px;
+}
+
+.circle {
+  color: var(--gray-background-color);
+}
+
+.card-desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-add-product {
+  padding-top: 111px;
+  padding-bottom: 110px;
+  border: 2px dashed var(--secondary-border-color);
+}
+
+.card-add-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-lg);
+  color: var(--secondary-text-color);
+}
