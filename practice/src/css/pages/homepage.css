@@ -41,7 +41,7 @@
   border-radius: 12px 0 0 12px;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     width: 12px;
     height: 12px;
@@ -52,7 +52,7 @@
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 12px;
     height: 12px;
@@ -81,8 +81,4 @@
 .sidebar-footer-link {
   display: inline-block;
   padding: 18px;
-}
-
-.nav-link:active svg {
-  fill: #fff;
 }
