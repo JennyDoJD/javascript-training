@@ -4,7 +4,7 @@ document.querySelector('.nav-list').addEventListener('click', function (event) {
   if (event.target.classList.contains('nav-link')) {
     // Remove 'active' class from all nav-items
     document
-      .querySelectorAll('.nav-item')
+      .querySelectorAll('.nav-item.active')
       .forEach((item) => item.classList.remove('active'));
 
     // Add 'active' class to the parent nav-item of the clicked nav-link
