@@ -87,6 +87,11 @@
   padding: 18px;
 }
 
+.sidebar svg {
+  width: 24px;
+  height: 24px;
+}
+
 .active svg {
   filter: invert(100%) hue-rotate(180deg) brightness(10);
 }
