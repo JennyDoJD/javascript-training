@@ -6,10 +6,11 @@ document.querySelector('.nav-list').addEventListener('click', function (event) {
 
     // Check if the clicked nav-item is already active
     if (!clickedNavItem.classList.contains('active')) {
-      // Remove 'active' class from all nav-items
-      document
-        .querySelectorAll('.nav-item.active')
-        .forEach((item) => item.classList.remove('active'));
+      // Remove 'active' class from the currently active nav-item
+      const activeNavItem = document.querySelector('.nav-item.active');
+      if (activeNavItem) {
+        activeNavItem.classList.remove('active');
+      }
 
       // Add 'active' class to the parent nav-item of the clicked nav-link
       clickedNavItem.classList.add('active');
