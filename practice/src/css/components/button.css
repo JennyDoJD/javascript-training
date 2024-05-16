@@ -1,7 +1,7 @@
 .btn {
   cursor: pointer;
   border-radius: var(--primary-border-radius);
-  padding: 14px;
+  padding: 14px 23px;
   font-size: var(--font-size-xs);
   line-height: var(--line-height-lg);
   font-weight: var(--font-weight-semibold);
