@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/main.css" />
-    <title>Products Management</title>
+    <script
+      src="./javascripts/sidebar.js"
+      type="text/javascript"
+      defer
+    ></script>
+    <title>Foods Management</title>
   </head>
   <body>
     <!-- Card 1-->
@@ -81,5 +86,75 @@
         </div>
       </form>
     </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="javascript:void(0)" class="sidebar-logo">
+          <img src="./assets/images/logo.png" alt="logo" />
+        </a>
+      </div>
+      <div class="sidebar-body">
+        <ul class="nav-list">
+          <li class="nav-item active">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg>
+                <use xlink:href="./assets/images/icons/icons.svg#home-icon" />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg>
+                <use
+                  xlink:href="./assets/images/icons/icons.svg#discount-icon"
+                />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg>
+                <use xlink:href="./assets/images/icons/icons.svg#graph-icon" />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg>
+                <use
+                  xlink:href="./assets/images/icons/icons.svg#message-icon"
+                />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg>
+                <use
+                  xlink:href="./assets/images/icons/icons.svg#notification-icon"
+                />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <svg>
+                <use
+                  xlink:href="./assets/images/icons/icons.svg#setting-icon"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-footer">
+        <a href="javascript:void(0)" class="sidebar-footer-link">
+          <svg>
+            <use xlink:href="./assets/images/icons/icons.svg#logout-icon" />
+          </svg>
+        </a>
+      </div>
+    </aside>
   </body>
 </html>
