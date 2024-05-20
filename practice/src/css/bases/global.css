@@ -1,4 +1,12 @@
-body,
-input {
+body {
   font-family: var(--primary-font);
+  background-color: var(--dark-background-color);
+}
+
+input {
+  font-family: inherit;
+}
+
+.hidden {
+  display: none;
 }
