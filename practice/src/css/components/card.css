@@ -21,6 +21,7 @@
 }
 
 .card-image {
+  height: 130px;
   padding: 24px 47px 16px;
 }
 
@@ -59,4 +60,33 @@
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-lg);
   color: var(--secondary-text-color);
+}
+
+.card-item {
+  border-radius: 50%;
+  height: 130px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-product:nth-child(n + 5) {
+  display: none;
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .card-product {
+    display: none;
+  }
+
+  .card-product:nth-child(-n + 6) {
+    display: block;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1352px) {
+  .card-product:nth-child(-n + 10) {
+    display: block;
+  }
 }
