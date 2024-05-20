@@ -96,9 +96,122 @@
   filter: invert(100%) hue-rotate(180deg) brightness(10);
 }
 
+.homepage-content {
+  position: absolute;
+  inset: 20px 23px 21px 124px;
+  height: max-content;
+  border-radius: var(--primary-border-radius);
+  background-color: var(--primary-background-color);
+}
+
+.homepage-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 20px 19px 20px;
+  border-bottom: 1px solid var(--tertiary-border-color);
+}
+
+.homepage-topbar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.homepage-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-input {
+  background-color: var(--tertiary-background-color);
+  border: none;
+  color: var(--brown-text-color);
+  flex: 1;
+}
+
+.homepage-sort {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  border: 1px solid var(--tertiary-border-color);
+  border-radius: var(--primary-border-radius);
+  padding: 14px;
+  margin-right: auto;
+}
+
+.sort-list {
+  cursor: pointer;
+  border: none;
+  background-color: var(--primary-background-color);
+  appearance: none;
+}
+
+.homepage-main {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--tertiary-border-color);
+  padding-top: 27px;
+  padding-bottom: 33px;
+}
+
+.homepage-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 52px;
+  padding-bottom: 50px;
+}
+
 /* Tablet */
 @media (min-width: 768px) {
   .nav-list {
     gap: 30px;
+  }
+
+  .homepage-header {
+    flex-direction: column;
+    gap: 25px;
+    padding-top: 55px;
+    padding-left: 42px;
+    padding-right: 45px;
+  }
+
+  .homepage-topbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .homepage-search {
+    width: 250px;
+  }
+
+  .homepage-sort {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .homepage-main {
+    padding-left: 42px;
+    padding-right: 45px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1352px) {
+  .homepage-header {
+    padding-right: 78px;
+    gap: 38px;
+  }
+
+  .homepage-search {
+    width: 342px;
+  }
+
+  .homepage-main {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
