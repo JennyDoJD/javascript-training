@@ -1,5 +1,5 @@
-import iconEdit from '../assets/images/icons/edit.png';
-import iconDelete from '../assets/images/icons/delete.png';
+import iconEdit from '../assets/images/icons/edit.svg';
+import iconDelete from '../assets/images/icons/delete.svg';
 
 const apiUrl = 'https://663896844253a866a24e6014.mockapi.io/api/products';
 const productList = document.querySelector('.homepage-main');
