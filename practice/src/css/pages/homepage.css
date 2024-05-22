@@ -153,7 +153,7 @@
 .homepage-main {
   display: grid;
   justify-items: center;
-  gap: 16px;
+  row-gap: 16px;
   border-bottom: 1px solid var(--tertiary-border-color);
   padding-top: 27px;
   padding-bottom: 33px;
