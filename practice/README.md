@@ -83,3 +83,23 @@ git clone https://github.com/JennyDoJD/javascript-training.git
 ```bash
 cd javascript-training
 ```
+
+- Checkout to branch feature/javascript-practice
+
+```bash
+git checkout feature/javascript-practice
+```
+
+- Install packages
+  
+```bash
+npm install
+```
+
+- Run the server
+
+```bash
+npm start
+```
+
+- Open your web browser and navigate to http://localhost:1234
