@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Page for managing food items and related tasks"
+    />
+    <meta property="og:image" content="./assets/images/logo.svg" />
+    <link rel="icon" href="./assets/images/logo.svg" type="image/x-icon" />
     <link rel="stylesheet" href="./css/main.css" />
     <script
       src="./javascripts/sidebar.js"
@@ -12,149 +18,161 @@
     <title>Foods Management</title>
   </head>
   <body>
-    <!-- Card 1-->
-    <div class="card card-product">
-      <div class="card-header">
-        <svg width="15" height="15">
-          <use xlink:href="./assets/images/icons/icons.svg#delete-icon" />
-        </svg>
-      </div>
-      <div>
-        <figure class="card-image">
-          <img src="#" alt="food image" />
-        </figure>
-        <div class="card-title">
-          <p class="tertiary-title card-name">Spicy seasoned seafood noodles</p>
-          <div class="main-desc card-desc">
-            <p>$ 2.29</p>
-            <span class="circle">&#8729;</span>
-            <p>20 Bowls</p>
+    <!-- Homepage -->
+    <div class="homepage">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="javascript:void(0)" class="sidebar-logo">
+            <img src="./assets/images/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <div class="sidebar-body">
+          <ul class="nav-list">
+            <li class="nav-item active">
+              <a href="javascript:void(0)" class="nav-link">
+                <svg>
+                  <use xlink:href="./assets/images/icons/icons.svg#home-icon" />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void(0)" class="nav-link">
+                <svg>
+                  <use
+                    xlink:href="./assets/images/icons/icons.svg#discount-icon"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void(0)" class="nav-link">
+                <svg>
+                  <use
+                    xlink:href="./assets/images/icons/icons.svg#graph-icon"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void(0)" class="nav-link">
+                <svg>
+                  <use
+                    xlink:href="./assets/images/icons/icons.svg#message-icon"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void(0)" class="nav-link">
+                <svg>
+                  <use
+                    xlink:href="./assets/images/icons/icons.svg#notification-icon"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void(0)" class="nav-link">
+                <svg>
+                  <use
+                    xlink:href="./assets/images/icons/icons.svg#setting-icon"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-footer">
+          <a href="javascript:void(0)" class="sidebar-footer-link">
+            <svg>
+              <use xlink:href="./assets/images/icons/icons.svg#logout-icon" />
+            </svg>
+          </a>
+        </div>
+      </aside>
+      <!-- Content -->
+      <div class="homepage-content">
+        <div class="homepage-header">
+          <div class="homepage-topbar">
+            <h1 class="main-title">Products Management</h1>
+            <!-- Search -->
+            <div class="input-form homepage-search">
+              <svg width="20" height="20">
+                <use xlink:href="./assets/images/icons/icons.svg#search-icon" />
+              </svg>
+              <input
+                type="search"
+                class="search-input"
+                placeholder="Search for food, coffee, etc.."
+              />
+            </div>
+          </div>
+          <!-- Filter -->
+          <div class="homepage-sort">
+            <svg width="20" height="20">
+              <use xlink:href="./assets/images/icons/icons.svg#dropdown-icon" />
+            </svg>
+            <select class="tertiary-title sort-list">
+              Sort by
+              <option value="">Sort by</option>
+              <optgroup label="Name">
+                <option value="">A to Z</option>
+                <option value="">Z to A</option>
+              </optgroup>
+              <optgroup label="Price">
+                <option value="">Low to high</option>
+                <option value="">High to low</option>
+              </optgroup>
+            </select>
           </div>
         </div>
-      </div>
-      <div>
-        <a href="javascript:void(0)" class="btn btn-edit">
-          <svg width="15" height="15">
-            <use xlink:href="./assets/images/icons/icons.svg#edit-icon" />
-          </svg>
-          Edit dish
-        </a>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="card card-add-product">
-      <a href="javascrip:void(0)" class="card-add-title">
-        <svg width="20" height="20">
-          <use xlink:href="./assets/images/icons/icons.svg#add-icon" />
-        </svg>
-        Add new dish
-      </a>
-    </div>
-
-    <!-- Form -->
-    <div class="form-wrapper">
-      <h2 class="secondary-title form-heading-feature">Create new a product</h2>
-      <form action="javascript:void(0)" class="form-control">
-        <div class="form-info">
-          <div class="form-input">
-            <div class="form-group">
-              <label for="editName" class="tertiary-title">Name</label>
-              <input type="text" class="input-form input-form-lg" />
+        <main class="homepage-main">
+          <!-- Card Add -->
+          <div class="card card-add-product">
+            <a href="javascrip:void(0)" class="card-add-title">
+              <svg width="15" height="15">
+                <use xlink:href="./assets/images/icons/icons.svg#add-icon" />
+              </svg>
+              Add new dish
+            </a>
+          </div>
+          <!-- Card Products-->
+          <div class="card card-product">
+            <div class="card-header">
+              <svg width="15" height="15">
+                <use xlink:href="./assets/images/icons/icons.svg#delete-icon" />
+              </svg>
             </div>
-            <div class="form-group">
-              <label for="editPrice" class="tertiary-title">Price</label>
-              <input type="number" class="input-form input-form-lg" />
+            <div>
+              <figure class="card-image">
+                <img
+                  src="./assets/images/food.png"
+                  alt="food image"
+                  class="card-item"
+                />
+              </figure>
+              <div class="card-text">
+                <p class="tertiary-title card-name">
+                  Spicy seasoned seafood noodles
+                </p>
+                <div class="main-desc card-desc">
+                  <span>$2.29</span>
+                  <span class="circle">&#8729;</span>
+                  <span>20 Bowls</span>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="editImage" class="tertiary-title">Image URL</label>
-              <input type="url" class="input-form input-form-lg" />
-            </div>
-            <div class="form-group">
-              <label for="editQuantity" class="tertiary-title">Quantity</label>
-              <input type="number" class="input-form input-form-sm" />
+            <div>
+              <a href="javascript:void(0)" class="btn btn-edit">
+                <svg width="20" height="20">
+                  <use xlink:href="./assets/images/icons/icons.svg#edit-icon" />
+                </svg>
+                Edit dish
+              </a>
             </div>
           </div>
-          <div class="form-button">
-            <button class="btn btn-primary btn-confirm" type="reset">
-              Cancel
-            </button>
-            <button class="btn btn-secondary btn-confirm" type="submit">
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <a href="javascript:void(0)" class="sidebar-logo">
-          <img src="./assets/images/logo.png" alt="logo" />
-        </a>
+        </main>
       </div>
-      <div class="sidebar-body">
-        <ul class="nav-list">
-          <li class="nav-item active">
-            <a href="javascript:void(0)" class="nav-link">
-              <svg>
-                <use xlink:href="./assets/images/icons/icons.svg#home-icon" />
-              </svg>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
-              <svg>
-                <use
-                  xlink:href="./assets/images/icons/icons.svg#discount-icon"
-                />
-              </svg>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
-              <svg>
-                <use xlink:href="./assets/images/icons/icons.svg#graph-icon" />
-              </svg>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
-              <svg>
-                <use
-                  xlink:href="./assets/images/icons/icons.svg#message-icon"
-                />
-              </svg>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
-              <svg>
-                <use
-                  xlink:href="./assets/images/icons/icons.svg#notification-icon"
-                />
-              </svg>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
-              <svg>
-                <use
-                  xlink:href="./assets/images/icons/icons.svg#setting-icon"
-                />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="sidebar-footer">
-        <a href="javascript:void(0)" class="sidebar-footer-link">
-          <svg>
-            <use xlink:href="./assets/images/icons/icons.svg#logout-icon" />
-          </svg>
-        </a>
-      </div>
-    </aside>
   </body>
 </html>
