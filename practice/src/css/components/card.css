@@ -39,11 +39,8 @@
   color: var(--gray-background-color);
 }
 
-.card-desc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+.card-desc span {
+  padding-right: 8px;
 }
 
 .card-add-product {
