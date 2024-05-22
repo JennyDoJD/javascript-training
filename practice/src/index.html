@@ -11,11 +11,10 @@
     <link rel="icon" href="./assets/images/logo.svg" type="image/x-icon" />
     <link rel="stylesheet" href="./css/main.css" />
     <script
-      src="./javascripts/sidebar.js"
+      src="./javascripts/components/sidebar.js"
       type="text/javascript"
       defer
     ></script>
-    <script src="./javascripts/homepage.js" type="module"></script>
     <title>Foods Management</title>
   </head>
   <body>
@@ -139,41 +138,8 @@
             </a>
           </div>
           <!-- Card Products-->
-          <div class="card card-product">
-            <div class="card-header">
-              <svg width="15" height="15">
-                <use xlink:href="./assets/images/icons/icons.svg#delete-icon" />
-              </svg>
-            </div>
-            <div>
-              <figure class="card-image">
-                <img
-                  src="./assets/images/food.png"
-                  alt="food image"
-                  class="card-item"
-                />
-              </figure>
-              <div class="card-text">
-                <p class="tertiary-title card-name">
-                  Spicy seasoned seafood noodles
-                </p>
-                <div class="main-desc card-desc">
-                  <span>$2.29</span>
-                  <span class="circle">&#8729;</span>
-                  <span>20 Bowls</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <a href="javascript:void(0)" class="btn btn-edit">
-                <svg width="20" height="20">
-                  <use xlink:href="./assets/images/icons/icons.svg#edit-icon" />
-                </svg>
-                Edit dish
-              </a>
-            </div>
-          </div>
         </main>
       </div>
+      <script src="./javascripts/homepage.js" type="module"></script>
   </body>
 </html>
