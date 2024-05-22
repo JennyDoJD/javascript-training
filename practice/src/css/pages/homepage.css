@@ -129,6 +129,7 @@
   border: none;
   color: var(--brown-text-color);
   flex: 1;
+  outline: none;
 }
 
 .homepage-sort {
@@ -146,6 +147,7 @@
   border: none;
   background-color: var(--primary-background-color);
   appearance: none;
+  outline: none;
 }
 
 .homepage-main {
