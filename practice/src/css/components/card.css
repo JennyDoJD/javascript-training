@@ -44,8 +44,9 @@
 }
 
 .card-add-product {
-  padding-top: 111px;
-  padding-bottom: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border: 2px dashed var(--secondary-border-color);
 }
 
