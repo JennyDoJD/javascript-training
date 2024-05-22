@@ -208,4 +208,8 @@
   .homepage-main {
     grid-template-columns: repeat(5, 1fr);
   }
+
+  .homepage-content {
+    height: auto;
+  }
 }
