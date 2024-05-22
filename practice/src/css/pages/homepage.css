@@ -159,14 +159,6 @@
   padding-bottom: 33px;
 }
 
-.homepage-pagination {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding-top: 52px;
-  padding-bottom: 50px;
-}
-
 /* Tablet */
 @media (min-width: 768px) {
   .nav-list {
