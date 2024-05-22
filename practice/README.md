@@ -90,6 +90,12 @@ cd javascript-training
 git checkout feature/javascript-practice
 ```
 
+- Move to folder `practice`
+
+```bash
+cd practice
+```
+
 - Install packages
   
 ```bash
