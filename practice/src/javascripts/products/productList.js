@@ -4,7 +4,7 @@ export const displayProduct = (products) => {
   let contentProduct = '';
   if (products) {
     products.forEach((item) => {
-      contentProduct += productTemplate(item);
+      contentProduct += productList(item);
     });
   } else {
     contentProduct = '';
