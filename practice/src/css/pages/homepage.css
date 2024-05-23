@@ -159,6 +159,10 @@
   padding-bottom: 33px;
 }
 
+#product-list {
+  display: contents;
+}
+
 /* Tablet */
 @media (min-width: 768px) {
   .nav-list {
