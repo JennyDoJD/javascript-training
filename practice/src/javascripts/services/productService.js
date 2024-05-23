@@ -1,24 +1,15 @@
 import { API } from '../constants/apiUrl';
-import ApiServices from '../services/apiService';
 
-export default class ProductService {
-  constructor() {
-    this.apiService = new ApiServices(API.BASE_URL, API.PRODUCTS_ENDPOINT);
+// Function to fetch products from the API
+export async function fetchProducts() {
+  try {
+    const response = await fetch(`${API.BASE_URL}/${API.PRODUCTS_ENDPOINT}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch products');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
   }
-
-  getAllProducts = async () => {
-    return await this.apiService.get();
-  };
-
-  addProduct = async (product) => {
-    return await this.apiService.post(product);
-  };
-
-  updateProduct = async (data) => {
-    return await this.apiService.put(data);
-  };
-
-  deleteProduct = async (id) => {
-    return await this.apiService.delete(id);
-  };
 }
