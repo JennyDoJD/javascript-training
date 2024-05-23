@@ -11,7 +11,7 @@ export function ProductCard(product) {
       </div>
       <div>
         <figure class="card-image">
-          <img src="${product.imageURL}" alt="${product.name}" class="card-item" />
+          <img src="${product.imageURL}" alt="food-image" class="card-item" />
         </figure>
         <div class="card-text">
           <p class="tertiary-title card-name">${product.name}</p>
