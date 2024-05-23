@@ -7,4 +7,5 @@
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-lg);
   color: var(--primary-text-color);
+  outline: none;
 }
