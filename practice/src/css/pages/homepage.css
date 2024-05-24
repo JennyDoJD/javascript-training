@@ -159,7 +159,7 @@
   padding-bottom: 33px;
 }
 
-#product-list {
+.card-product-list {
   display: contents;
 }
 
