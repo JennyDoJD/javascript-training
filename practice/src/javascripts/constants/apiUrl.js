@@ -1,5 +1,5 @@
 const API = {
-  BASE_URL: 'https://663896844253a866a24e6014.mockapi.io/api',
+  BASE_URL: process.env.BASE_URL,
   PRODUCTS_ENDPOINT: 'products',
 };
 
