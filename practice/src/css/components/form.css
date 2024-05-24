@@ -41,6 +41,13 @@
   padding-right: 50px;
 }
 
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 /* Tablet */
 @media (min-width: 768px) {
   .btn-confirm {
