@@ -1,16 +1,21 @@
-import { fetchProducts } from '../services/productService';
-import { ProductCard } from '../templates/product';
+import ProductService from '../services/productService';
+import ProductListView from '../templates/product';
 
-/**
- * Create function to render products on the page
- * Call renderProductList to display products on page load
- */
-async function renderProductList() {
-  const products = await fetchProducts();
-  const productListContainer = document.getElementById('product-list');
-  if (productListContainer) {
-    productListContainer.innerHTML = products.map(ProductCard).join('');
+export default class ProductList {
+  constructor() {
+    this.productService = new ProductService();
+    this.productContainer = document.querySelector('.homepage-main');
+  }
+
+  /**
+   * Render products on the homepage
+   */
+  async renderProducts() {
+    try {
+      const products = await this.productService.getAllProducts();
+      ProductListView.renderProducts(products);
+    } catch (error) {
+      console.error('Failed to render products:', error);
+    }
   }
 }
-
-renderProductList();
