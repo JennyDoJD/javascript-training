@@ -1,6 +1,43 @@
 import iconAction from '../../assets/images/icons/icons.svg';
 
+/**
+ * View template for rendering product cards
+ */
 export default class ProductListView {
+  /**
+   * Clear the main container
+   */
+  static clearMainContainer() {
+    const mainContent = document.getElementById('product-list');
+    mainContent.innerHTML = '';
+  }
+
+  /**
+   * Render products
+   */
+  static renderProducts(products) {
+    this.clearMainContainer();
+
+    const mainContent = document.getElementById('product-list');
+
+    if (!Array.isArray(products)) {
+      throw new Error('Invalid data received from API');
+    }
+
+    if (products.length === 0) {
+      mainContent.innerHTML = `<h2 class="main-title">No Result</h2>`;
+      return;
+    }
+
+    let productListHTML = '<div class="card-product-list">';
+    products.forEach((product) => {
+      productListHTML += this.createProductCard(product);
+    });
+    productListHTML += '</div>';
+
+    mainContent.innerHTML = productListHTML;
+  }
+
   /**
    * Create HTML markup for a product card
    */
@@ -37,39 +74,5 @@ export default class ProductListView {
         </div>
         </div>
     `;
-  }
-
-  /**
-   * Clear the main container
-   */
-  static clearMainContainer() {
-    const mainContent = document.getElementById('product-list');
-    mainContent.innerHTML = '';
-  }
-
-  /**
-   * Render products
-   */
-  static renderProducts(products) {
-    this.clearMainContainer();
-
-    const mainContent = document.getElementById('product-list');
-
-    if (!Array.isArray(products)) {
-      throw new Error('Invalid data received from API');
-    }
-
-    if (products.length === 0) {
-      mainContent.innerHTML = `<h2 class="main-title">No Result</h2>`;
-      return;
-    }
-
-    let productListHTML = '<div class="card-product-list">';
-    products.forEach((product) => {
-      productListHTML += this.createProductCard(product);
-    });
-    productListHTML += '</div>';
-
-    mainContent.innerHTML = productListHTML;
   }
 }
