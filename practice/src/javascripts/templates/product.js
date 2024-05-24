@@ -1,7 +1,3 @@
-/**
- * This module provides a ProductListView class for managing the display of product cards.
- * It contains methods for creating product cards, clearing the main container, and rendering products.
- */
 import iconAction from '../../assets/images/icons/icons.svg';
 
 export default class ProductListView {
@@ -54,7 +50,6 @@ export default class ProductListView {
   /**
    * Render products
    */
-
   static renderProducts(products) {
     this.clearMainContainer();
 
