@@ -5,6 +5,7 @@ export default class ProductList {
   constructor() {
     this.productService = new ProductService();
     this.productContainer = document.querySelector('.homepage-main');
+    this.productTemplate = new ProductTemplate();
   }
 
   /**
@@ -15,7 +16,7 @@ export default class ProductList {
   async renderProducts() {
     try {
       const products = await this.productService.getAll();
-      ProductTemplate.renderProducts(products);
+      this.productTemplate.renderProducts(products);
     } catch (error) {
       console.error('Failed to render products:', error);
     }
