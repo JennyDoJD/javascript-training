@@ -39,7 +39,6 @@ export default class ProductListView {
 
   /**
    * Create HTML markup for a product card
-   *
    * @param {Object} product - The product object containing id, name, price, imageURL, and quantity.
    * @returns {string} - The HTML markup for the product card.
    */
