@@ -48,6 +48,11 @@
   padding-right: 50px;
 }
 
+.error-message {
+  color: #ff0000;
+  font-size: var(--font-size-xs);
+}
+
 /* Tablet */
 @media (min-width: 768px) {
   .btn-confirm {
