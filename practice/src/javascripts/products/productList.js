@@ -8,7 +8,9 @@ export default class ProductList {
   }
 
   /**
-   * Render products on the homepage
+   * Fetch all products from the ProductService
+   * Render the products using the ProductListView component
+   * Log an error message if rendering fails
    */
   async renderProducts() {
     try {
