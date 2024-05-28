@@ -19,7 +19,7 @@ const APIHelper = {
 
       return data;
     } catch (error) {
-      console.error(error);
+      throw new Error(`Get data fail ${error.message}`);
     }
   },
 };
