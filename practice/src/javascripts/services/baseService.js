@@ -6,7 +6,8 @@ export default class BaseService {
   }
 
   /**
-   * Fetch all products from the API
+   * Gets data from the api
+   * @returns {Promise<Object[]>} An array of data objects
    */
   async getAll() {
     return await APIHelper.get(this.endpoint);
