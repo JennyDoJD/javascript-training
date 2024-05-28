@@ -1,9 +1,11 @@
 import { API } from '../constants/apiUrl';
 
 const APIHelper = {
-  /*
+  /**
    * Fetches data from the API using the specified endpoint.
    * It defines an asynchronous function 'get' to fetch data from the API.
+   * @param {string} - the API endpoint
+   * @returns {Promise<Object>} - the JSON response
    */
   async get(endpoint) {
     try {
