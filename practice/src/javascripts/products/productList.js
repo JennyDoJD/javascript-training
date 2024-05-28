@@ -1,5 +1,5 @@
 import ProductService from '../services/productService';
-import ProductListView from '../templates/product';
+import ProductTemplate from '../templates/productTemplate';
 
 export default class ProductList {
   constructor() {
@@ -13,7 +13,7 @@ export default class ProductList {
   async renderProducts() {
     try {
       const products = await this.productService.getAllProducts();
-      ProductListView.renderProducts(products);
+      ProductTemplate.renderProducts(products);
     } catch (error) {
       console.error('Failed to render products:', error);
     }
