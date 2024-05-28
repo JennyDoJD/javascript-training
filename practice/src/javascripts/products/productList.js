@@ -12,7 +12,8 @@ export default class ProductList {
    */
   async renderProducts() {
     try {
-      const products = await this.productService.getAllProducts();
+      const products = await this.productService.getAll();
+
       ProductListView.renderProducts(products);
     } catch (error) {
       console.error('Failed to render products:', error);
