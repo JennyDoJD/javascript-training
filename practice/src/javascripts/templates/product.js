@@ -1,11 +1,9 @@
 import iconAction from '../../assets/images/icons/icons.svg';
 
-/**
- * View template for rendering product cards
- */
 export default class ProductListView {
   /**
-   * Clear the main container
+   * Clears the main content container on the page
+   * Effectively removing all of its child elements
    */
   static clearMainContainer() {
     const mainContent = document.getElementById('product-list');
@@ -13,7 +11,8 @@ export default class ProductListView {
   }
 
   /**
-   * Render products
+   * Render the products on the homepage
+   * @param {Object[]} products - An array of product objects to be displayed
    */
   static renderProducts(products) {
     this.clearMainContainer();
@@ -40,6 +39,9 @@ export default class ProductListView {
 
   /**
    * Create HTML markup for a product card
+   *
+   * @param {Object} product - The product object containing id, name, price, imageURL, and quantity.
+   * @returns {string} - The HTML markup for the product card.
    */
   static createProductCard(product) {
     const { id, name, price, imageURL, quantity } = product;
