@@ -15,7 +15,7 @@ const APIHelper = {
         throw new Error('Failed to fetch products');
       }
 
-      const data = await response.json();
+      const data = response.json();
 
       return data;
     } catch (error) {
