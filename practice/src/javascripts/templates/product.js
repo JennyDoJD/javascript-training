@@ -46,33 +46,33 @@ export default class ProductListView {
 
     return `
     <div class="card card-product">
-        <div class="card-header">
-          <svg width="15" height="15" data-productId=${id}>
-            <use xlink:href="${iconAction}#delete-icon" />
-          </svg>
-        </div>
-        <div>
-          <figure class="card-image">
-            <img src="${imageURL}" alt="food-image" class="card-item" />
-          </figure>
-          <div class="card-text">
-            <p class="tertiary-title card-name">${name}</p>
-            <div class="main-desc card-desc">
-              <span>$ ${price}</span>
-              <span class="circle">&#8729;</span>
-              <span>${quantity} Bowls</span>
-            </div>
+      <div class="card-header">
+        <svg width="15" height="15" data-productId=${id}>
+          <use xlink:href="${iconAction}#delete-icon" />
+        </svg>
+      </div>
+      <div>
+        <figure class="card-image">
+          <img src="${imageURL}" alt="food-image" class="card-item" />
+        </figure>
+        <div class="card-text">
+          <p class="tertiary-title card-name">${name}</p>
+          <div class="main-desc card-desc">
+            <span>$ ${price}</span>
+            <span class="circle">&#8729;</span>
+            <span>${quantity} Bowls</span>
           </div>
         </div>
-        <div>
-          <a href="javascript:void(0)" class="btn btn-edit">
-            <svg width="20" height="20">
-              <use xlink:href="${iconAction}#edit-icon" />
-            </svg>
-            Edit dish
-          </a>
-        </div>
-        </div>
-    `;
+      </div>
+      <div>
+        <a href="javascript:void(0)" class="btn btn-edit">
+          <svg width="20" height="20">
+            <use xlink:href="${iconAction}#edit-icon" />
+          </svg>
+          Edit dish
+        </a>
+      </div>
+    </div>
+  `;
   }
 }
