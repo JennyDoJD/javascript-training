@@ -8,6 +8,7 @@ document.querySelector('.nav-list').addEventListener('click', function (event) {
     if (!clickedNavItem.classList.contains('active')) {
       // Remove 'active' class from the currently active nav-item
       const activeNavItem = document.querySelector('.nav-item.active');
+
       if (activeNavItem) {
         activeNavItem.classList.remove('active');
       }
