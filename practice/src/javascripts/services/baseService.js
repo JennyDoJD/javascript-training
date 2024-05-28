@@ -8,7 +8,7 @@ export default class BaseService {
   /**
    * Fetch all products from the API
    */
-  async getAllProducts() {
+  async getAll() {
     return await APIHelper.get(this.endpoint);
   }
 }
