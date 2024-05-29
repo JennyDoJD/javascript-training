@@ -3,9 +3,9 @@ import ProductTemplate from './templates/productTemplate';
 import ProductService from './services/productService';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const productService = new ProductService();
-  const productTemplate = new ProductTemplate();
-  const productList = new ProductList(productService, productTemplate);
+  const service = new ProductService();
+  const template = new ProductTemplate();
+  const productList = new ProductList(service, template);
   productList.renderProducts();
 });
 

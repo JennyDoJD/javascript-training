@@ -23,7 +23,7 @@ export default class ProductTemplate {
       throw new Error('Invalid data received from API');
     }
 
-    if (products.length === 0) {
+    if (!products.length) {
       mainContent.innerHTML = `<h2 class="main-title">No Result</h2>`;
       return;
     }
