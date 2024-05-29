@@ -1,7 +1,11 @@
 import ProductList from './products/productList';
+import ProductTemplate from './templates/productTemplate';
+import ProductService from './services/productService';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const productList = new ProductList();
+  const productService = new ProductService();
+  const productTemplate = new ProductTemplate();
+  const productList = new ProductList(productService, productTemplate);
   productList.renderProducts();
 });
 
