@@ -3,6 +3,7 @@ import ProductTemplate from './templates/productTemplate';
 import ProductService from './services/productService';
 import { handleNavLinkClick } from './helpers/sidebarHandler';
 
+// Render products using ProductList instance
 const service = new ProductService();
 const template = new ProductTemplate();
 const productList = new ProductList(service, template);
