@@ -17,6 +17,7 @@ export default class ProductList {
     try {
       const products = await this.productService.getAll();
       this.productTemplate.renderProducts(products);
+      
     } catch (error) {
       console.error('Failed to render products:', error);
     }
