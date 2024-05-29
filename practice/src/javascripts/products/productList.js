@@ -1,11 +1,7 @@
-import ProductService from '../services/productService';
-import ProductTemplate from '../templates/productTemplate';
-
 export default class ProductList {
-  constructor() {
-    this.productService = productService;
-    this.productTemplate = productTemplate;
-    this.productContainer = document.querySelector('.homepage-main');
+  constructor(service, template) {
+    this.productService = service;
+    this.productTemplate = template;
   }
 
   /**
