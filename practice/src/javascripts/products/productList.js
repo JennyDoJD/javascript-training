@@ -14,6 +14,7 @@ export default class ProductList {
    */
   async renderProducts() {
     const products = await this.productService.getAll();
+
     this.productTemplate.renderProducts(products);
   }
 }
