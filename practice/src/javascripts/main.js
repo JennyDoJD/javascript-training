@@ -9,6 +9,7 @@ const productList = new ProductList(service, template);
 
 productList.renderProducts();
 
+// Add event listener to the navigation list to handle clicks on navigation links
 document
   .querySelector('.nav-list')
   .addEventListener('click', handleNavLinkClick);
