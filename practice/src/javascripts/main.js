@@ -2,13 +2,11 @@ import ProductList from './products/productList';
 import ProductTemplate from './templates/productTemplate';
 import ProductService from './services/productService';
 
-window.addEventListener('DOMContentLoaded', () => {
-  const service = new ProductService();
-  const template = new ProductTemplate();
-  const productList = new ProductList(service, template);
+const service = new ProductService();
+const template = new ProductTemplate();
+const productList = new ProductList(service, template);
 
-  productList.renderProducts();
-});
+productList.renderProducts();
 
 // Identify the links in the sidebar and add/remove the 'active' class when clicked
 document.querySelector('.nav-list').addEventListener('click', function (event) {
