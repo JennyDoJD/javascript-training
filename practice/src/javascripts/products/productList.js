@@ -3,9 +3,9 @@ import ProductTemplate from '../templates/productTemplate';
 
 export default class ProductList {
   constructor() {
-    this.productService = new ProductService();
+    this.productService = productService;
+    this.productTemplate = productTemplate;
     this.productContainer = document.querySelector('.homepage-main');
-    this.productTemplate = new ProductTemplate();
   }
 
   /**
