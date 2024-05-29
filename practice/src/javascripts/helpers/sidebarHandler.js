@@ -1,4 +1,4 @@
-export function handleNavLinkClick(event) {
+function handleNavLinkClick(event) {
   // Check if the clicked element is a nav-link inside a nav-item
   if (event.target.classList.contains('nav-link')) {
     const clickedNavItem = event.target.closest('.nav-item');
@@ -17,3 +17,5 @@ export function handleNavLinkClick(event) {
     }
   }
 }
+
+export { handleNavLinkClick };
