@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const service = new ProductService();
   const template = new ProductTemplate();
   const productList = new ProductList(service, template);
+
   productList.renderProducts();
 });
 
