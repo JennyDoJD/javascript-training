@@ -60,7 +60,7 @@ const validateString = ({ key, value }) => {
  */
 const validateImage = ({ key, value }) => {
   return !REGEX_PATTERNS.imageUrlRegex.test(value)
-    ? `${LABELS[key]} format is invalid.`
+    ? `Please make sure ${LABELS[key]} starts with 'http://' or 'https://' and ends with .jpg or .png`
     : '';
 };
 
@@ -69,12 +69,12 @@ const validateImage = ({ key, value }) => {
  * @param {Object} params - An object
  * @param {string} params.key - The field that needs to check
  * @param {string} params.value - The value of that field
- * @param {number} [params.min=3] - The minimum length required (default is 3)
+ * @param {number} [params.min=3] - The minimum length required (default is 2)
  * @returns {string} - An error message if the length requirement is not met, otherwise an empty string
  */
-const validateLength = ({ key, value, min = 3 }) =>
-  value.trim().length < min
-    ? `${LABELS[key]} must have at least ${min} characters.`
+const validateLength = ({ key, value, min = 2, max = 50 }) =>
+  value.trim().length < min || value.trim().length > max
+    ? `${LABELS[key]} must have between ${min} and ${max} characters.`
     : '';
 
 /**
