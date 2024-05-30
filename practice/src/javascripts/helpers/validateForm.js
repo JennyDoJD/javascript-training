@@ -85,26 +85,27 @@ const validateLength = ({ key, value, min = 3 }) =>
  * @returns {string} - An error message if the value is not a positive number, otherwise an empty string
  */
 const validatePositive = ({ key, value }) =>
-  parseInt(value) < 0 ? `${LABELS[key]} must be a positive number.` : '';
+  parseFloat(value) < 0 ? `${LABELS[key]} must be a positive number.` : '';
 
 /**
  * Validates the form data
  * @param {Object} data - The form data
  * @returns {Object} An object containing validation results
  */
-const validateForm = (data) => {
-  let formError = {};
-
+function validateForm(data) {
   const validationSchema = {
     Name: [validateString, validateLength],
     Price: [validateFloat, validatePositive],
-    ImageUrl: [validateImage],
+    ImageURL: [validateImage],
     Quantity: [validateInteger, validatePositive],
   };
 
+  const formError = {};
   for (const key in data) {
+    // If the key exists in the validationSchema
     if (validationSchema.hasOwnProperty(key)) {
       const value = data[key];
+      // Get the array of validator methods associated with the key
       const validators = validationSchema[key];
 
       formError[key] = validateEmpty({ key, value });
@@ -113,13 +114,14 @@ const validateForm = (data) => {
         if (formError[key] !== '') {
           break;
         }
+
         formError[key] = validator({ key, value });
       }
     }
   }
 
   return { formError };
-};
+}
 
 export {
   validateString,
