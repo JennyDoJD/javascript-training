@@ -48,6 +48,13 @@
   padding-right: 50px;
 }
 
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .error-message {
   color: #ff0000;
   font-size: var(--font-size-xs);
