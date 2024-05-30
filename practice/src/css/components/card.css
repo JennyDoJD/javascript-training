@@ -67,7 +67,7 @@
   object-fit: cover;
 }
 
-.card-product:nth-child(n + 5) {
+.card-product:nth-child(n + 4) {
   display: none;
 }
 
@@ -77,14 +77,14 @@
     display: none;
   }
 
-  .card-product:nth-child(-n + 6) {
+  .card-product:nth-child(-n + 5) {
     display: block;
   }
 }
 
 /* Desktop */
 @media (min-width: 1352px) {
-  .card-product:nth-child(-n + 10) {
+  .card-product:nth-child(-n + 9) {
     display: block;
   }
 }
