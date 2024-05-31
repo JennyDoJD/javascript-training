@@ -12,4 +12,13 @@ export default class BaseService {
   async getAll() {
     return await APIHelper.get(this.endpoint);
   }
+
+  /**
+   * Add a new item
+   * @param {Object} productItem - the object contains the item
+   * @param {Object} result - The result
+   */
+  async add(productItem) {
+    return await APIHandler.post(this.endpoint, productItem);
+  }
 }
