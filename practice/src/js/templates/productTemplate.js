@@ -89,7 +89,7 @@ export default class ProductTemplate {
       { field: 'Quantity', value: quantity, id: 'quantity' },
     ];
 
-    const mainContent = document.getElementById('main-content');
+    const mainContent = document.getElementById('form-content');
 
     mainContent.innerHTML = `
       <div class="form-wrapper">
