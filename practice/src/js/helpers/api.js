@@ -43,7 +43,7 @@ const APIHelper = {
         throw new Error('Failed to post data');
       }
 
-      const data = await response.json();
+      const data = response.json();
 
       return data;
     } catch (error) {
@@ -71,7 +71,7 @@ const APIHelper = {
         throw new Error('Failed to put data');
       }
 
-      const data = await response.json();
+      const data = response.json();
 
       return data;
     } catch (error) {
@@ -94,7 +94,7 @@ const APIHelper = {
         throw new Error('Failed to delete data');
       }
 
-      const data = await response.json();
+      const data = response.json();
 
       return data;
     } catch (error) {
