@@ -1,4 +1,4 @@
-import { LABELS } from '../constants/labels';
+import { LABELS } from '../constants/label';
 import { REGEX_PATTERNS } from '../constants/regex';
 
 /**
