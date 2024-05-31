@@ -1,4 +1,5 @@
 import iconAction from '../../assets/images/icons/icons.svg';
+import renderFormInputsHTML from './renderFormInputTemplate';
 
 export default class ProductTemplate {
   /**
@@ -75,5 +76,40 @@ export default class ProductTemplate {
       </div>
     </div>
   `;
+  }
+
+  renderProductFormPage(data = {}) {
+    this.clearMainContainer();
+
+    const { id, name = '', price = '', imageURL = '', quantity = '' } = data;
+    const formInputs = [
+      { field: 'Name', value: name, id: 'name' },
+      { field: 'Price', value: price, id: 'price' },
+      { field: 'Image URL', value: imageURL, id: 'image-url' },
+      { field: 'Quantity', value: quantity, id: 'quantity' },
+    ];
+
+    const mainContent = document.getElementById('main-content');
+
+    mainContent.innerHTML = `
+      <div class="form-wrapper">
+        <h2 class="main-heading">Create new a product</h2>
+        <form data-product-id="${id}" id="product-form" action="javascript:void(0)" class="form-control">
+          ${renderFormInputsHTML(formInputs)}
+          <div class="form-button">
+            <button class="btn btn-primary btn-confirm" type="reset">
+              Cancel
+            </button>
+            <button
+              class="btn btn-secondary btn-confirm"
+              type="submit"
+              id="button-submit"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    `;
   }
 }
