@@ -85,12 +85,16 @@
       </aside>
       <!-- Form -->
       <div class="form-container">
-        <div class="form-wrapper">
-          <h2 class="secondary-title form-heading-feature">
+        <div class="form-wrapper" id="main-content">
+          <!-- <h2 class="secondary-title form-heading-feature">
             Create new a product
           </h2>
-          <form action="javascript:void(0)" class="form-control">
-            <div class="form-info">
+          <form
+            action="javascript:void(0)"
+            class="form-control"
+            id="product-form"
+          >
+            <div class="form-info" id="formInfo">
               <div class="form-input">
                 <div class="form-group">
                   <label for="Name" class="tertiary-title">Name</label>
@@ -117,18 +121,19 @@
                 <button class="btn btn-primary btn-confirm" type="reset">
                   Cancel
                 </button>
-                <button class="btn btn-secondary btn-confirm" type="submit">
+                <button
+                  class="btn btn-secondary btn-confirm"
+                  type="submit"
+                  id="button-submit"
+                >
                   Save
                 </button>
               </div>
             </div>
-          </form>
+          </form> -->
         </div>
       </div>
     </div>
-    <script
-      src="../src/js/products/formHandlerProduct.js"
-      type="module"
-    ></script>
+    <script src="./js/main.js" type="module"></script>
   </body>
 </html>
