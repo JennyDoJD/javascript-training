@@ -1,3 +1,8 @@
+/**
+ * Render HTML markup for form inputs based on the provided formInputs array.
+ * @param {Object[]} formInputs - An array of objects containing field and id properties.
+ * @returns {string} - The HTML markup for the form inputs.
+ */
 const renderFormInputTemplate = (formInputs) => {
   let formInputsHTML = '';
 
