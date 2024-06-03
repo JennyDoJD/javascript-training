@@ -1,6 +1,6 @@
-import { LABELS } from '../constants/label';
 import { REGEX_PATTERNS } from '../constants/regex';
 
+let formError = {};
 /**
  * Validates if the value is empty (consisting only of whitespace characters)
  * @param {Object} params - An object containing key and value to validate
@@ -8,9 +8,8 @@ import { REGEX_PATTERNS } from '../constants/regex';
  * @param {string} params.value - The value of the field to be validated
  * @returns {string} - An error message if the value is empty, otherwise an empty string
  */
-const validateEmpty = ({ key, value }) => {
-  return value.trim() === '' ? `${LABELS[key]} is required` : '';
-};
+const validateEmpty = ({ key, value }) =>
+  (formError[key] = value.trim() === '' ? `${key} is required.` : '');
 
 /**
  * Checks if the value is a number
@@ -19,11 +18,10 @@ const validateEmpty = ({ key, value }) => {
  * @param {number} params.value - The value of that field
  * @returns {string} - An error message if the value is not an integer, otherwise an empty string
  */
-const validateInteger = ({ key, value }) => {
-  return !REGEX_PATTERNS.integerRegex.test(value)
-    ? `${LABELS[key]} must be a integer.`
-    : '';
-};
+const validateInteger = ({ key, value }) =>
+  (formError[key] = !REGEX_PATTERNS.integerRegex.test(value)
+    ? `${key} must be an integer.`
+    : '');
 
 /**
  * Checks if the value is a number
@@ -32,11 +30,10 @@ const validateInteger = ({ key, value }) => {
  * @param {number} params.value - The value of that field
  * @returns {string} - An error message if the value is not a float, otherwise an empty string
  */
-const validateFloat = ({ key, value }) => {
-  return !REGEX_PATTERNS.digitRegex.test(value)
-    ? `${LABELS[key]} must be a float.`
-    : '';
-};
+const validateFloat = ({ key, value }) =>
+  (formError[key] = !REGEX_PATTERNS.digitRegex.test(value)
+    ? `${key} must be a float.`
+    : '');
 
 /**
  * Checks if the value is a string
@@ -45,11 +42,10 @@ const validateFloat = ({ key, value }) => {
  * @param {string} params.value - The value of that field
  * @returns {string} - An error message if the value is not a string, otherwise an empty string
  */
-const validateString = ({ key, value }) => {
-  return typeof value !== 'string' || isNaN(value) === false
-    ? `${LABELS[key]} must be a string.`
-    : '';
-};
+
+const validateString = ({ key, value }) =>
+  (formError[key] =
+    typeof value !== 'string' ? `${key} must be a string.` : '');
 
 /**
  * Checks if the value is valid format
@@ -58,11 +54,10 @@ const validateString = ({ key, value }) => {
  * @param {string} params.value - The value of that field
  * @returns {string} - An error message if the value is not a valid image URL, otherwise an empty string
  */
-const validateImage = ({ key, value }) => {
-  return !REGEX_PATTERNS.imageUrlRegex.test(value)
-    ? `Please make sure ${LABELS[key]} starts with 'http://' or 'https://' and ends with .jpg or .png`
-    : '';
-};
+const validateImage = ({ key, value }) =>
+  (formError[key] = !REGEX_PATTERNS.imageUrlRegex.test(value)
+    ? `Please make sure ${key} starts with 'http://' or 'https://' and ends with .jpg or .png`
+    : '');
 
 /**
  * Checks if the value is longer than minimum length
@@ -73,9 +68,10 @@ const validateImage = ({ key, value }) => {
  * @returns {string} - An error message if the length requirement is not met, otherwise an empty string
  */
 const validateLength = ({ key, value, min = 2, max = 50 }) =>
-  value.trim().length < min || value.trim().length > max
-    ? `${LABELS[key]} must have between ${min} and ${max} characters.`
-    : '';
+  (formError[key] =
+    value.trim().length < min || value.trim().length > max
+      ? `${key} must have between ${min} and ${max} characters.`
+      : '');
 
 /**
  * Checks if the value is a positive number
@@ -85,7 +81,8 @@ const validateLength = ({ key, value, min = 2, max = 50 }) =>
  * @returns {string} - An error message if the value is not a positive number, otherwise an empty string
  */
 const validatePositive = ({ key, value }) =>
-  parseFloat(value) < 0 ? `${LABELS[key]} must be a positive number.` : '';
+  (formError[key] =
+    parseFloat(value) < 0 ? `${key} must be a positive number.` : '');
 
 /**
  * Validates the product form data
