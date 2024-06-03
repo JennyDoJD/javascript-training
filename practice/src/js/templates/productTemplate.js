@@ -1,4 +1,5 @@
 import iconAction from '../../assets/images/icons/icons.svg';
+import Toast from '../helpers/toastify';
 
 export default class ProductTemplate {
   /**
