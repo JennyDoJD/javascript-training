@@ -38,13 +38,15 @@ export default class ProductList {
 
             if (response.isSuccess) {
               this.productTemplate.showDeleteSuccessToast();
-              await this.renderProducts(); // await for the rendering after deletion
+
+              await this.renderProducts();
             } else {
               this.productTemplate.showDeleteFailureToast();
             }
           });
         } catch (error) {
           console.error(error);
+
           this.productTemplate.showDeleteFailureToast();
         }
       }
