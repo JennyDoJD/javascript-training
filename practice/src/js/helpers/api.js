@@ -22,6 +22,31 @@ const APIHelper = {
       throw new Error(`Get data fail ${error.message}`);
     }
   },
+
+  /**
+   * Sends a DELETE request to the API to delete data.
+   * @param {string} endpoint - The API endpoint for deleting data.
+   * @returns {Promise<Object>} - The JSON response from the server indicating success or failure.
+   */
+  async delete(endpoint) {
+    try {
+      const response = await fetch(`${API.BASE_URL}/${endpoint}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete data');
+      }
+
+      return {
+        isSuccess: true,
+      };
+    } catch (error) {
+      return {
+        isSuccess: false,
+      };
+    }
+  },
 };
 
 export { APIHelper };
