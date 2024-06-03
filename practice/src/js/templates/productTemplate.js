@@ -1,5 +1,5 @@
 import iconAction from '../../assets/images/icons/icons.svg';
-import renderFormInputsHTML from './renderFormInputTemplate';
+import renderFormInputTemplate from './renderFormInputTemplate';
 
 export default class ProductTemplate {
   /**
@@ -49,7 +49,7 @@ export default class ProductTemplate {
     return `
     <div class="card card-product">
       <div class="card-header">
-        <svg width="15" height="15" data-productId=${id}>
+        <svg width="15" height="15" data-product-id="${id}">
           <use xlink:href="${iconAction}#delete-icon" />
         </svg>
       </div>
@@ -99,7 +99,7 @@ export default class ProductTemplate {
       <div class="form-wrapper">
         <h2 class="main-heading">Create new a product</h2>
         <form data-product-id="${id}" id="product-form" action="javascript:void(0)" class="form-control">
-          ${renderFormInputsHTML(formInputs)}
+          ${renderFormInputTemplate(formInputs)}
           <div class="form-button">
             <button class="btn btn-primary btn-confirm" type="reset">
               Cancel
