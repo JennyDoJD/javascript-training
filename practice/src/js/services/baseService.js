@@ -15,10 +15,10 @@ export default class BaseService {
 
   /**
    * Add a new item
-   * @param {Object} productItem - the object contains the item
+   * @param {Object} baseItem - the object contains the item
    * @param {Object} result - The result
    */
-  async add(productItem) {
-    return await APIHandler.post(this.endpoint, productItem);
+  async add(baseItem) {
+    return await APIHandler.post(this.endpoint, baseItem);
   }
 }
