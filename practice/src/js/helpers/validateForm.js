@@ -120,6 +120,15 @@ function validateProductForm(data) {
   return { formError };
 }
 
+/**
+ * Checks if there are any validation errors in the form error object.
+ * @param {Object} formError - The object containing validation errors for each form field.
+ * @returns {boolean} - True if there are any validation errors, otherwise false.
+ */
+function hasValidationErrors(formError) {
+  return Object.values(formError).some((error) => error !== '');
+}
+
 export {
   validateString,
   validateInteger,
@@ -129,4 +138,5 @@ export {
   validateLength,
   validatePositive,
   validateProductForm,
+  hasValidationErrors,
 };
