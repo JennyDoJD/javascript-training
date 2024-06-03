@@ -76,4 +76,38 @@ export default class ProductTemplate {
     </div>
   `;
   }
+
+  /**
+   * Displays the delete confirmation modal and handles user interaction.
+   * @param {Function} confirmDelete - The function to execute when the user confirms deletion.
+   */
+  showDeleteModal(confirmDelete) {
+    const deleteModal = document.getElementById('delete-product-modal');
+    deleteModal.classList.remove('hidden');
+
+    const confirmBtn = document.getElementById('confirm-btn-delete');
+    confirmBtn.addEventListener('click', () => {
+      confirmDelete();
+      deleteModal.classList.add('hidden');
+    });
+
+    const cancelBtn = document.getElementById('cancel-btn-delete');
+    cancelBtn.addEventListener('click', () => {
+      deleteModal.classList.add('hidden');
+    });
+  }
+
+  /**
+   * Display a toast notification for successful deletion
+   */
+  showDeleteSuccessToast() {
+    Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MSG);
+  }
+
+  /**
+   * Display a toast notification for deletion failure
+   */
+  showDeleteFailureToast() {
+    Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
+  }
 }
