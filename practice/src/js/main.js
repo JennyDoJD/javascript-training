@@ -29,7 +29,7 @@ document.addEventListener('click', async (event) => {
     const productId = deleteIcon.dataset.productId;
 
     try {
-      await productList.productTemplate.showDeleteModal(async () => {
+      productList.productTemplate.showDeleteModal(async () => {
         const response = await productList.productService.delete(productId);
 
         if (response.isSuccess) {
