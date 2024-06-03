@@ -107,8 +107,7 @@ export default class ProductTemplate {
             <button
               class="btn btn-secondary btn-confirm"
               type="submit"
-              id="button-submit"
-            >
+              id="button-submit">
               Save
             </button>
           </div>
