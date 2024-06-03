@@ -78,6 +78,10 @@ export default class ProductTemplate {
   `;
   }
 
+  /**
+   * Renders a form for creating a product
+   * @param {Object} [data={}] - The product data object containing id, name, price, imageURL, and quantity. Defaults to an empty object for creating a new product.
+   */
   renderProductFormPage(data = {}) {
     this.clearMainContainer();
 
