@@ -1,4 +1,4 @@
-const renderFormInputsHTML = (formInputs) => {
+const renderFormInputTemplate = (formInputs) => {
   let formInputsHTML = ``;
 
   for (const item of formInputs) {
@@ -16,4 +16,4 @@ const renderFormInputsHTML = (formInputs) => {
   return formInputsHTML;
 };
 
-export default renderFormInputsHTML;
+export default renderFormInputTemplate;
