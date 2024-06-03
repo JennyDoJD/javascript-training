@@ -1,5 +1,6 @@
 import ProductService from '../services/productService';
 import { validateProductForm } from '../helpers/validateForm';
+import { hasValidationErrors } from '../helpers/validateForm';
 
 export default class ProductFormHandler {
   constructor() {
@@ -35,19 +36,13 @@ export default class ProductFormHandler {
         Quantity: quantity,
       });
 
-      if (
-        Object.values(validationResult.formError).some((error) => error !== '')
-      ) {
-        // Handle displaying errors to the user
+      // Check if there are any validation errors
+      if (hasValidationErrors(validationResult.formError)) {
         return;
       }
 
-      try {
-        // Call the ProductService to add the product
-        await this.productService.add({ name, price, imageURL, quantity });
-      } catch (error) {
-        console.error('An error occurred while adding the product:', error);
-      }
+      // Call the ProductService to add the product
+      await this.productService.add({ name, price, imageURL, quantity });
     });
   }
 }
