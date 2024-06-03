@@ -88,11 +88,11 @@ const validatePositive = ({ key, value }) =>
   parseFloat(value) < 0 ? `${LABELS[key]} must be a positive number.` : '';
 
 /**
- * Validates the form data
- * @param {Object} data - The form data
+ * Validates the product form data
+ * @param {Object} data - The product form data
  * @returns {Object} An object containing validation results
  */
-function validateForm(data) {
+function validateProductForm(data) {
   const validationSchema = {
     Name: [validateString, validateLength],
     Price: [validateFloat, validatePositive],
@@ -131,5 +131,5 @@ export {
   validateFloat,
   validateLength,
   validatePositive,
-  validateForm,
+  validateProductForm,
 };
