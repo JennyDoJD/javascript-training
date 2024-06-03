@@ -1,5 +1,5 @@
 const renderFormInputTemplate = (formInputs) => {
-  let formInputsHTML = ``;
+  let formInputsHTML = '';
 
   for (const item of formInputs) {
     const { field, id } = item;
