@@ -6,7 +6,7 @@ export default class ProductFormHandler {
     this.productService = new ProductService();
   }
 
-  static init() {
+  init() {
     const productForm = document.getElementById('product-form');
 
     productForm.addEventListener('submit', async (event) => {
