@@ -1,6 +1,6 @@
 import { API } from '../constants/apiUrl';
 
-const APIHelper = {
+const HttpClient = {
   /**
    * Fetches data from the API using the specified endpoint.
    * It defines an asynchronous function 'get' to fetch data from the API.
@@ -49,4 +49,4 @@ const APIHelper = {
   },
 };
 
-export { APIHelper };
+export { HttpClient };
