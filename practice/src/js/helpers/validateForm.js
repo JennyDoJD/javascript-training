@@ -42,7 +42,6 @@ const validateFloat = ({ key, value }) =>
  * @param {string} params.value - The value of that field
  * @returns {string} - An error message if the value is not a string, otherwise an empty string
  */
-
 const validateString = ({ key, value }) =>
   (formError[key] =
     typeof value !== 'string' ? `${key} must be a string.` : '');
