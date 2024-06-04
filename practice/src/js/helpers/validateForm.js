@@ -84,20 +84,22 @@ const validatePositive = ({ key, value }) =>
   (formError[key] =
     parseFloat(value) <= 0 ? `${key} must be a positive number.` : '');
 
+// Sample validation schema for the validateProductForm function
+const productValidationSchema = {
+  Name: [validateString, validateLength],
+  Price: [validateFloat, validatePositive],
+  ImageURL: [validateImage],
+  Quantity: [validateInteger, validatePositive],
+};
+
 /**
  * Validates the product form data
  * @param {Object} data - The product form data
  * @returns {Object} An object containing validation results
  */
-function validateProductForm(data) {
-  const validationSchema = {
-    Name: [validateString, validateLength],
-    Price: [validateFloat, validatePositive],
-    ImageURL: [validateImage],
-    Quantity: [validateInteger, validatePositive],
-  };
-
+function validateForm(data, validationSchema) {
   const formError = {};
+
   for (const key in data) {
     // If the key exists in the validationSchema
     if (validationSchema.hasOwnProperty(key)) {
@@ -137,6 +139,7 @@ export {
   validateFloat,
   validateLength,
   validatePositive,
-  validateProductForm,
+  validateForm,
   hasValidationErrors,
+  productValidationSchema,
 };
