@@ -1,0 +1,27 @@
+.toastify {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  border-radius: var(--primary-border-radius);
+  font-size: 10px;
+  color: var(--primary-text-color);
+  text-align: center;
+
+  &.toastify-danger {
+    background-color: #c32929;
+  }
+
+  &.toastify-success {
+    background-color: var(--green-background-color);
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .toastify {
+    font-size: var(--primary-text-color);
+  }
+}
