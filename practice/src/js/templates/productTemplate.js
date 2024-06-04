@@ -1,5 +1,5 @@
 import iconAction from '../../assets/images/icons/icons.svg';
-import renderFormInputTemplate from './renderFormInputTemplate';
+import renderFormInputTemplate from './productFormInputTemplate';
 
 export default class ProductTemplate {
   /**
