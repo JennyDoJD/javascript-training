@@ -64,7 +64,8 @@ const validateImage = ({ key, value }) =>
  * @param {Object} params - An object
  * @param {string} params.key - The field that needs to check
  * @param {string} params.value - The value of that field
- * @param {number} [params.min=3] - The minimum length required (default is 2)
+ * @param {number} [params.min=2] - The minimum length required (default is 2)
+ * @param {number} [params.max=50] - The maximum length required (default is 50)
  * @returns {string} - An error message if the length requirement is not met, otherwise an empty string
  */
 const validateLength = ({ key, value, min = 2, max = 50 }) =>
