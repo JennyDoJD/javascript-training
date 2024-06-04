@@ -82,7 +82,7 @@ const validateLength = ({ key, value, min = 2, max = 50 }) =>
  */
 const validatePositive = ({ key, value }) =>
   (formError[key] =
-    parseFloat(value) < 0 ? `${key} must be a positive number.` : '');
+    parseFloat(value) <= 0 ? `${key} must be a positive number.` : '');
 
 /**
  * Validates the product form data
