@@ -1,6 +1,8 @@
 import ProductService from '../services/productService';
-import { validateProductForm } from '../helpers/validateForm';
-import { hasValidationErrors } from '../helpers/validateForm';
+import {
+  validateProductForm,
+  hasValidationErrors,
+} from '../helpers/validateForm';
 
 export default class ProductForm {
   constructor() {
@@ -21,6 +23,8 @@ export default class ProductForm {
       const formData = this.getFormValues();
       const validationResult = validateProductForm(formData);
 
+      this.displayValidationErrors(validationResult.formError);
+
       // Check if there are any validation errors
       if (hasValidationErrors(validationResult.formError)) {
         return;
@@ -28,6 +32,11 @@ export default class ProductForm {
 
       // Call the ProductService to add the product
       await this.productService.add(formData);
+    });
+
+    productForm.addEventListener('input', (event) => {
+      const { id, value } = event.target;
+      this.clearValidationError(id);
     });
   }
 
@@ -52,5 +61,21 @@ export default class ProductForm {
       imageURL,
       quantity,
     };
+  }
+
+  /**
+   * Displays validation errors next to the corresponding form fields.
+   * @param {Object} errors - Object containing validation errors.
+   */
+  displayValidationErrors(errors) {
+    for (const key in errors) {
+      const errorMessage = errors[key];
+      const errorElement = document.getElementById(
+        `${key.toLowerCase()}-error`
+      );
+      if (errorElement) {
+        errorElement.textContent = errorMessage;
+      }
+    }
   }
 }
