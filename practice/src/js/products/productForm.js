@@ -19,22 +19,9 @@ export default class ProductForm {
     productForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      const nameInput = document.getElementById('name');
-      const priceInput = document.getElementById('price');
-      const imageURLInput = document.getElementById('image-url');
-      const quantityInput = document.getElementById('quantity');
+      const formData = this.getFormValues();
 
-      const name = nameInput.value;
-      const price = parseFloat(priceInput.value);
-      const imageURL = imageURLInput.value;
-      const quantity = parseInt(quantityInput.value);
-
-      const validationResult = validateProductForm({
-        Name: name,
-        Price: price,
-        ImageURL: imageURL,
-        Quantity: quantity,
-      });
+      const validationResult = validateProductForm(formData);
 
       // Check if there are any validation errors
       if (hasValidationErrors(validationResult.formError)) {
@@ -42,7 +29,30 @@ export default class ProductForm {
       }
 
       // Call the ProductService to add the product
-      await this.productService.add({ name, price, imageURL, quantity });
+      await this.productService.add(formData);
     });
+  }
+
+  /**
+   * Retrieves input values from the product form inputs.
+   * @returns {Object} - Object containing input values.
+   */
+  getFormValues() {
+    const nameInput = document.getElementById('name');
+    const priceInput = document.getElementById('price');
+    const imageURLInput = document.getElementById('image-url');
+    const quantityInput = document.getElementById('quantity');
+
+    const name = nameInput.value;
+    const price = parseFloat(priceInput.value);
+    const imageURL = imageURLInput.value;
+    const quantity = parseInt(quantityInput.value);
+
+    return {
+      name,
+      price,
+      imageURL,
+      quantity,
+    };
   }
 }
