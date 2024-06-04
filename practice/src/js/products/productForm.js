@@ -18,9 +18,7 @@ export default class ProductForm {
 
     productForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-
       const formData = this.getFormValues();
-
       const validationResult = validateProductForm(formData);
 
       // Check if there are any validation errors
