@@ -1,4 +1,4 @@
-import { HttpClient } from '../helpers/api';
+import { HttpClient } from '../helpers/httpClient';
 
 export default class BaseService {
   constructor(endpoint) {
