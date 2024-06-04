@@ -2,7 +2,7 @@ import ProductService from '../services/productService';
 import { validateProductForm } from '../helpers/validateForm';
 import { hasValidationErrors } from '../helpers/validateForm';
 
-export default class ProductFormHandler {
+export default class ProductForm {
   constructor() {
     this.productService = new ProductService();
   }
