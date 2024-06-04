@@ -2,6 +2,7 @@ import ProductService from '../services/productService';
 import {
   validateProductForm,
   hasValidationErrors,
+  productValidationSchema,
 } from '../helpers/validateForm';
 
 export default class ProductForm {
@@ -21,7 +22,10 @@ export default class ProductForm {
     productForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const formData = this.getFormValues();
-      const validationResult = validateProductForm(formData);
+      const validationResult = validateProductForm(
+        formData,
+        productValidationSchema
+      );
 
       this.displayValidationErrors(validationResult.formError);
 
@@ -76,6 +80,17 @@ export default class ProductForm {
       if (errorElement) {
         errorElement.textContent = errorMessage;
       }
+    }
+  }
+
+  /**
+   * Clears validation error message for a specific input field.
+   * @param {string} id - The ID of the input field.
+   */
+  clearValidationError(id) {
+    const errorElement = document.getElementById(`${id}-error`);
+    if (errorElement) {
+      errorElement.textContent = '';
     }
   }
 }
