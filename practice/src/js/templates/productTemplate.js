@@ -3,6 +3,9 @@ import Toast from '../helpers/toastify';
 import { MESSAGES } from '../constants/message';
 
 export default class ProductTemplate {
+  constructor() {
+    this.deleteModal = document.getElementById('delete-product-modal');
+  }
   /**
    * Clears the main content container on the page
    * Effectively removing all of its child elements
@@ -47,12 +50,19 @@ export default class ProductTemplate {
   createProductCard(product) {
     const { id, name, price, imageURL, quantity } = product;
 
+    const deleteIcon = document.createElement('svg');
+    deleteIcon.dataset.productId = product.id;
+
+    deleteIcon.addEventListener('click', () => {
+      this.showDeleteModal(product.id);
+    });
+
     return `
-    <div class="card card-product">
+    <div class="card card-product" data-id="${id}">
       <div class="card-header">
-        <svg width="15" height="15" data-productId=${id}>
-          <use xlink:href="${iconAction}#delete-icon" />
-        </svg>
+      <svg width="15" height="15" data-product-id="${id}" class="delete-product-icon">
+        <use xlink:href="${iconAction}#delete-icon" />
+      </svg>
       </div>
       <div>
         <figure class="card-image">
@@ -79,36 +89,49 @@ export default class ProductTemplate {
   `;
   }
 
-  /**
-   * Displays the delete confirmation modal and handles user interaction.
-   * @param {Function} confirmDelete - The function to execute when the user confirms deletion.
-   */
-  showDeleteModal(confirmDelete) {
+  // Show the delete product modal and set the dataset for confirmation
+  showDeleteModal = (productId) => {
     const deleteModal = document.getElementById('delete-product-modal');
-    deleteModal.classList.remove('hidden');
+    deleteModal.classList.toggle('hidden');
 
     const confirmBtn = document.getElementById('confirm-btn-delete');
-    confirmBtn.addEventListener('click', () => {
-      confirmDelete();
-      deleteModal.classList.add('hidden');
-    });
+    confirmBtn.dataset.productId = productId;
+  };
 
+  // Bind events for delete modal confirmation and cancellation
+  bindDeleteModalEvents = (handleConfirmDelete) => {
+    const confirmBtn = document.getElementById('confirm-btn-delete');
     const cancelBtn = document.getElementById('cancel-btn-delete');
-    cancelBtn.addEventListener('click', () => {
-      deleteModal.classList.add('hidden');
-    });
-  }
 
-  /**
-   * Display a toast notification for successful deletion
-   */
+    confirmBtn.addEventListener('click', async () => {
+      const id = confirmBtn.dataset.productId;
+
+      await handleConfirmDelete(id);
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      this.showDeleteModal();
+    });
+  };
+
+  // Bind event for toggling the modal
+  bindToggleModal = () => {
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      const id = target.getAttribute('data-id');
+
+      if (target.classList.contains('delete-product-icon')) {
+        this.showDeleteModal(id);
+      }
+    });
+  };
+
+  // Display a toast notification for successful deletion
   showDeleteSuccessToast() {
     Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MSG);
   }
 
-  /**
-   * Display a toast notification for deletion failure
-   */
+  // Display a toast notification for deletion failure
   showDeleteFailureToast() {
     Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
   }
