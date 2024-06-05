@@ -1,5 +1,5 @@
 import Toastify from 'toastify-js';
-import 'toastify-js/src/toastify.css';
+import '/src/css/components/toastify.css';
 
 /**
  * Toast object for displaying success and error messages
