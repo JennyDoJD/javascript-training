@@ -118,9 +118,10 @@ export default class ProductTemplate {
   bindToggleModal = () => {
     document.addEventListener('click', (e) => {
       const target = e.target;
-      const id = target.getAttribute('data-id');
 
       if (target.classList.contains('delete-product-icon')) {
+        const id = target.parentElement.parentElement.dataset.id;
+
         this.showDeleteModal(id);
       }
     });
