@@ -4,6 +4,10 @@ export default class ProductList {
     this.productTemplate = template;
   }
 
+  /**
+   * Initializes the ProductList instance
+   * This method renders the products initially and binds event handlers
+   */
   async init() {
     await this.renderProducts();
 
