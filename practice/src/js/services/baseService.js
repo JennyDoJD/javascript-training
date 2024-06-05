@@ -18,7 +18,7 @@ export default class BaseService {
    * @param {string} id - The ID of the item
    * @param {Object} result - The result
    */
-  async delete(id) {
+  async deleteByID(id) {
     return await HttpClient.delete(`${this.endpoint}/${id}`);
   }
 }
