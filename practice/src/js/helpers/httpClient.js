@@ -1,51 +1,60 @@
-import { API } from '../constants/apiUrl';
-
 class HttpClient {
-  /**
-   * Fetches data from the API using the specified endpoint.
-   * It defines an asynchronous function 'get' to fetch data from the API.
-   * @param {string} endpoint- the API endpoint
-   * @returns {Promise<Object>} - the JSON response
-   */
-  static async get(endpoint) {
-    try {
-      const response = await fetch(`${API.BASE_URL}/${endpoint}`);
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch products');
-      }
-
-      const data = response.json();
-
-      return data;
-    } catch (error) {
-      throw new Error(`Get data fail ${error.message}`);
-    }
+  constructor(options = {}) {
+    this._baseURL = options.baseURL || '';
+    this._headers = options._headers || {};
   }
 
-  /**
-   * Sends a DELETE request to the API to delete data.
-   * @param {string} endpoint - The API endpoint for deleting data.
-   * @returns {Promise<Object>} - The JSON response from the server indicating success or failure.
-   */
-  static async delete(endpoint) {
-    try {
-      const response = await fetch(`${API.BASE_URL}/${endpoint}`, {
-        method: 'DELETE',
-      });
+  async _fetchJSON(endpoint, options = {}) {
+    const response = await fetch(this._baseURL + endpoint, {
+      ...options,
+      headers: this._headers,
+    });
 
-      if (!response.ok) {
-        throw new Error('Failed to delete data');
-      }
+    if (!response.ok) throw new Error(response.statusText);
 
-      return {
-        isSuccess: true,
-      };
-    } catch (error) {
-      return {
-        isSuccess: false,
-      };
-    }
+    if (options.parseResponse !== false && response.status !== 204)
+      return response.json();
+
+    return undefined;
+  }
+
+  setHeader(key, value) {
+    this._headers[key] = value;
+    return this;
+  }
+
+  getHeader(key) {
+    this._headers[key];
+  }
+
+  get(endpoint, options = {}) {
+    return this._fetchJSON(endpoint, {
+      ...options,
+      method: 'GET',
+    });
+  }
+
+  post(endpoint, body, options = {}) {
+    return this._fetchJSON(endpoint, {
+      ...options,
+      body: body ? JSON.stringify(body) : undefined,
+      method: 'POST',
+    });
+  }
+
+  put(endpoint, body, options = {}) {
+    return this._fetchJSON(endpoint, {
+      ...options,
+      body: body ? JSON.stringify(body) : undefined,
+      method: 'PUT',
+    });
+  }
+
+  delete(endpoint, options = {}) {
+    return this._fetchJSON(endpoint, {
+      ...options,
+      method: 'DELETE',
+    });
   }
 }
 
