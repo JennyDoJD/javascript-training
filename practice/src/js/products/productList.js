@@ -11,7 +11,7 @@ export default class ProductList {
   async init() {
     await this.renderProducts();
 
-    this.bindDeleteProductEvent();
+    this.handlerEventHandlers();
   }
 
   /**
@@ -25,35 +25,30 @@ export default class ProductList {
   }
 
   /**
-   * Binds the click event to handle product deletion.
-   * When a delete icon is clicked, it displays a delete modal,
-   * deletes the corresponding product, and shows success/failure messages.
+   * Binds event handlers for managing product deletion.
+   * This method binds event handlers to toggle the delete modal and confirm deletion.
    */
-  bindDeleteProductEvent() {
-    document.addEventListener('click', async (event) => {
-      const deleteIcon = event.target.closest('[data-product-id]');
+  handlerEventHandlers = () => {
+    this.productTemplate.bindToggleModal();
+    this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
+  };
 
-      if (deleteIcon) {
-        const productId = deleteIcon.dataset.productId;
+  /**
+   * Handles the confirmation of product deletion.
+   * This method attempts to delete a product by its ID, renders updated products,
+   * and displays success or failure messages accordingly.
+   * @param {string} id - The ID of the product to be deleted.
+   */
+  handlerConfirmDelete = async (id) => {
+    try {
+      await this.productService.deleteByID(id);
+      await this.renderProducts();
 
-        try {
-          this.productTemplate.showDeleteModal(async () => {
-            const response = await this.productService.delete(productId);
-
-            if (response.isSuccess) {
-              this.productTemplate.showDeleteSuccessToast();
-
-              await this.renderProducts();
-            } else {
-              this.productTemplate.showDeleteFailureToast();
-            }
-          });
-        } catch (error) {
-          console.error(error);
-
-          this.productTemplate.showDeleteFailureToast();
-        }
-      }
-    });
-  }
+      this.productTemplate.showDeleteSuccessToast();
+    } catch (error) {
+      this.productTemplate.showDeleteFailureToast();
+    } finally {
+      this.productTemplate.showDeleteModal();
+    }
+  };
 }
