@@ -105,7 +105,6 @@ export default class ProductTemplate {
 
     confirmBtn.addEventListener('click', async () => {
       const id = confirmBtn.dataset.productId;
-
       await handleConfirmDelete(id);
     });
 
