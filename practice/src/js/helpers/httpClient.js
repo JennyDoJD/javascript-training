@@ -16,10 +16,13 @@ class HttpClient {
       headers: this.headers,
     });
 
-    if (!response.ok) throw new Error(response.statusText);
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
 
-    if (!options.parseResponse && response.status !== 204)
+    if (!options.parseResponse && response.status !== 204) {
       return response.json();
+    }
 
     return undefined;
   }
