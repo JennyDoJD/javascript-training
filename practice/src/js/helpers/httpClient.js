@@ -18,7 +18,7 @@ class HttpClient {
 
     if (!response.ok) throw new Error(response.statusText);
 
-    if (options.parseResponse !== false && response.status !== 204)
+    if (!options.parseResponse && response.status !== 204)
       return response.json();
 
     return undefined;
