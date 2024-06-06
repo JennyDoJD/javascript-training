@@ -1,7 +1,9 @@
-import { APIHelper } from '../helpers/api';
+import { HttpClient } from '../helpers/httpClient';
+import { API } from '../constants/apiUrl';
 
-export default class BaseService {
+class BaseService {
   constructor(endpoint) {
+    this.httpClient = new HttpClient({ baseURL: API.BASE_URL });
     this.endpoint = endpoint;
   }
 
@@ -10,6 +12,17 @@ export default class BaseService {
    * @returns {Promise<Object[]>} An array of data objects
    */
   async getAll() {
-    return await APIHelper.get(this.endpoint);
+    return await this.httpClient.get(this.endpoint);
+  }
+
+  /**
+   * Delete a item by its ID
+   * @param {string} id - The ID of the item
+   * @param {Object} result - The result
+   */
+  async deleteByID(id) {
+    return await this.httpClient.delete(`${this.endpoint}/${id}`);
   }
 }
+
+export default BaseService;
