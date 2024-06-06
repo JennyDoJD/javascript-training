@@ -1,7 +1,7 @@
 class HttpClient {
   constructor(options = {}) {
-    this._baseURL = options.baseURL || '';
-    this._headers = options._headers || {};
+    this.baseURL = options.baseURL || '';
+    this.headers = options.headers || {};
   }
 
   /**
@@ -10,10 +10,10 @@ class HttpClient {
    * @param {Object} options - Options for the request.
    * @returns {Promise<any>} - A promise with the response from the server.
    */
-  async _fetchJSON(endpoint, options = {}) {
-    const response = await fetch(this._baseURL + endpoint, {
+  async fetchJSON(endpoint, options = {}) {
+    const response = await fetch(this.baseURL + endpoint, {
       ...options,
-      headers: this._headers,
+      headers: this.headers,
     });
 
     if (!response.ok) throw new Error(response.statusText);
@@ -31,7 +31,7 @@ class HttpClient {
    * @returns {HttpClient} - Returns the HttpClient object itself for chaining.
    */
   setHeader(key, value) {
-    this._headers[key] = value;
+    this.headers[key] = value;
     return this;
   }
 
@@ -41,7 +41,7 @@ class HttpClient {
    * @returns {string | undefined} - Returns the value of the header if exists, otherwise returns undefined.
    */
   getHeader(key) {
-    this._headers[key];
+    this.headers[key];
   }
 
   /**
@@ -50,11 +50,15 @@ class HttpClient {
    * @param {Object} options - Options for the request.
    * @returns {Promise<any>} - A promise with the response from the server.
    */
-  get(endpoint, options = {}) {
-    return this._fetchJSON(endpoint, {
-      ...options,
-      method: 'GET',
-    });
+  async get(endpoint, options = {}) {
+    try {
+      return await this.fetchJSON(endpoint, {
+        ...options,
+        method: 'GET',
+      });
+    } catch (error) {
+      throw new Error('Error during GET request:', error);
+    }
   }
 
   /**
@@ -64,12 +68,16 @@ class HttpClient {
    * @param {Object} options - Options for the request.
    * @returns {Promise<any>} - A promise with the response from the server.
    */
-  post(endpoint, body, options = {}) {
-    return this._fetchJSON(endpoint, {
-      ...options,
-      body: body ? JSON.stringify(body) : undefined,
-      method: 'POST',
-    });
+  async post(endpoint, body, options = {}) {
+    try {
+      return await this.fetchJSON(endpoint, {
+        ...options,
+        body: body ? JSON.stringify(body) : undefined,
+        method: 'POST',
+      });
+    } catch (error) {
+      throw new Error('Error during POST request:', error);
+    }
   }
 
   /**
@@ -79,12 +87,16 @@ class HttpClient {
    * @param {Object} options - Options for the request.
    * @returns {Promise<any>} - A promise with the response from the server.
    */
-  put(endpoint, body, options = {}) {
-    return this._fetchJSON(endpoint, {
-      ...options,
-      body: body ? JSON.stringify(body) : undefined,
-      method: 'PUT',
-    });
+  async put(endpoint, body, options = {}) {
+    try {
+      return await this.fetchJSON(endpoint, {
+        ...options,
+        body: body ? JSON.stringify(body) : undefined,
+        method: 'PUT',
+      });
+    } catch (error) {
+      throw new Error('Error during PUT request:', error);
+    }
   }
 
   /**
@@ -93,11 +105,15 @@ class HttpClient {
    * @param {Object} options - Options for the request.
    * @returns {Promise<any>} - A promise with the response from the server.
    */
-  delete(endpoint, options = {}) {
-    return this._fetchJSON(endpoint, {
-      ...options,
-      method: 'DELETE',
-    });
+  async delete(endpoint, options = {}) {
+    try {
+      return await this.fetchJSON(endpoint, {
+        ...options,
+        method: 'DELETE',
+      });
+    } catch (error) {
+      throw new Error('Error during DELETE request:', error);
+    }
   }
 }
 
