@@ -12,8 +12,8 @@ const renderFormInputTemplate = (formInputs) => {
     formInputsHTML += `
       <div class="form-group">
         <label for="${id}" class="tertiary-title">${field}</label>
-        <input class="input-form input-form-lg" id="${id}" type="text" value="${value}"/>
-        <div class="error-message" id="${id}-error"></div>
+        <input class="input-form input-form-lg" id="${id}" type="text" value="${value}" data-field="${field}"/>
+        <div class="error-message" id="${id}-error" data-field-error="${field}"></div>
       </div>
     `;
   }
