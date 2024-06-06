@@ -30,7 +30,11 @@ class BaseService {
    * @param {Object} result - The result
    */
   async add(data) {
-    return await APIHelper.post(this.endpoint, data);
+    return await this.httpClient.post(this.endpoint, data);
+  }
+
+  async getByID(id) {
+    return await this.httpClient.get(`${this.endpoint}/${id}`);
   }
 }
 
