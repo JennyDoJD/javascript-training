@@ -93,7 +93,7 @@ export default class ProductTemplate {
    * Show the delete product modal and set the dataset for confirmation.
    * @param {string} productId - The ID of the product to be deleted.
    */
-  showDeleteModal = (productId) => {
+  toggleDeleteModal = (productId) => {
     const deleteModal = document.getElementById('delete-product-modal');
     deleteModal.classList.toggle('hidden');
 
@@ -115,7 +115,7 @@ export default class ProductTemplate {
     });
 
     cancelBtn.addEventListener('click', () => {
-      this.showDeleteModal();
+      this.toggleDeleteModal();
     });
   };
 
@@ -129,7 +129,7 @@ export default class ProductTemplate {
       if (target.classList.contains('delete-product-icon')) {
         const id = target.parentElement.parentElement.dataset.id;
 
-        this.showDeleteModal(id);
+        this.toggleDeleteModal(id);
       }
     });
   };
