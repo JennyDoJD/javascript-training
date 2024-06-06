@@ -89,7 +89,10 @@ export default class ProductTemplate {
   `;
   }
 
-  // Show the delete product modal and set the dataset for confirmation
+  /**
+   * Show the delete product modal and set the dataset for confirmation.
+   * @param {string} productId - The ID of the product to be deleted.
+   */
   showDeleteModal = (productId) => {
     const deleteModal = document.getElementById('delete-product-modal');
     deleteModal.classList.toggle('hidden');
@@ -98,7 +101,10 @@ export default class ProductTemplate {
     confirmBtn.dataset.productId = productId;
   };
 
-  // Bind events for delete modal confirmation and cancellation
+  /**
+   * Bind events for delete modal confirmation and cancellation.
+   * @param {Function} handleConfirmDelete - Callback function to handle delete confirmation.
+   */
   bindDeleteModalEvents = (handleConfirmDelete) => {
     const confirmBtn = document.getElementById('confirm-btn-delete');
     const cancelBtn = document.getElementById('cancel-btn-delete');
@@ -113,7 +119,9 @@ export default class ProductTemplate {
     });
   };
 
-  // Bind event for toggling the modal
+  /**
+   * Binds event listener to toggle the delete product modal when clicking on delete product icons.
+   */
   bindToggleModal = () => {
     document.addEventListener('click', (e) => {
       const target = e.target;
@@ -126,12 +134,16 @@ export default class ProductTemplate {
     });
   };
 
-  // Display a toast notification for successful deletion
+  /**
+   * Display a toast notification for successful deletion
+   */
   showDeleteSuccessToast() {
     Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MSG);
   }
 
-  // Display a toast notification for deletion failure
+  /**
+   * Display a toast notification for deletion failure
+   */
   showDeleteFailureToast() {
     Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
   }
