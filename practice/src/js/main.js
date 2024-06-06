@@ -9,7 +9,7 @@ const service = new ProductService();
 const template = new ProductTemplate();
 const productList = new ProductList(service, template);
 
-productList.renderProducts();
+productList.init();
 
 // Add event listener to the nav-list to handle clicks on navigation links
 document

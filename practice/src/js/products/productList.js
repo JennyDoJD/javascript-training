@@ -5,6 +5,16 @@ export default class ProductList {
   }
 
   /**
+   * Initializes the ProductList instance
+   * This method renders the products initially and binds event handlers
+   */
+  async init() {
+    await this.renderProducts();
+
+    this.handlerEventHandlers();
+  }
+
+  /**
    * Fetch all products from the ProductService
    * Render the products using the ProductTemplate component
    */
@@ -13,4 +23,32 @@ export default class ProductList {
 
     this.productTemplate.renderProducts(products);
   }
+
+  /**
+   * Binds event handlers for managing product deletion.
+   * This method binds event handlers to toggle the delete modal and confirm deletion.
+   */
+  handlerEventHandlers = () => {
+    this.productTemplate.bindToggleModal();
+    this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
+  };
+
+  /**
+   * Handles the confirmation of product deletion.
+   * This method attempts to delete a product by its ID, renders updated products,
+   * and displays success or failure messages accordingly.
+   * @param {string} id - The ID of the product to be deleted.
+   */
+  handlerConfirmDelete = async (id) => {
+    try {
+      await this.productService.deleteByID(id);
+      await this.renderProducts();
+
+      this.productTemplate.showDeleteSuccessToast();
+    } catch (error) {
+      this.productTemplate.showDeleteFailureToast();
+    } finally {
+      this.productTemplate.toggleDeleteModal();
+    }
+  };
 }
