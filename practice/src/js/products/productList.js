@@ -48,7 +48,7 @@ export default class ProductList {
     } catch (error) {
       this.productTemplate.showDeleteFailureToast();
     } finally {
-      this.productTemplate.showDeleteModal();
+      this.productTemplate.toggleDeleteModal();
     }
   };
 }
