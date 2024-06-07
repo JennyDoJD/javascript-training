@@ -32,7 +32,7 @@ export default class ProductList {
   handlerEventHandlers = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
-    this.bindSortChange();
+    this.productTemplate.bindSortChange();
   };
 
   /**
