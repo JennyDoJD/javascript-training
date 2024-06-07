@@ -25,12 +25,12 @@ export default class ProductList {
   }
 
   /**
-   * Binds event handlers for managing product deletion.
-   * This method binds event handlers to toggle the delete modal and confirm deletion.
+   * Binds event handlers for managing product.
    */
   handlerEventHandlers = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
+    this.productTemplate.bindSearchProduct(this.handlerSearchProductByKeyword);
   };
 
   /**
@@ -50,5 +50,16 @@ export default class ProductList {
     } finally {
       this.productTemplate.toggleDeleteModal();
     }
+  };
+
+  /**
+   * Handles the search of products by keyword.
+   * @param {Object} searchCriteria - The search criteria object containing the search keyword.
+   * @returns {Promise<Object[]>} - A promise that resolves to an array of matched products.
+   */
+  handlerSearchProductByKeyword = async (searchCriteria) => {
+    const { name } = searchCriteria;
+    const products = await this.productService.searchByName(name);
+    return products;
   };
 }
