@@ -1,6 +1,6 @@
 import ProductService from '../services/productService';
 import {
-  validateProductForm,
+  validateForm,
   hasValidationErrors,
   productValidationSchema,
 } from '../helpers/validateForm';
@@ -26,10 +26,7 @@ export default class ProductForm {
     productForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const formData = this.getFormValues();
-      const validationResult = validateProductForm(
-        formData,
-        productValidationSchema
-      );
+      const validationResult = validateForm(formData, productValidationSchema);
 
       this.displayValidationErrors(validationResult.formError);
 
