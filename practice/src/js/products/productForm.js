@@ -11,12 +11,16 @@ export default class ProductForm {
   }
 
   /**
-   * Initializes the product form by adding a submit event listener.
-   * When the form is submitted, it prevents the default form submission behavior,
-   * retrieves input values, validates the form, and adds the product using ProductService.
-   * If there are any validation errors, they are handled appropriately.
+   * Calls displaying product form add
    */
-  init() {
+  async init() {
+    await this.displayProductAddForm();
+  }
+
+  /**
+   * Displays the product add form and sets up event listeners for form submission and input changes.
+   */
+  displayProductAddForm() {
     const productForm = document.getElementById('product-form');
 
     productForm.addEventListener('submit', async (event) => {
