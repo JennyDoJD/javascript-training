@@ -11,7 +11,7 @@ export default class ProductForm {
   }
 
   /**
-   * Calls displaying product form add
+   * Calls displaying product add form
    */
   async init() {
     await this.displayProductAddForm();
