@@ -5,6 +5,7 @@ import { MESSAGES } from '../constants/message';
 export default class ProductTemplate {
   constructor() {
     this.deleteModal = document.getElementById('delete-product-modal');
+    this.mainContent = document.querySelector('.main-content');
   }
   /**
    * Clears the main content container on the page
@@ -29,8 +30,11 @@ export default class ProductTemplate {
     }
 
     if (!products.length) {
-      mainContent.innerHTML = `<h2 class="main-title">No Result</h2>`;
+      mainContent.innerHTML = `<span class="main-title">${MESSAGES.NOT_FOUND_MSG}</span>`;
+      this.toggleCardAddProduct(false);
       return;
+    } else {
+      this.toggleCardAddProduct(true);
     }
 
     let productListHTML = '<div class="card-product-list">';
@@ -54,7 +58,7 @@ export default class ProductTemplate {
     deleteIcon.dataset.productId = product.id;
 
     deleteIcon.addEventListener('click', () => {
-      this.showDeleteModal(product.id);
+      this.toggleDeleteModal(product.id);
     });
 
     return `
@@ -146,5 +150,39 @@ export default class ProductTemplate {
    */
   showDeleteFailureToast() {
     Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
+  }
+
+  /**
+   * Binds the search input to the search handler function and render the results.
+   * @param {Function} handlerSearchProductByKeyword - The handler function to fetch and return search results.
+   */
+  bindSearchProduct = (handlerSearchProductByKeyword) => {
+    document.addEventListener('keydown', async (e) => {
+      const target = e.target;
+
+      if (!target.classList.contains('search-input')) {
+        return;
+      }
+
+      if (e.key !== 'Enter') {
+        return;
+      }
+
+      const searchValue = target.value.trim().toLowerCase();
+      const searchedProduct = await handlerSearchProductByKeyword({
+        name: searchValue,
+      });
+
+      this.renderProducts(searchedProduct);
+    });
+  };
+
+  /**
+   * Toggle the visibility of the "Add Product" card based on search results.
+   * @param {boolean} hasResults - A flag indicating whether there are search results or not.
+   */
+  toggleCardAddProduct(hasResults) {
+    const cardAdd = document.querySelector('.card-add-product');
+    cardAdd.classList.toggle('hidden', !hasResults);
   }
 }
