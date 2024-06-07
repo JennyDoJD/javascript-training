@@ -23,6 +23,18 @@ class BaseService {
   async deleteByID(id) {
     return await this.httpClient.delete(`${this.endpoint}/${id}`);
   }
+
+  /**
+   * Fetches sorted products from the API.
+   * @param {string} sortBy - The field to sort by (e.g., 'name', 'price').
+   * @param {string} sortOrder - The sort order ('asc' for ascending, 'desc' for descending).
+   * @returns {Promise<Object[]>} - An array of sorted product objects.
+   */
+  async getSortedProducts(sortBy, sortOrder) {
+    return await this.httpClient.get(
+      `${this.endpoint}?sortBy=${sortBy}&sortOrder=${sortOrder}`
+    );
+  }
 }
 
 export default BaseService;
