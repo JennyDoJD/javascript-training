@@ -108,16 +108,16 @@
             <svg width="20" height="20">
               <use xlink:href="./assets/images/icons/icons.svg#dropdown-icon" />
             </svg>
-            <select class="tertiary-title sort-list">
+            <select class="tertiary-title sort-list" id="sort-select">
               Sort by
-              <option value="">Sort by</option>
+              <option value="default">Sort by</option>
               <optgroup label="Name">
-                <option value="">A to Z</option>
-                <option value="">Z to A</option>
+                <option value="name-asc">A to Z</option>
+                <option value="name-desc">Z to A</option>
               </optgroup>
               <optgroup label="Price">
-                <option value="">Low to high</option>
-                <option value="">High to low</option>
+                <option value="price-asc">Low to high</option>
+                <option value="price-desc">High to low</option>
               </optgroup>
             </select>
           </div>
