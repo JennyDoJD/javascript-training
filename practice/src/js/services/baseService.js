@@ -23,6 +23,16 @@ class BaseService {
   async deleteByID(id) {
     return await this.httpClient.delete(`${this.endpoint}/${id}`);
   }
+
+  /**
+   * Search for items by name
+   * @param {string} name - The name to search for
+   * @returns {Promise<Object[]>} An array of matched datas
+   */
+  async searchByName(name) {
+    const datas = await this.getAll();
+    return datas.filter((data) => data.name.toLowerCase().includes(name));
+  }
 }
 
 export default BaseService;
