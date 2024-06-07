@@ -32,7 +32,7 @@ export default class ProductList {
   handlerEventHandlers = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
-    this.sortSelect.addEventListener('change', this.handleSortChange);
+    this.bindSortChange();
   };
 
   /**
@@ -54,6 +54,10 @@ export default class ProductList {
     }
   };
 
+  /**
+   * Handles the sorting change event.
+   * This method is triggered when the user changes the sorting criteria.
+   */
   handleSortChange = async () => {
     const sortBy = this.sortSelect.value.split('-')[0];
     const sortOrder = this.sortSelect.value.split('-')[1];
@@ -62,5 +66,13 @@ export default class ProductList {
       sortOrder
     );
     this.productTemplate.renderProducts(sortedProducts);
+  };
+
+  /**
+   * Binds event listener for sorting changes.
+   * This method adds an event listener to the sort select element to handle sorting changes.
+   */
+  bindSortChange = () => {
+    this.sortSelect.addEventListener('change', this.handleSortChange);
   };
 }
