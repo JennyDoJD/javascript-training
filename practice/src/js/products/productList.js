@@ -2,6 +2,7 @@ export default class ProductList {
   constructor(service, template) {
     this.productService = service;
     this.productTemplate = template;
+    this.sortSelect = document.getElementById('sort-select');
   }
 
   /**
@@ -31,6 +32,7 @@ export default class ProductList {
   handlerEventHandlers = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
+    this.sortSelect.addEventListener('change', this.handleSortChange);
   };
 
   /**
@@ -50,5 +52,15 @@ export default class ProductList {
     } finally {
       this.productTemplate.toggleDeleteModal();
     }
+  };
+
+  handleSortChange = async () => {
+    const sortBy = this.sortSelect.value.split('-')[0];
+    const sortOrder = this.sortSelect.value.split('-')[1];
+    const sortedProducts = await this.productService.getSortedProducts(
+      sortBy,
+      sortOrder
+    );
+    this.productTemplate.renderProducts(sortedProducts);
   };
 }
