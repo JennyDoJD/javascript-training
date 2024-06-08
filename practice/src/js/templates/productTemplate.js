@@ -31,10 +31,7 @@ export default class ProductTemplate {
 
     if (!products.length) {
       mainContent.innerHTML = `<span class="main-title">${MESSAGES.NOT_FOUND_MSG}</span>`;
-      this.toggleCardAddProduct(false);
       return;
-    } else {
-      this.toggleCardAddProduct(true);
     }
 
     let productListHTML = '<div class="card-product-list">';
@@ -176,13 +173,4 @@ export default class ProductTemplate {
       this.renderProducts(searchedProduct);
     });
   };
-
-  /**
-   * Toggle the visibility of the "Add Product" card based on search results.
-   * @param {boolean} hasResults - A flag indicating whether there are search results or not.
-   */
-  toggleCardAddProduct(hasResults) {
-    const cardAdd = document.querySelector('.card-add-product');
-    cardAdd.classList.toggle('hidden', !hasResults);
-  }
 }
