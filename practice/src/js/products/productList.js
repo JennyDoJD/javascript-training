@@ -60,6 +60,7 @@ export default class ProductList {
   handlerSearchProductByKeyword = async (searchCriteria) => {
     const { name } = searchCriteria;
     const products = await this.productService.searchByName(name);
+
     return products;
   };
 }
