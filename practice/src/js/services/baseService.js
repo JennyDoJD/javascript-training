@@ -23,6 +23,19 @@ class BaseService {
   async deleteByID(id) {
     return await this.httpClient.delete(`${this.endpoint}/${id}`);
   }
+
+  /**
+   * Add a new item
+   * @param {Object} data - the object contains the item
+   * @param {Object} result - The result
+   */
+  async add(data) {
+    return await this.httpClient.post(this.endpoint, data);
+  }
+
+  async getByID(id) {
+    return await this.httpClient.get(`${this.endpoint}/${id}`);
+  }
 }
 
 export default BaseService;

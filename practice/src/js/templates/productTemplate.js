@@ -1,4 +1,5 @@
 import iconAction from '../../assets/images/icons/icons.svg';
+import renderFormInputTemplate from './productFormInputTemplate';
 import Toast from '../helpers/toastify';
 import { MESSAGES } from '../constants/message';
 
@@ -55,7 +56,7 @@ export default class ProductTemplate {
     deleteIcon.dataset.productId = product.id;
 
     deleteIcon.addEventListener('click', () => {
-      this.showDeleteModal(product.id);
+      this.toggleDeleteModal(product.id);
     });
 
     return `
@@ -91,7 +92,44 @@ export default class ProductTemplate {
   }
 
   /**
-   * Show the delete product modal and set the dataset for confirmation.
+   * Renders a form for creating a product
+   */
+  renderProductFormPage(data = {}) {
+    this.clearMainContainer();
+
+    const { id, name = '', price = '', imageURL = '', quantity = '' } = data;
+    const formInputs = [
+      { field: 'Name', value: name, id: 'name' },
+      { field: 'Price', value: price, id: 'price' },
+      { field: 'Image URL', value: imageURL, id: 'image-url' },
+      { field: 'Quantity', value: quantity, id: 'quantity' },
+    ];
+
+    const mainContent = document.getElementById('form-content');
+
+    mainContent.innerHTML = `
+      <div class="form-wrapper">
+        <h2 class="main-heading">Create new a product</h2>
+        <form data-product-id="${id}" id="product-form" action="javascript:void(0)" class="form-control">
+          ${renderFormInputTemplate(formInputs)}
+          <div class="form-button">
+            <button class="btn btn-primary btn-confirm" type="reset">
+              Cancel
+            </button>
+            <button
+              class="btn btn-secondary btn-confirm"
+              type="submit"
+              id="button-submit">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    `;
+  }
+
+  /**
+   *  Show the delete product modal and set the dataset for confirmation.
    * @param {string} productId - The ID of the product to be deleted.
    */
   toggleDeleteModal = (productId) => {
