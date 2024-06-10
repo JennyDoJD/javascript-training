@@ -7,6 +7,7 @@ export default class ProductTemplate {
   constructor() {
     this.deleteModal = document.getElementById('delete-product-modal');
   }
+
   /**
    * Clears the main content container on the page
    * Effectively removing all of its child elements
@@ -184,5 +185,22 @@ export default class ProductTemplate {
    */
   showDeleteFailureToast() {
     Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
+  }
+
+  /**
+   * Show the loading indicator.
+   * @param {boolean} isHidden - A flag indicating whether the indicator should be hidden.
+   */
+  toggleIndicator(isHidden) {
+    const indicatorElement = document.querySelector('.indicator');
+
+    indicatorElement.classList.toggle('hidden', !isHidden);
+  }
+
+  /**
+   * Display a toast notification for failed when to load products
+   */
+  showLoadFailureToast() {
+    Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
   }
 }
