@@ -147,4 +147,12 @@ export default class ProductTemplate {
   showDeleteFailureToast() {
     Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
   }
+
+  /**
+   * Show the loading indicator.
+   */
+  toggleIndicator(isHidden) {
+    const indicatorElement = document.querySelector('.indicator');
+    indicatorElement.classList.toggle('hidden', !isHidden);
+  }
 }
