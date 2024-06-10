@@ -59,6 +59,7 @@ class BaseService {
       url.searchParams.append('sortBy', sortBy);
       url.searchParams.append('order', order);
     }
+
     return await this.httpClient.get(url.toString());
   }
 
