@@ -153,6 +153,7 @@ export default class ProductTemplate {
    */
   toggleIndicator(isHidden) {
     const indicatorElement = document.querySelector('.indicator');
+
     indicatorElement.classList.toggle('hidden', !isHidden);
   }
 }
