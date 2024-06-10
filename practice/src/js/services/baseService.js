@@ -25,15 +25,31 @@ class BaseService {
   }
 
   /**
-   * Fetches sorted products from the API.
-   * @param {string} sortBy - The field to sort by (e.g., 'name', 'price').
-   * @param {string} sortOrder - The sort order ('asc' for ascending, 'desc' for descending).
-   * @returns {Promise<Object[]>} - An array of sorted product objects.
+   * Sorts the items based on the specified field and order.
+   * @param {string} field - The field to sort the items by.
+   * @param {string} [orderBy=''] - The order by which to sort the items.
+   * @returns {Promise<Object[]>} - A promise resolving to an array of sorted items.
    */
-  async getSortedProducts(sortBy, sortOrder) {
-    return await this.httpClient.get(
-      `${this.endpoint}?sortBy=${sortBy}&sortOrder=${sortOrder}`
-    );
+  async sort(field, orderBy = '') {
+    const items = (await this.getAll()).slice();
+
+    return items.sort((a, b) => {
+      let comparision = 0;
+
+      if (typeof a[field] === 'string') {
+        comparision = a[field].localeCompare(b[field]);
+      } else if (typeof a[field] === 'boolean') {
+        comparision = a[field] - b[field];
+      } else if (typeof a[field] === 'number') {
+        comparision = a[field] - b[field];
+      }
+
+      return orderBy === 'asc'
+        ? comparision
+        : orderBy === 'desc'
+        ? -comparision
+        : 0;
+    });
   }
 }
 
