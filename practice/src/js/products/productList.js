@@ -69,11 +69,11 @@ export default class ProductList {
   handleSortProducts = async (sortOption) => {
     if (!sortOption) return;
 
-    const [field, orderBy] = sortOption.split('-');
+    const [sortBy, order] = sortOption.split('-');
 
     const sortedProducts = await this.productService.sortProducts(
-      field,
-      orderBy
+      sortBy,
+      order
     );
 
     this.productTemplate.renderProducts(sortedProducts);
