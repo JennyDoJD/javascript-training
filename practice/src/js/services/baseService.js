@@ -32,6 +32,7 @@ class BaseService {
   async searchByName(name) {
     try {
       const endpoint = `${this.endpoint}?name=${encodeURIComponent(name)}`;
+
       return await this.httpClient.get(endpoint);
     } catch (error) {
       throw new Error(`Error searching products by name: ${error.message}`);
