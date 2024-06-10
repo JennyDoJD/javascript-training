@@ -52,14 +52,13 @@ class BaseService {
   //   });
   // }
 
-  async sortProducts(field, orderBy = '') {
-    if (field && orderBy) {
-      return await this.httpClient.get(
-        `${this.endpoint}?_sort=${field}&_order=${orderBy}`
-      );
-    } else {
-      return await this.getAll();
+  async sortProducts(sortBy, order = '') {
+    const url = new URL(`${API.BASE_URL}/${this.endpoint}`);
+    if (sortBy && order) {
+      url.searchParams.append('sortBy', sortBy);
+      url.searchParams.append('order', order);
     }
+    return await this.httpClient.get(url.toString());
   }
 
   /**
