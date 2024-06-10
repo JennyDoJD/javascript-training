@@ -54,28 +54,6 @@ export default class ProductList {
   };
 
   /**
-   * Handles the sorting change event.
-   * This method is triggered when the user changes the sorting criteria.
-   */
-  handlerSortChange = async () => {
-    const sortBy = this.sortSelect.value.split('-')[0];
-    const sortOrder = this.sortSelect.value.split('-')[1];
-    const sortedProducts = await this.productService.getSortedProducts(
-      sortBy,
-      sortOrder
-    );
-    this.productTemplate.renderProducts(sortedProducts);
-  };
-
-  /**
-   * Binds event listener for sorting changes.
-   * This method adds an event listener to the sort select element to handle sorting changes.
-   */
-  bindSortChange = () => {
-    this.sortSelect.addEventListener('change', this.handlerSortChange);
-  };
-
-  /**
    * Handle sorting of products
    *
    * @param {string} sortOption - The selected sort option in the format "field-orderBy"
