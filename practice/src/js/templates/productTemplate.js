@@ -190,7 +190,7 @@ export default class ProductTemplate {
 
   /**
    * Binds the search input to the search handler function and render the results.
-   * @param {Function} handlerSearchProductByKeyword - The handler function to fetch and return search results.
+   * @param {Function} handlerSearchProduct - The handler function to fetch and return search results.
    */
   bindSearchProduct(handlerSearchProduct) {
     const searchInput = document.getElementById('search-input');
