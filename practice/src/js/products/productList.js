@@ -2,7 +2,6 @@ export default class ProductList {
   constructor(service, template) {
     this.productService = service;
     this.productTemplate = template;
-    this.sortSelect = document.getElementById('sort-select');
   }
 
   /**
