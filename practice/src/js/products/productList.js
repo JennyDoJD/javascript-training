@@ -38,7 +38,7 @@ export default class ProductList {
   handlerEventHandlers = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
-    this.productTemplate.bindSearchProduct(this.handlerSearchProductByKeyword);
+    this.productTemplate.bindSearchProduct(this.handlerSearchProduct);
   };
 
   /**
@@ -65,7 +65,7 @@ export default class ProductList {
    * @param {Object} searchCriteria - The search criteria object containing the search keyword.
    * @returns {Promise<Object[]>} - A promise that resolves to an array of matched products.
    */
-  handlerSearchProductByKeyword = async (searchCriteria) => {
+  handlerSearchProduct = async (searchCriteria) => {
     const { name } = searchCriteria;
     const products = await this.productService.searchByName(name);
 

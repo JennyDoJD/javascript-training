@@ -30,8 +30,12 @@ class BaseService {
    * @returns {Promise<Object[]>} An array of matched datas
    */
   async searchByName(name) {
-    const datas = await this.getAll();
-    return datas.filter((data) => data.name.toLowerCase().includes(name));
+    try {
+      const endpoint = `${this.endpoint}?name=${encodeURIComponent(name)}`;
+      return await this.httpClient.get(endpoint);
+    } catch (error) {
+      throw new Error(`Error searching products by name: ${error.message}`);
+    }
   }
 
   /**
