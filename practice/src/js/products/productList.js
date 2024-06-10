@@ -19,9 +19,17 @@ export default class ProductList {
    * Render the products using the ProductTemplate component
    */
   async renderProducts() {
-    const products = await this.productService.getAll();
+    try {
+      this.productTemplate.toggleIndicator(true);
 
-    this.productTemplate.renderProducts(products);
+      const products = await this.productService.getAll();
+
+      this.productTemplate.renderProducts(products);
+    } catch (error) {
+      this.productTemplate.showLoadFailureToast();
+    } finally {
+      this.productTemplate.toggleIndicator(false);
+    }
   }
 
   /**
