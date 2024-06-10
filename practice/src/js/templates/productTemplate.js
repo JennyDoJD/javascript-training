@@ -158,4 +158,11 @@ export default class ProductTemplate {
 
     indicatorElement.classList.toggle('hidden', !isHidden);
   }
+
+  /**
+   * Display a toast notification for failed when to load products
+   */
+  showLoadFailureToast() {
+    Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
+  }
 }
