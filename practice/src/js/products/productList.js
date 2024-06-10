@@ -55,7 +55,6 @@ export default class ProductList {
 
   /**
    * Handle sorting of products
-   *
    * @param {string} sortOption - The selected sort option in the format "field-orderBy"
    * @returns {Promise<void>} - A Promise that resolves after sorting and rendering the products
    */
