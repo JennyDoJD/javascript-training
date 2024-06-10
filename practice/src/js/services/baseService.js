@@ -54,6 +54,7 @@ class BaseService {
 
   async sortProducts(sortBy, order = '') {
     const url = new URL(`${API.BASE_URL}/${this.endpoint}`);
+
     if (sortBy && order) {
       url.searchParams.append('sortBy', sortBy);
       url.searchParams.append('order', order);
