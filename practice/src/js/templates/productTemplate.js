@@ -147,4 +147,19 @@ export default class ProductTemplate {
   showDeleteFailureToast() {
     Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
   }
+
+  /**
+   * Binds the event for sorting products.
+   * @param {Function} handleSort - The callback function to handle sorting.
+   */
+  bindSortProducts = (handleSort) => {
+    const sortDropdown = document.querySelector('.sort-list');
+
+    if (sortDropdown) {
+      sortDropdown.addEventListener('change', (e) => {
+        const sortOption = e.target.value;
+        handleSort(sortOption);
+      });
+    }
+  };
 }
