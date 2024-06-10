@@ -26,7 +26,7 @@ export default class ProductList {
 
       this.productTemplate.renderProducts(products);
     } catch (error) {
-      return;
+      this.productTemplate.showLoadFailureToast();
     } finally {
       this.productTemplate.toggleIndicator(false);
     }
