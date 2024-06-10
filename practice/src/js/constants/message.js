@@ -5,7 +5,7 @@ const MESSAGES = {
   DELETE_PRODUCT_FAILED_MSG: 'Failed to delete the product!',
   EDIT_PRODUCT_SUCCESS_MSG: 'Succeed to edit the product!',
   EDIT_PRODUCT_FAILED_MSG: 'Failed to edit the product!',
-  NOT_FOUND_MSG: 'No Results Found!',
+  NOT_FOUND: 'No Results Found!',
 };
 
 export { MESSAGES };
