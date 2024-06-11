@@ -2,7 +2,7 @@ import iconAction from '../../assets/images/icons/icons.svg';
 import renderFormInputTemplate from './productFormInputTemplate';
 import Toast from '../helpers/toastify';
 import { MESSAGES } from '../constants/message';
-import { debounce } from '../helpers/debounce';
+import debounce from '../helpers/debounce';
 
 export default class ProductTemplate {
   constructor() {
