@@ -2,6 +2,7 @@ export default class ProductList {
   constructor(service, template) {
     this.productService = service;
     this.productTemplate = template;
+    this.currentParams = {};
   }
 
   /**
@@ -21,8 +22,9 @@ export default class ProductList {
   async renderProducts(params = {}) {
     try {
       this.productTemplate.toggleIndicator(true);
+      this.currentParams = { ...this.currentParams, ...params };
 
-      const products = await this.productService.getList(params);
+      const products = await this.productService.getList(this.currentParams);
 
       this.productTemplate.renderProducts(products);
     } catch (error) {
@@ -67,10 +69,12 @@ export default class ProductList {
    * @returns {Promise<Object[]>} - A promise that resolves to an array of matched products.
    */
   handlerSearchProduct = async (searchCriteria) => {
-    const { name } = searchCriteria;
-    const products = await this.productService.searchByName(name);
+    const params = {
+      ...searchCriteria,
+      ...this.currentParams,
+    };
 
-    return products;
+    await this.renderProducts(params);
   };
 
   /**
@@ -78,6 +82,11 @@ export default class ProductList {
    * @param {Object} params - The sorting parameters
    */
   handlerSortProducts = async (params = {}) => {
-    await this.renderProducts(params);
+    const mergedParams = {
+      ...this.currentParams,
+      ...params,
+    };
+
+    await this.renderProducts(mergedParams);
   };
 }

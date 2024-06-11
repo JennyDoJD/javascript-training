@@ -194,7 +194,7 @@ export default class ProductTemplate {
    * @param {Function} handlerSearchProduct - The handler function to fetch and return search results.
    */
   bindSearchProduct(handlerSearchProduct) {
-    const searchInput = document.getElementById('search-input');
+    const searchInput = document.getElementById('input-search');
 
     if (!searchInput) {
       return;

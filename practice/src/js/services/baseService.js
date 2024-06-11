@@ -13,13 +13,17 @@ class BaseService {
    * @returns {Promise<Object[]>} An array of data objects
    */
   async getList(params = {}) {
-    let url = `${this.endpoint}`;
+    const queryParams = new URLSearchParams();
 
-    if ('sortBy' in params && 'order' in params) {
-      url += `?sortBy=${params.sortBy}&order=${params.order}`;
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        queryParams.append(key, params[key]);
+      }
     }
 
-    return await this.httpClient.get(url, { params });
+    const url = `${this.endpoint}?${queryParams.toString()}`;
+
+    return await this.httpClient.get(url);
   }
 
   /**
