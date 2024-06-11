@@ -199,10 +199,11 @@ export default class ProductTemplate {
       return;
     }
 
-    searchInput.addEventListener('keyup', (e) => {
+    searchInput.addEventListener('keyup', async (e) => {
       const name = e.target.value;
+      const searchedProducts = await handlerSearchProduct({ name });
 
-      handlerSearchProduct({ name });
+      this.renderProducts(searchedProducts);
     });
   }
 
