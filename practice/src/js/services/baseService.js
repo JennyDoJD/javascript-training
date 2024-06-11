@@ -26,7 +26,7 @@ class BaseService {
 
   async sortProducts(sortBy, order = '') {
     const url = `${this.endpoint}?sortBy=${sortBy}&order=${order}`;
-    return await this.httpClient.get(url);
+    return await this.httpClient.get(url.toString());
   }
 
   /**
