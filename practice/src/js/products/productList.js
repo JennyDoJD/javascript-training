@@ -18,11 +18,11 @@ export default class ProductList {
    * Fetch all products from the ProductService
    * Render the products using the ProductTemplate component
    */
-  async renderProducts() {
+  async renderProducts(params = {}) {
     try {
       this.productTemplate.toggleIndicator(true);
 
-      const products = await this.productService.getAll();
+      const products = await this.productService.getList(params);
 
       this.productTemplate.renderProducts(products);
     } catch (error) {
@@ -39,6 +39,7 @@ export default class ProductList {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
     this.productTemplate.bindSearchProduct(this.handlerSearchProduct);
+    this.productTemplate.bindSortProducts(this.handlerSortProducts);
   };
 
   /**
@@ -70,5 +71,13 @@ export default class ProductList {
     const products = await this.productService.searchByName(name);
 
     return products;
+  };
+
+  /**
+   * Handle sorting of products
+   * @param {Object} params - The sorting parameters
+   */
+  handlerSortProducts = async (params = {}) => {
+    await this.renderProducts(params);
   };
 }

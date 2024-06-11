@@ -8,11 +8,18 @@ class BaseService {
   }
 
   /**
-   * Gets data from the api
+   * Retrieves a list of data from the API
+   * @param {Object} params - Optional parameters for API request
    * @returns {Promise<Object[]>} An array of data objects
    */
-  async getAll() {
-    return await this.httpClient.get(this.endpoint);
+  async getList(params = {}) {
+    let url = `${this.endpoint}`;
+
+    if ('sortBy' in params && 'order' in params) {
+      url += `?sortBy=${params.sortBy}&order=${params.order}`;
+    }
+
+    return await this.httpClient.get(url, { params });
   }
 
   /**
