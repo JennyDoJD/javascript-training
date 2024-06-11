@@ -11,8 +11,14 @@ class BaseService {
    * Gets data from the api
    * @returns {Promise<Object[]>} An array of data objects
    */
-  async getAll() {
-    return await this.httpClient.get(this.endpoint);
+  async getAll(params = {}) {
+    let url = `${this.endpoint}`;
+
+    if ('sortBy' in params && 'order' in params) {
+      url += `?sortBy=${params.sortBy}&order=${params.order}`;
+    }
+
+    return await this.httpClient.get(url, { params });
   }
 
   /**
@@ -22,11 +28,6 @@ class BaseService {
    */
   async deleteByID(id) {
     return await this.httpClient.delete(`${this.endpoint}/${id}`);
-  }
-
-  async sortProducts(sortBy, order = '') {
-    const url = `${this.endpoint}?sortBy=${sortBy}&order=${order}`;
-    return await this.httpClient.get(url.toString());
   }
 
   /**
