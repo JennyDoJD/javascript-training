@@ -2,6 +2,7 @@ import iconAction from '../../assets/images/icons/icons.svg';
 import renderFormInputTemplate from './productFormInputTemplate';
 import Toast from '../helpers/toastify';
 import { MESSAGES } from '../constants/message';
+import { debounce } from '../helpers/debounce';
 
 export default class ProductTemplate {
   constructor() {
@@ -199,12 +200,15 @@ export default class ProductTemplate {
       return;
     }
 
-    searchInput.addEventListener('keyup', async (e) => {
-      const name = e.target.value;
-      const searchedProducts = await handlerSearchProduct({ name });
+    searchInput.addEventListener(
+      'keyup',
+      debounce(async (e) => {
+        const name = e.target.value;
+        const searchedProducts = await handlerSearchProduct({ name });
 
-      this.renderProducts(searchedProducts);
-    });
+        this.renderProducts(searchedProducts);
+      }, 300)
+    );
   }
 
   /**
