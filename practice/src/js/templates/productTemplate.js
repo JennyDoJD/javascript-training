@@ -189,9 +189,9 @@ export default class ProductTemplate {
 
   /**
    * Binds the event for sorting products.
-   * @param {Function} handleSort - The callback function to handle sorting.
+   * @param {Function} handlerSort - The callback function to handle sorting.
    */
-  bindSortProducts = (handleSort) => {
+  bindSortProducts = (handlerSort) => {
     const sortDropdown = document.querySelector('.sort-list');
 
     if (sortDropdown) {
@@ -202,7 +202,7 @@ export default class ProductTemplate {
           const sortBy = selectedOption.getAttribute('data-sort-by');
           const order = selectedOption.getAttribute('data-order');
 
-          handleSort({ sortBy, order });
+          handlerSort({ sortBy, order });
         }
       });
     }
