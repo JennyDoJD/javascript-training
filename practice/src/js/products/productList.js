@@ -67,9 +67,11 @@ export default class ProductList {
    * @returns {Promise<void>} - A Promise that resolves after sorting and rendering the products
    */
   handleSortProducts = async (params = {}) => {
+    const { sortBy, order } = params;
+
     if (!('sortBy' in params && 'order' in params)) {
-      params.sortBy = 'name';
-      params.order = 'desc';
+      params.sortBy = sortBy;
+      params.order = order;
     }
 
     try {
