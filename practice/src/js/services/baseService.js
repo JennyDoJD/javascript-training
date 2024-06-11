@@ -8,7 +8,7 @@ class BaseService {
   }
 
   /**
-   * Gets data from the api
+   * Retrieves a list of data from the API
    * @param {Object} params - Optional parameters for API request
    * @returns {Promise<Object[]>} An array of data objects
    */
