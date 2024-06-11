@@ -195,6 +195,10 @@ export default class ProductTemplate {
   bindSearchProduct(handlerSearchProduct) {
     const searchInput = document.getElementById('search-input');
 
+    if (!searchInput) {
+      return;
+    }
+
     searchInput.addEventListener('keyup', (e) => {
       const name = e.target.value;
 
