@@ -9,6 +9,7 @@ class BaseService {
 
   /**
    * Gets data from the api
+   * @param {Object} params - Optional parameters for API request
    * @returns {Promise<Object[]>} An array of data objects
    */
   async getList(params = {}) {
