@@ -31,7 +31,7 @@ class BaseService {
    */
   async searchByName(name) {
     try {
-      const endpoint = `${this.endpoint}?name=${encodeURIComponent(name)}`;
+      const endpoint = `${this.endpoint}?name=${name}`;
 
       return await this.httpClient.get(endpoint);
     } catch (error) {
