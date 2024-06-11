@@ -39,7 +39,7 @@ export default class ProductList {
   handlerEventHandlers = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
-    this.productTemplate.bindSortProducts(this.handleSortProducts);
+    this.productTemplate.bindSortProducts(this.handlerSortProducts);
   };
 
   /**
@@ -66,18 +66,7 @@ export default class ProductList {
    * @param {string} sortOption - The selected sort option in the format "field-orderBy"
    * @returns {Promise<void>} - A Promise that resolves after sorting and rendering the products
    */
-  handleSortProducts = async (params = {}) => {
-    const { sortBy, order } = params;
-
-    if (!('sortBy' in params && 'order' in params)) {
-      params.sortBy = sortBy;
-      params.order = order;
-    }
-
-    try {
-      await this.renderProducts(params);
-    } catch (error) {
-      this.productTemplate.showLoadFailureToast();
-    }
+  handlerSortProducts = async (params = {}) => {
+    await this.renderProducts(params);
   };
 }
