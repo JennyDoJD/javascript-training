@@ -23,6 +23,7 @@ export default class ProductList {
       this.productTemplate.toggleIndicator(true);
 
       const products = await this.productService.getAll();
+
       this.productTemplate.renderProducts(products);
     } catch (error) {
       this.productTemplate.showLoadFailureToast();
@@ -68,9 +69,7 @@ export default class ProductList {
   handleSortProducts = async (sortOption) => {
     if (!sortOption) return;
 
-    const sortSelect = document.getElementById('sort-select');
-    const sortBy = sortSelect.options[sortSelect.selectedIndex].dataset.sort;
-    const order = sortSelect.options[sortSelect.selectedIndex].dataset.order;
+    const [sortBy, order] = sortOption.split('-');
 
     const sortedProducts = await this.productService.sortProducts(
       sortBy,
