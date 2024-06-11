@@ -18,11 +18,11 @@ export default class ProductList {
    * Fetch all products from the ProductService
    * Render the products using the ProductTemplate component
    */
-  async renderProducts() {
+  async renderProducts(params = {}) {
     try {
       this.productTemplate.toggleIndicator(true);
 
-      const products = await this.productService.getAll();
+      const products = await this.productService.getAll(params);
 
       this.productTemplate.renderProducts(products);
     } catch (error) {
@@ -66,14 +66,16 @@ export default class ProductList {
    * @param {string} sortOption - The selected sort option in the format "field-orderBy"
    * @returns {Promise<void>} - A Promise that resolves after sorting and rendering the products
    */
-  handleSortProducts = async ({ sortBy, order }) => {
-    if (!sortBy || !order) return;
+  handleSortProducts = async (params = {}) => {
+    if (!('sortBy' in params && 'order' in params)) {
+      params.sortBy = 'name';
+      params.order = 'desc';
+    }
 
-    const sortedProducts = await this.productService.sortProducts(
-      sortBy,
-      order
-    );
-
-    this.productTemplate.renderProducts(sortedProducts);
+    try {
+      await this.renderProducts(params);
+    } catch (error) {
+      this.productTemplate.showLoadFailureToast();
+    }
   };
 }
