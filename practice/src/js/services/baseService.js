@@ -11,7 +11,7 @@ class BaseService {
    * Gets data from the api
    * @returns {Promise<Object[]>} An array of data objects
    */
-  async getAll(params = {}) {
+  async getList(params = {}) {
     let url = `${this.endpoint}`;
 
     if ('sortBy' in params && 'order' in params) {
