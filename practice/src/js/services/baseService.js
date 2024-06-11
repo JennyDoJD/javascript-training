@@ -25,14 +25,8 @@ class BaseService {
   }
 
   async sortProducts(sortBy, order = '') {
-    const url = new URL(`${this.httpClient.baseURL}/${this.endpoint}`);
-
-    if (sortBy && order) {
-      url.searchParams.append('sortBy', sortBy);
-      url.searchParams.append('order', order);
-    }
-
-    return await this.httpClient.get(url.toString());
+    const url = `${this.endpoint}?sortBy=${sortBy}&order=${order}`;
+    return await this.httpClient.get(url);
   }
 
   /**
