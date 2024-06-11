@@ -22,7 +22,7 @@ export default class ProductList {
     try {
       this.productTemplate.toggleIndicator(true);
 
-      const products = await this.productService.getAll(params);
+      const products = await this.productService.getList(params);
 
       this.productTemplate.renderProducts(products);
     } catch (error) {
