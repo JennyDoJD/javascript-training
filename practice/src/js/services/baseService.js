@@ -32,9 +32,7 @@ class BaseService {
   async searchByName(name) {
     try {
       const endpoint = `${this.endpoint}?name=${name}`;
-      console.log('Search endpoint:', endpoint);
-      const res = await this.httpClient.get(endpoint);
-      console.log(res);
+
       return await this.httpClient.get(endpoint);
     } catch (error) {
       throw new Error(`Error searching products by name: ${error.message}`);
