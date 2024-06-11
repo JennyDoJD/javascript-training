@@ -188,6 +188,27 @@ export default class ProductTemplate {
   }
 
   /**
+   * Binds the event for sorting products.
+   * @param {Function} handlerSort - The callback function to handle sorting.
+   */
+  bindSortProducts = (handlerSort) => {
+    const sortDropdown = document.querySelector('.sort-list');
+
+    if (sortDropdown) {
+      sortDropdown.addEventListener('change', (e) => {
+        const selectedOption = e.target.selectedOptions[0];
+
+        if (selectedOption) {
+          const sortBy = selectedOption.getAttribute('data-sort-by');
+          const order = selectedOption.getAttribute('data-order');
+
+          handlerSort({ sortBy, order });
+        }
+      });
+    }
+  };
+
+  /**
    * Show the loading indicator.
    * @param {boolean} isHidden - A flag indicating whether the indicator should be hidden.
    */
