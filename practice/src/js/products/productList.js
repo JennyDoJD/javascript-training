@@ -66,10 +66,8 @@ export default class ProductList {
    * @param {string} sortOption - The selected sort option in the format "field-orderBy"
    * @returns {Promise<void>} - A Promise that resolves after sorting and rendering the products
    */
-  handleSortProducts = async (sortOption) => {
-    if (!sortOption) return;
-
-    const [sortBy, order] = sortOption.split('-');
+  handleSortProducts = async ({ sortBy, order }) => {
+    if (!sortBy || !order) return;
 
     const sortedProducts = await this.productService.sortProducts(
       sortBy,

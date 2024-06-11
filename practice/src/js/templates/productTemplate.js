@@ -196,8 +196,14 @@ export default class ProductTemplate {
 
     if (sortDropdown) {
       sortDropdown.addEventListener('change', (e) => {
-        const sortOption = e.target.value;
-        handleSort(sortOption);
+        const selectedOption = e.target.selectedOptions[0];
+
+        if (selectedOption) {
+          const sortBy = selectedOption.getAttribute('data-sort-by');
+          const order = selectedOption.getAttribute('data-order');
+
+          handleSort({ sortBy, order });
+        }
       });
     }
   };
