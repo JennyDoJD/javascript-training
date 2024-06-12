@@ -204,9 +204,7 @@ export default class ProductTemplate {
       'keyup',
       debounce(async (e) => {
         const name = e.target.value;
-        const searchedProducts = await handlerSearchProduct({ name });
-
-        this.renderProducts(searchedProducts);
+        await handlerSearchProduct({ name });
       }, 300)
     );
   }
