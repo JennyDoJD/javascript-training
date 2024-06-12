@@ -33,7 +33,7 @@ export default class ProductTemplate {
     }
 
     if (!products.length) {
-      mainContent.innerHTML = `<span class="main-title">${MESSAGES.NOT_FOUND_MSG}</span>`;
+      mainContent.innerHTML = `<span class="main-title">${MESSAGES.NOT_FOUND}</span>`;
       return;
     }
 
