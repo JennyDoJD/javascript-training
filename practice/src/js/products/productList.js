@@ -10,7 +10,7 @@ export default class ProductList {
    * This method renders the products initially and binds event handlers
    */
   async init() {
-    await this.renderProducts();
+    await this.displayProducts();
 
     this.handlerEventHandlers();
   }
@@ -19,7 +19,7 @@ export default class ProductList {
    * Fetch all products from the ProductService
    * Render the products using the ProductTemplate component
    */
-  async renderProducts(params = {}) {
+  async displayProducts(params = {}) {
     try {
       this.productTemplate.toggleIndicator(true);
       this.currentParams = { ...this.currentParams, ...params };
@@ -53,7 +53,7 @@ export default class ProductList {
   handlerConfirmDelete = async (id) => {
     try {
       await this.productService.deleteByID(id);
-      await this.renderProducts();
+      await this.displayProducts();
 
       this.productTemplate.showDeleteSuccessToast();
     } catch (error) {
@@ -65,28 +65,17 @@ export default class ProductList {
 
   /**
    * Handles the search of products by keyword.
-   * @param {Object} searchCriteria - The search criteria object containing the search keyword.
-   * @returns {Promise<Object[]>} - A promise that resolves to an array of matched products.
+   * @param {Object} params - The search criteria object containing the keyword.
    */
-  handlerSearchProduct = async (searchCriteria) => {
-    const params = {
-      ...searchCriteria,
-      ...this.currentParams,
-    };
-
-    await this.renderProducts(params);
+  handlerSearchProduct = async (params = {}) => {
+    await this.displayProducts(params);
   };
 
   /**
-   * Handle sorting of products
-   * @param {Object} params - The sorting parameters
+   * Handles sorting of products.
+   * @param {Object} params - The sorting parameters.
    */
   handlerSortProducts = async (params = {}) => {
-    const mergedParams = {
-      ...this.currentParams,
-      ...params,
-    };
-
-    await this.renderProducts(mergedParams);
+    await this.displayProducts(params);
   };
 }
