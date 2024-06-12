@@ -16,9 +16,7 @@ class BaseService {
     const queryParams = new URLSearchParams();
 
     for (const key in params) {
-      if (params.hasOwnProperty(key)) {
-        queryParams.append(key, params[key]);
-      }
+      queryParams.append(key, params[key]);
     }
 
     const url = `${this.endpoint}?${queryParams.toString()}`;
