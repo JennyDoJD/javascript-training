@@ -11,8 +11,8 @@ export default class ProductTemplate {
   }
 
   /**
-   * Clears the main content container on the page
-   * Effectively removing all of its child elements
+   * Clears the main content container on the page.
+   * Effectively removing all of its child elements.
    */
   clearMainContainer() {
     const mainContent = document.getElementById('product-list');
@@ -20,8 +20,8 @@ export default class ProductTemplate {
   }
 
   /**
-   * Displays product list of products on the view
-   * @param {Object[]} products - An array of product objects to be displayed
+   * Displays product list of products on the view.
+   * @param {Object[]} products - An array of product objects to be displayed.
    */
   renderProducts(products) {
     this.clearMainContainer();
@@ -47,7 +47,7 @@ export default class ProductTemplate {
   }
 
   /**
-   * Create HTML markup for a product card
+   * Create HTML markup for a product card.
    * @param {Object} product - The product object containing id, name, price, imageURL, and quantity.
    * @returns {string} - The HTML markup for the product card.
    */
@@ -94,7 +94,7 @@ export default class ProductTemplate {
   }
 
   /**
-   * Renders a form for creating a product
+   * Renders a form for creating a product.
    */
   renderProductFormPage(data = {}) {
     this.clearMainContainer();
@@ -176,14 +176,14 @@ export default class ProductTemplate {
   };
 
   /**
-   * Display a toast notification for successful deletion
+   * Display a toast notification for successful deletion.
    */
   showDeleteSuccessToast() {
     Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MSG);
   }
 
   /**
-   * Display a toast notification for deletion failure
+   * Display a toast notification for deletion failure.
    */
   showDeleteFailureToast() {
     Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
@@ -241,7 +241,7 @@ export default class ProductTemplate {
   }
 
   /**
-   * Display a toast notification for failed when to load products
+   * Display a toast notification for failed when to load products.
    */
   showLoadFailureToast() {
     Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
