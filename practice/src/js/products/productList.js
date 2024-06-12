@@ -6,8 +6,8 @@ export default class ProductList {
   }
 
   /**
-   * Initializes the ProductList instance
-   * This method renders the products initially and binds event handlers
+   * Initializes the ProductList instance.
+   * This method renders the products initially and binds event handlers.
    */
   async init() {
     await this.displayProducts();
@@ -16,8 +16,8 @@ export default class ProductList {
   }
 
   /**
-   * Fetch all products from the ProductService
-   * Render the products using the ProductTemplate component
+   * Fetch all products from the ProductService.
+   * Render the products using the ProductTemplate component.
    */
   async displayProducts(params = {}) {
     try {
