@@ -75,7 +75,7 @@ export default class ProductList {
    * Handles sorting of products.
    * @param {Object} params - The sorting parameters.
    */
-  handlerSortProducts = async (params = {}) => {
+  handlerSortProducts = async (params) => {
     await this.displayProducts(params);
   };
 }
