@@ -84,42 +84,45 @@ const validatePositive = ({ key, value }) =>
   (formError[key] =
     parseFloat(value) <= 0 ? `${key} must be a positive number.` : '');
 
-// Sample validation schema for the validateProductForm function
-const productValidationSchema = {
-  Name: [validateString, validateLength],
-  Price: [validateFloat, validatePositive],
-  ImageURL: [validateImage],
-  Quantity: [validateInteger, validatePositive],
-};
-
 /**
  * Validates the product form data
  * @param {Object} data - The product form data
  * @returns {Object} An object containing validation results
  */
-function validateForm(data, validationSchema) {
-  const formError = {};
+function validateForm(validationSchema) {
+  formError = {};
 
-  for (const key in data) {
-    // If the key exists in the validationSchema
-    if (validationSchema.hasOwnProperty(key)) {
-      const value = data[key];
-      // Get the array of validator methods associated with the key
-      const validators = validationSchema[key];
+  for (const key in validationSchema) {
+    const { field, value, validators } = validationSchema[key];
+    validateEmpty({ key: field, value });
 
-      formError[key] = validateEmpty({ key, value });
-
-      for (let validator of validators) {
-        if (formError[key] !== '') {
-          break;
-        }
-
-        formError[key] = validator({ key, value });
+    for (const validator of validators) {
+      if (formError[field] !== '') {
+        break;
       }
+
+      validator({ key: field, value });
     }
   }
 
   return { formError };
+}
+
+/**
+ * Displays validation errors next to the corresponding form fields.
+ * @param {Object} errors - Object containing validation errors.
+ */
+
+function displayValidationErrors(formError) {
+  const errorMsgElements = querySelectorAll('[data-field-error]');
+  errorMsgElements.forEach((element) => (element.textContent = ''));
+
+  for (const key in formError) {
+    const value = formError[key];
+
+    const errorMsgElement = querySelector(`[data-field-error="${key}"]`);
+    errorMsgElement.textContent = value;
+  }
 }
 
 /**
@@ -141,5 +144,5 @@ export {
   validatePositive,
   validateForm,
   hasValidationErrors,
-  productValidationSchema,
+  displayValidationErrors,
 };

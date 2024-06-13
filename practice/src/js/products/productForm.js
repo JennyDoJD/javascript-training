@@ -1,97 +1,75 @@
-import ProductService from '../services/productService';
 import {
   validateForm,
-  hasValidationErrors,
-  productValidationSchema,
+  validateString,
+  validateInteger,
+  validateImage,
+  validateFloat,
+  validateLength,
+  validatePositive,
 } from '../helpers/validateForm';
 
 export default class ProductForm {
-  constructor() {
-    this.productService = new ProductService();
+  constructor(service, template) {
+    this.productService = service;
+    this.productTemplate = template;
   }
 
   /**
    * Calls displaying product add form
    */
   async init() {
-    await this.displayProductAddForm();
+    await this.displayProductForm();
+    this.bindProductForm;
   }
 
-  /**
-   * Displays the product add form and sets up event listeners for form submission and input changes.
-   */
-  displayProductAddForm() {
-    const productForm = document.getElementById('product-form');
+  async displayProductForm(data = {}) {
+    this.productTemplate.renderProductFormPage(data);
+  }
 
-    productForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const formData = this.getFormValues();
-      const validationResult = validateForm(formData, productValidationSchema);
+  bindProductForm() {
+    const formElement = document.getElementById('product-form');
 
-      this.displayValidationErrors(validationResult.formError);
+    formElement.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-      // Check if there are any validation errors
-      if (hasValidationErrors(validationResult.formError)) {
+      const nameValue = document.getElementById('name').value;
+      const priceValue = document.getElementById('price').value;
+      const imageURLValue = document.getElementById('image-url').value;
+      const quantityValue = document.getElementById('quantity').value;
+
+      const validationSchema = {
+        name: {
+          field: 'Name',
+          value: nameValue,
+          validators: [validateString, validateLength],
+        },
+        price: {
+          field: 'Price',
+          value: priceValue,
+          validators: [validateFloat, validatePositive],
+        },
+        imageURL: {
+          field: 'Image URL',
+          value: imageURLValue,
+          validators: [validateImage],
+        },
+        quantity: {
+          field: 'Quantity',
+          value: quantityValue,
+          validators: [validateInteger, validatePositive],
+        },
+      };
+
+      const { formError } = validateForm(validationSchema);
+
+      this.displayValidationErrors(formError);
+
+      const isPassed = !hasValidationErrors(formError);
+      if (!isPassed) {
         return;
       }
 
-      // Call the ProductService to add the product
-      await this.productService.add(formData);
+      this.displayProductForm();
     });
-
-    productForm.addEventListener('input', (event) => {
-      const { id, value } = event.target;
-      this.clearValidationError(id);
-    });
-  }
-
-  /**
-   * Retrieves input values from the product form inputs.
-   * @returns {Object} - Object containing input values.
-   */
-  getFormValues() {
-    const nameInput = document.getElementById('name');
-    const priceInput = document.getElementById('price');
-    const imageURLInput = document.getElementById('image-url');
-    const quantityInput = document.getElementById('quantity');
-
-    const name = nameInput.value;
-    const price = parseFloat(priceInput.value);
-    const imageURL = imageURLInput.value;
-    const quantity = parseInt(quantityInput.value);
-
-    return {
-      name,
-      price,
-      imageURL,
-      quantity,
-    };
-  }
-
-  /**
-   * Displays validation errors next to the corresponding form fields.
-   * @param {Object} errors - Object containing validation errors.
-   */
-  displayValidationErrors(errors) {
-    for (const key in errors) {
-      const errorMessage = errors[key];
-      const errorElement = document.getElementById(
-        `${key.toLowerCase()}-error`
-      );
-      if (errorElement) {
-        errorElement.textContent = errorMessage;
-      }
-    }
-  }
-
-  /**
-   * Clears validation error message for a specific input field.
-   * @param {string} id - The ID of the input field.
-   */
-  clearValidationError(id) {
-    const errorElement = document.getElementById(`${id}-error`);
-    if (errorElement) {
-      errorElement.textContent = '';
-    }
   }
 }
