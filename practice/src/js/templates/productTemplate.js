@@ -7,7 +7,6 @@ import debounce from '../helpers/debounce';
 export default class ProductTemplate {
   constructor() {
     this.deleteModal = document.getElementById('delete-product-modal');
-    this.mainContent = document.querySelector('.main-content');
   }
 
   /**
@@ -110,7 +109,7 @@ export default class ProductTemplate {
         ? MESSAGES.ADD_PRODUCT_HEADING
         : MESSAGES.EDIT_PRODUCT_HEADING;
 
-    const formContent = document.getElementById('product-form');
+    const formContent = document.getElementById('form-wrapper');
 
     formContent.innerHTML = `
       <div class="form-wrapper">
