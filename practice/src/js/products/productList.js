@@ -40,7 +40,9 @@ export default class ProductList {
   handlerEventHandlers = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
-    this.productTemplate.bindSearchProduct(this.handlerSearchProduct);
+    this.productTemplate.bindSearchProduct(async (params = {}) => {
+      await this.displayProducts(params);
+    });
     this.productTemplate.bindSortProducts(this.handlerSortProducts);
   };
 
@@ -61,14 +63,6 @@ export default class ProductList {
     } finally {
       this.productTemplate.toggleDeleteModal();
     }
-  };
-
-  /**
-   * Handles the search of products by keyword.
-   * @param {Object} params - The search criteria object containing the keyword.
-   */
-  handlerSearchProduct = async (params = {}) => {
-    await this.displayProducts(params);
   };
 
   /**
