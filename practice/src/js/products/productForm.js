@@ -12,6 +12,7 @@ export default class ProductForm {
   constructor(service, template) {
     this.productService = service;
     this.productTemplate = template;
+    this.bindProductForm;
   }
 
   /**
@@ -19,7 +20,6 @@ export default class ProductForm {
    */
   async init() {
     await this.displayProductForm();
-    this.bindProductForm;
   }
 
   async displayProductForm(data = {}) {
@@ -32,44 +32,47 @@ export default class ProductForm {
     formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const nameValue = document.getElementById('name').value;
-      const priceValue = document.getElementById('price').value;
-      const imageURLValue = document.getElementById('image-url').value;
-      const quantityValue = document.getElementById('quantity').value;
-
-      const validationSchema = {
-        name: {
-          field: 'Name',
-          value: nameValue,
-          validators: [validateString, validateLength],
-        },
-        price: {
-          field: 'Price',
-          value: priceValue,
-          validators: [validateFloat, validatePositive],
-        },
-        imageURL: {
-          field: 'Image URL',
-          value: imageURLValue,
-          validators: [validateImage],
-        },
-        quantity: {
-          field: 'Quantity',
-          value: quantityValue,
-          validators: [validateInteger, validatePositive],
-        },
-      };
-
-      const { formError } = validateForm(validationSchema);
+      const { formError } = validateForm(formData.validationSchema);
 
       this.displayValidationErrors(formError);
 
       const isPassed = !hasValidationErrors(formError);
+
       if (!isPassed) {
         return;
       }
-
-      this.displayProductForm();
     });
+  }
+
+  getFormData() {
+    const nameValue = document.getElementById('name').value;
+    const priceValue = document.getElementById('price').value;
+    const imageURLValue = document.getElementById('image-url').value;
+    const quantityValue = document.getElementById('quantity').value;
+
+    const validationSchema = {
+      name: {
+        field: 'Name',
+        value: nameValue,
+        validators: [validateString, validateLength],
+      },
+      price: {
+        field: 'Price',
+        value: priceValue,
+        validators: [validateFloat, validatePositive],
+      },
+      imageURL: {
+        field: 'Image URL',
+        value: imageURLValue,
+        validators: [validateImage],
+      },
+      quantity: {
+        field: 'Quantity',
+        value: quantityValue,
+        validators: [validateInteger, validatePositive],
+      },
+    };
+
+    return { validationSchema };
   }
 }
