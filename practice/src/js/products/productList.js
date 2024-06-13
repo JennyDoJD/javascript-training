@@ -2,27 +2,29 @@ export default class ProductList {
   constructor(service, template) {
     this.productService = service;
     this.productTemplate = template;
+    this.currentParams = {};
   }
 
   /**
-   * Initializes the ProductList instance
-   * This method renders the products initially and binds event handlers
+   * Initializes the ProductList instance.
+   * This method renders the products initially and binds event handlers.
    */
   async init() {
-    await this.renderProducts();
+    await this.displayProducts();
 
     this.handlerEventHandlers();
   }
 
   /**
-   * Fetch all products from the ProductService
-   * Render the products using the ProductTemplate component
+   * Fetch all products from the ProductService.
+   * Render the products using the ProductTemplate component.
    */
-  async renderProducts(params = {}) {
+  async displayProducts(params = {}) {
     try {
       this.productTemplate.toggleIndicator(true);
+      this.currentParams = { ...this.currentParams, ...params };
 
-      const products = await this.productService.getList(params);
+      const products = await this.productService.getList(this.currentParams);
 
       this.productTemplate.renderProducts(products);
     } catch (error) {
@@ -33,12 +35,12 @@ export default class ProductList {
   }
 
   /**
-   * Binds event handlers for managing product deletion.
-   * This method binds event handlers to toggle the delete modal and confirm deletion.
+   * Binds event handlers for managing product.
    */
   handlerEventHandlers = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
+    this.productTemplate.bindSearchProduct(this.handlerSearchProducts);
     this.productTemplate.bindSortProducts(this.handlerSortProducts);
   };
 
@@ -51,7 +53,7 @@ export default class ProductList {
   handlerConfirmDelete = async (id) => {
     try {
       await this.productService.deleteByID(id);
-      await this.renderProducts();
+      await this.displayProducts();
 
       this.productTemplate.showDeleteSuccessToast();
     } catch (error) {
@@ -62,10 +64,18 @@ export default class ProductList {
   };
 
   /**
-   * Handle sorting of products
-   * @param {Object} params - The sorting parameters
+   * Handles searching of products.
+   * @param {Object} params - The searching parameters.
    */
-  handlerSortProducts = async (params = {}) => {
-    await this.renderProducts(params);
+  handlerSearchProducts = async (params = {}) => {
+    await this.displayProducts(params);
+  };
+
+  /**
+   * Handles sorting of products.
+   * @param {Object} params - The sorting parameters.
+   */
+  handlerSortProducts = async (params) => {
+    await this.displayProducts(params);
   };
 }
