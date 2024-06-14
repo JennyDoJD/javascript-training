@@ -9,6 +9,7 @@ import {
   displayValidationErrors,
   hasValidationErrors,
 } from '../helpers/validateForm';
+import Toast from '../helpers/toastify';
 
 export default class ProductForm {
   constructor(service, template, action) {
@@ -34,7 +35,7 @@ export default class ProductForm {
    * Binds the event listener to the product form.
    */
   bindProductForm() {
-    const formElement = document.getElementById('product-form');
+    const formElement = document.getElementById('form-content');
     formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -44,9 +45,9 @@ export default class ProductForm {
 
       displayValidationErrors(formError);
 
-      const isPassed = !hasValidationErrors(formError);
+      const formValid = !hasValidationErrors(formError);
 
-      if (!isPassed) {
+      if (!formValid) {
         return;
       }
 
