@@ -26,6 +26,9 @@ export default class ProductForm {
     this.productTemplate.renderProductFormPage(data);
   }
 
+  /**
+   * Binds the event listener to the product form.
+   */
   bindProductForm() {
     const formElement = document.getElementById('product-form');
 
