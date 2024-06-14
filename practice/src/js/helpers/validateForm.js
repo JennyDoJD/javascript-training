@@ -113,13 +113,15 @@ function validateForm(validationSchema) {
  * @param {Object} errors - Object containing validation errors.
  */
 function displayValidationErrors(formError) {
-  const errorMsgElements = querySelectorAll('[data-field-error]');
+  const errorMsgElements = document.querySelectorAll('[data-field-error]');
   errorMsgElements.forEach((element) => (element.textContent = ''));
 
   for (const key in formError) {
     const value = formError[key];
 
-    const errorMsgElement = querySelector(`[data-field-error="${key}"]`);
+    const errorMsgElement = document.querySelector(
+      `[data-field-error="${key}"]`
+    );
     errorMsgElement.textContent = value;
   }
 }
