@@ -9,7 +9,6 @@ import {
   displayValidationErrors,
   hasValidationErrors,
 } from '../helpers/validateForm';
-import ACTION from '../constants/action';
 
 export default class ProductForm {
   constructor(service, template, action) {
@@ -54,10 +53,10 @@ export default class ProductForm {
       const product = formData.product;
 
       switch (this.action) {
-        case ACTION.ADD:
+        case 'add':
           await this.addProduct(product);
           break;
-        case ACTION.EDIT:
+        case 'edit':
           await this.editProduct(product);
           break;
       }
