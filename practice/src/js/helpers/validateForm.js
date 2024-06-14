@@ -112,7 +112,6 @@ function validateForm(validationSchema) {
  * Displays validation errors next to the corresponding form fields.
  * @param {Object} errors - Object containing validation errors.
  */
-
 function displayValidationErrors(formError) {
   const errorMsgElements = querySelectorAll('[data-field-error]');
   errorMsgElements.forEach((element) => (element.textContent = ''));
