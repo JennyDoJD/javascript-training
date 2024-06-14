@@ -6,6 +6,7 @@ import {
   validateFloat,
   validateLength,
   validatePositive,
+  displayValidationErrors,
 } from '../helpers/validateForm';
 
 export default class ProductForm {
@@ -35,14 +36,25 @@ export default class ProductForm {
     formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const { formError } = validateForm(formData.validationSchema);
+      const { formError } = validateForm(validationSchema);
 
-      this.displayValidationErrors(formError);
+      displayValidationErrors(formError);
 
       const isPassed = !hasValidationErrors(formError);
 
       if (!isPassed) {
         return;
+      }
+
+      const product = { name, price, imageURL, quantity };
+
+      switch (this.action) {
+        case ACTION.ADD:
+          await this.addProduct(product);
+          break;
+        case ACTION.EDIT:
+          await this.editProduct(product);
+          break;
       }
     });
   }
@@ -81,5 +93,25 @@ export default class ProductForm {
     };
 
     return { validationSchema };
+  }
+
+  /**
+   * Asynchronously adds a product.
+   * @param {Object} product - The product information to add.
+   */
+  async addProduct(product) {
+    try {
+      const response = await this.productService.add(product);
+
+      if (response.isSuccess) {
+        Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+
+        this.productTemplate.redirectPage(URLS.HOME);
+      } else {
+        Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+      }
+    } catch (error) {
+      Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+    }
   }
 }
