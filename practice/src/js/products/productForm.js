@@ -7,13 +7,15 @@ import {
   validateLength,
   validatePositive,
   displayValidationErrors,
+  hasValidationErrors,
 } from '../helpers/validateForm';
+import ACTION from '../constants/action';
 
 export default class ProductForm {
-  constructor(service, template) {
+  constructor(service, template, action) {
     this.productService = service;
     this.productTemplate = template;
-    this.bindProductForm;
+    this.action = action;
   }
 
   /**
@@ -23,8 +25,10 @@ export default class ProductForm {
     await this.displayProductForm();
   }
 
-  async displayProductForm(data = {}) {
+  async displayProductForm() {
+    let data = {};
     this.productTemplate.renderProductFormPage(data);
+    this.bindProductForm();
   }
 
   /**
@@ -32,11 +36,12 @@ export default class ProductForm {
    */
   bindProductForm() {
     const formElement = document.getElementById('product-form');
-
     formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const { formError } = validateForm(validationSchema);
+      const formData = this.getFormData();
+
+      const { formError } = validateForm(formData.validationSchema);
 
       displayValidationErrors(formError);
 
@@ -46,7 +51,7 @@ export default class ProductForm {
         return;
       }
 
-      const product = { name, price, imageURL, quantity };
+      const product = formData.product;
 
       switch (this.action) {
         case ACTION.ADD:
@@ -92,7 +97,14 @@ export default class ProductForm {
       },
     };
 
-    return { validationSchema };
+    const product = {
+      name: nameValue,
+      price: priceValue,
+      imageURL: imageURLValue,
+      quantity: quantityValue,
+    };
+
+    return { validationSchema, product };
   }
 
   /**
