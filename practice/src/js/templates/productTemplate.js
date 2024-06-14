@@ -109,7 +109,7 @@ export default class ProductTemplate {
         ? MESSAGES.ADD_PRODUCT_HEADING
         : MESSAGES.EDIT_PRODUCT_HEADING;
 
-    const formContent = document.getElementById('form-wrapper');
+    const formContent = document.getElementById('form-content');
 
     formContent.innerHTML = `
       <div class="form-wrapper">
