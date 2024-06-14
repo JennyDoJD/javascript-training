@@ -47,6 +47,10 @@ export default class ProductForm {
     });
   }
 
+  /**
+   * Retrieves form data from input fields and constructs a validation schema.
+   * @returns {Object} - Object containing validation schema for form fields.
+   */
   getFormData() {
     const nameValue = document.getElementById('name').value;
     const priceValue = document.getElementById('price').value;
