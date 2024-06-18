@@ -22,12 +22,22 @@ export default class ProductForm {
    * Calls displaying product add form
    */
   async init() {
-    await this.displayProductForm();
+    this.displayProductForm();
   }
 
   async displayProductForm() {
     let data = {};
+
+    if (this.action === 'edit') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      if (productId) {
+        data = await this.productService.getByID(productId);
+      }
+    }
+
     this.productTemplate.renderProductFormPage(data);
+
     this.bindProductForm();
   }
 
@@ -53,13 +63,31 @@ export default class ProductForm {
 
       const product = formData.product;
 
-      switch (this.action) {
-        case 'add':
-          await this.addProduct(product);
-          break;
-        case 'edit':
-          await this.editProduct(product);
-          break;
+      if (this.action === 'add') {
+        const { isSuccess } = await this.productService.add(product);
+
+        if (!isSuccess) {
+          return Toast.error(ADD_PRODUCT_FAILED_MSG);
+        }
+
+        Toast.success(ADD_PRODUCT_SUCCESS_MSG);
+
+        return this.productTemplate.redirectPage(URLS.HOME);
+      } else if (this.action === 'edit') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const { isSuccess } = await this.productService.edit(
+          productId,
+          product
+        );
+
+        if (isSuccess) {
+          Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+
+          this.productTemplate.redirectPage(URLS.HOME);
+        } else {
+          Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+        }
       }
     });
   }
@@ -114,6 +142,24 @@ export default class ProductForm {
   async addProduct(product) {
     try {
       const response = await this.productService.add(product);
+
+      if (response.isSuccess) {
+        Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+
+        this.productTemplate.redirectPage(URLS.HOME);
+      } else {
+        Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+      }
+    } catch (error) {
+      Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+    }
+  }
+
+  async editProduct(product) {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      const response = await this.productService.edit(productId, product);
 
       if (response.isSuccess) {
         Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
