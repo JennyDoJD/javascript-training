@@ -28,11 +28,8 @@ export default class ProductTemplate {
     const mainContent = document.getElementById('product-list');
 
     if (!Array.isArray(products)) {
-      throw new Error('Invalid data received from API');
-    }
-
-    if (!products.length) {
       mainContent.innerHTML = `<span class="main-title">${MESSAGES.NOT_FOUND}</span>`;
+
       return;
     }
 
