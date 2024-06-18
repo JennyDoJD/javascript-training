@@ -55,7 +55,7 @@ const validateString = ({ key, value }) =>
  */
 const validateImage = ({ key, value }) =>
   (formError[key] = !REGEX_PATTERNS.imageUrlRegex.test(value)
-    ? `Please make sure ${key} starts with 'http://' or 'https://' and ends with .jpg or .png`
+    ? `Please make sure ${key} starts with 'http://' or 'https://' and ends with .jpg, .png, .gif, .svg, .jpeg or .webp`
     : '');
 
 /**
