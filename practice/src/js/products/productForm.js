@@ -155,6 +155,10 @@ export default class ProductForm {
     }
   }
 
+  /**
+   * Asynchronously edits a product identified by the ID extracted from the URL query parameters.
+   * @param {object} product - The updated product data to be saved.
+   */
   async editProduct(product) {
     try {
       const urlParams = new URLSearchParams(window.location.search);
