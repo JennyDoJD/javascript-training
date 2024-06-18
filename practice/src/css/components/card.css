@@ -44,16 +44,13 @@
 }
 
 .card-add-product {
-  border: 2px dashed var(--secondary-border-color);
-  padding-top: 111px;
-  padding-bottom: 110px;
-}
-
-.card-add-title {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  border: 2px dashed var(--secondary-border-color);
+  padding-top: 111px;
+  padding-bottom: 110px;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-lg);
