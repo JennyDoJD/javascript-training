@@ -1,97 +1,179 @@
-import ProductService from '../services/productService';
 import {
   validateForm,
+  validateString,
+  validateInteger,
+  validateImage,
+  validateFloat,
+  validateLength,
+  validatePositive,
+  displayValidationErrors,
   hasValidationErrors,
-  productValidationSchema,
 } from '../helpers/validateForm';
+import Toast from '../helpers/toastify';
 
 export default class ProductForm {
-  constructor() {
-    this.productService = new ProductService();
+  constructor(service, template, action) {
+    this.productService = service;
+    this.productTemplate = template;
+    this.action = action;
   }
 
   /**
    * Calls displaying product add form
    */
   async init() {
-    await this.displayProductAddForm();
+    this.displayProductForm();
+  }
+
+  async displayProductForm() {
+    let data = {};
+
+    if (this.action === 'edit') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      if (productId) {
+        data = await this.productService.getByID(productId);
+      }
+    }
+
+    this.productTemplate.renderProductFormPage(data);
+
+    this.bindProductForm();
   }
 
   /**
-   * Displays the product add form and sets up event listeners for form submission and input changes.
+   * Binds the event listener to the product form.
    */
-  displayProductAddForm() {
-    const productForm = document.getElementById('product-form');
+  bindProductForm() {
+    const formElement = document.getElementById('form-content');
+    formElement.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    productForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const formData = this.getFormValues();
-      const validationResult = validateForm(formData, productValidationSchema);
+      const formData = this.getFormData();
 
-      this.displayValidationErrors(validationResult.formError);
+      const { formError } = validateForm(formData.validationSchema);
 
-      // Check if there are any validation errors
-      if (hasValidationErrors(validationResult.formError)) {
+      displayValidationErrors(formError);
+
+      const formValid = !hasValidationErrors(formError);
+
+      if (!formValid) {
         return;
       }
 
-      // Call the ProductService to add the product
-      await this.productService.add(formData);
-    });
+      const product = formData.product;
 
-    productForm.addEventListener('input', (event) => {
-      const { id, value } = event.target;
-      this.clearValidationError(id);
-    });
-  }
+      if (this.action === 'add') {
+        const { isSuccess } = await this.productService.add(product);
 
-  /**
-   * Retrieves input values from the product form inputs.
-   * @returns {Object} - Object containing input values.
-   */
-  getFormValues() {
-    const nameInput = document.getElementById('name');
-    const priceInput = document.getElementById('price');
-    const imageURLInput = document.getElementById('image-url');
-    const quantityInput = document.getElementById('quantity');
+        if (!isSuccess) {
+          return Toast.error(ADD_PRODUCT_FAILED_MSG);
+        }
 
-    const name = nameInput.value;
-    const price = parseFloat(priceInput.value);
-    const imageURL = imageURLInput.value;
-    const quantity = parseInt(quantityInput.value);
+        Toast.success(ADD_PRODUCT_SUCCESS_MSG);
 
-    return {
-      name,
-      price,
-      imageURL,
-      quantity,
-    };
-  }
+        return this.productTemplate.redirectPage(URLS.HOME);
+      } else if (this.action === 'edit') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const { isSuccess } = await this.productService.edit(
+          productId,
+          product
+        );
 
-  /**
-   * Displays validation errors next to the corresponding form fields.
-   * @param {Object} errors - Object containing validation errors.
-   */
-  displayValidationErrors(errors) {
-    for (const key in errors) {
-      const errorMessage = errors[key];
-      const errorElement = document.getElementById(
-        `${key.toLowerCase()}-error`
-      );
-      if (errorElement) {
-        errorElement.textContent = errorMessage;
+        if (isSuccess) {
+          Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+
+          this.productTemplate.redirectPage(URLS.HOME);
+        } else {
+          Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+        }
       }
+    });
+  }
+
+  /**
+   * Retrieves form data from input fields and constructs a validation schema.
+   * @returns {Object} - Object containing validation schema for form fields.
+   */
+  getFormData() {
+    const nameValue = document.getElementById('name').value;
+    const priceValue = document.getElementById('price').value;
+    const imageURLValue = document.getElementById('image-url').value;
+    const quantityValue = document.getElementById('quantity').value;
+
+    const validationSchema = {
+      name: {
+        field: 'Name',
+        value: nameValue,
+        validators: [validateString, validateLength],
+      },
+      price: {
+        field: 'Price',
+        value: priceValue,
+        validators: [validateFloat, validatePositive],
+      },
+      imageURL: {
+        field: 'Image URL',
+        value: imageURLValue,
+        validators: [validateImage],
+      },
+      quantity: {
+        field: 'Quantity',
+        value: quantityValue,
+        validators: [validateInteger, validatePositive],
+      },
+    };
+
+    const product = {
+      name: nameValue,
+      price: priceValue,
+      imageURL: imageURLValue,
+      quantity: quantityValue,
+    };
+
+    return { validationSchema, product };
+  }
+
+  /**
+   * Asynchronously adds a product.
+   * @param {Object} product - The product information to add.
+   */
+  async addProduct(product) {
+    try {
+      const response = await this.productService.add(product);
+
+      if (response.isSuccess) {
+        Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+
+        this.productTemplate.redirectPage(URLS.HOME);
+      } else {
+        Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+      }
+    } catch (error) {
+      Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
     }
   }
 
   /**
-   * Clears validation error message for a specific input field.
-   * @param {string} id - The ID of the input field.
+   * Asynchronously edits a product identified by the ID extracted from the URL query parameters.
+   * @param {object} product - The updated product data to be saved.
    */
-  clearValidationError(id) {
-    const errorElement = document.getElementById(`${id}-error`);
-    if (errorElement) {
-      errorElement.textContent = '';
+  async editProduct(product) {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      const response = await this.productService.edit(productId, product);
+
+      if (response.isSuccess) {
+        Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+
+        this.productTemplate.redirectPage(URLS.HOME);
+      } else {
+        Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+      }
+    } catch (error) {
+      Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
     }
   }
 }

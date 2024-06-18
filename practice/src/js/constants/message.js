@@ -7,6 +7,8 @@ const MESSAGES = {
   EDIT_PRODUCT_SUCCESS_MSG: 'Succeed to edit the product!',
   EDIT_PRODUCT_FAILED_MSG: 'Failed to edit the product!',
   NOT_FOUND: 'No Results Found!',
+  ADD_PRODUCT_HEADING: 'Create a new product',
+  EDIT_PRODUCT_HEADING: 'Edit',
 };
 
 export { MESSAGES };

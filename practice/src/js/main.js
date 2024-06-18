@@ -17,6 +17,6 @@ document
   .addEventListener('click', handleNavLinkClick);
 
 // Initialize the handler for the form
-const productForm = new ProductForm();
+const productForm = new ProductForm(service, template);
 
 productForm.init();

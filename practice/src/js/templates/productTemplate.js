@@ -7,7 +7,6 @@ import debounce from '../helpers/debounce';
 export default class ProductTemplate {
   constructor() {
     this.deleteModal = document.getElementById('delete-product-modal');
-    this.mainContent = document.querySelector('.main-content');
   }
 
   /**
@@ -82,7 +81,7 @@ export default class ProductTemplate {
         </div>
       </div>
       <div>
-        <a href="javascript:void(0)" class="btn btn-edit">
+        <a href="editProduct.html?${id}" class="btn btn-edit">
           <svg width="20" height="20">
             <use xlink:href="${iconAction}#edit-icon" />
           </svg>
@@ -97,8 +96,6 @@ export default class ProductTemplate {
    * Renders a form for creating a product.
    */
   renderProductFormPage(data = {}) {
-    this.clearMainContainer();
-
     const { id, name = '', price = '', imageURL = '', quantity = '' } = data;
     const formInputs = [
       { field: 'Name', value: name, id: 'name' },
@@ -107,17 +104,22 @@ export default class ProductTemplate {
       { field: 'Quantity', value: quantity, id: 'quantity' },
     ];
 
-    const mainContent = document.getElementById('form-content');
+    const headingPage =
+      Object.keys(data).length === 0
+        ? MESSAGES.ADD_PRODUCT_HEADING
+        : MESSAGES.EDIT_PRODUCT_HEADING;
 
-    mainContent.innerHTML = `
+    const formContent = document.getElementById('form-content');
+
+    formContent.innerHTML = `
       <div class="form-wrapper">
-        <h2 class="main-heading">Create new a product</h2>
+        <h2 class="main-title">${headingPage}</h2>
         <form data-product-id="${id}" id="product-form" action="javascript:void(0)" class="form-control">
           ${renderFormInputTemplate(formInputs)}
           <div class="form-button">
-            <button class="btn btn-primary btn-confirm" type="reset">
+            <a href="/" class="btn btn-primary btn-confirm" >
               Cancel
-            </button>
+            </a>
             <button
               class="btn btn-secondary btn-confirm"
               type="submit"
@@ -246,4 +248,12 @@ export default class ProductTemplate {
   showLoadFailureToast() {
     Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
   }
+
+  /**
+   * Redirects the user to a specified page.
+   * @param {string} page - The URL of the page to redirect to.
+   */
+  redirectPage = (page) => {
+    window.location.replace(page);
+  };
 }
