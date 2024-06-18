@@ -26,7 +26,7 @@ class BaseService {
 
   /**
    * Delete a item by its ID.
-   * @param {string} id - The ID of the item.
+   * @param {string} id - The ID of the data.
    * @param {Object} result - The result.
    */
   async deleteByID(id) {
@@ -34,16 +34,30 @@ class BaseService {
   }
 
   /**
-   * Add a new item.
-   * @param {Object} data - the object contains the item.
+   * Add a new data.
+   * @param {Object} data - the object contains the data.
    * @param {Object} result - The result.
    */
   async add(data) {
     return await this.httpClient.post(this.endpoint, data);
   }
 
+  /**
+   * Gets a data by its ID.
+   * @param {string} id - The ID of the data.
+   * @returns {Object} result - The result.
+   */
   async getByID(id) {
     return await this.httpClient.get(`${this.endpoint}/${id}`);
+  }
+
+  /**
+   * Edit a data by its ID.
+   * @param {string} id - The ID of the data.
+   * @param {Object} result - The result.
+   */
+  async edit(id, data) {
+    return await this.httpClient.put(`${this.endpoint}/${id}`, data);
   }
 }
 
