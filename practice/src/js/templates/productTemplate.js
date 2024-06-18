@@ -175,20 +175,6 @@ export default class ProductTemplate {
   };
 
   /**
-   * Display a toast notification for successful deletion.
-   */
-  showDeleteSuccessToast() {
-    Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MSG);
-  }
-
-  /**
-   * Display a toast notification for deletion failure.
-   */
-  showDeleteFailureToast() {
-    Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
-  }
-
-  /**
    * Binds the search input to the search handler function and render the results.
    * @param {Function} handlerSearchProduct - The handler function to fetch and return search results.
    */
@@ -237,13 +223,6 @@ export default class ProductTemplate {
     const indicatorElement = document.querySelector('.indicator');
 
     indicatorElement.classList.toggle('hidden', !isHidden);
-  }
-
-  /**
-   * Display a toast notification for failed when to load products.
-   */
-  showLoadFailureToast() {
-    Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
   }
 
   /**
