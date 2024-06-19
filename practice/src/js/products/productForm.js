@@ -87,6 +87,12 @@ export default class ProductForm {
           product
         );
 
+        if (!isSuccess) {
+          return Toast.error(UPDATE_ITEM_FAILED_MSG);
+        }
+
+        Toast.success(UPDATE_ITEM_SUCCESS_MSG);
+
         if (isSuccess) {
           Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
 
