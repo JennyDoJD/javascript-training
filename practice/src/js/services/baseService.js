@@ -35,14 +35,18 @@ class BaseService {
 
   /**
    * Add a new data.
-   * @param {Object} data - the object contains the data.
-   * @param {Object} result - The result.
+   * @param {object} data - The data to be added.
+   * @returns {object} - An object indicating the success status and response data.
+   *                   - isSuccess: true if the operation was successful, false otherwise.
+   *                   - data: The response data from the server if isSuccess is true.
    */
   async add(data) {
     try {
       const response = await this.httpClient.post(this.endpoint, data);
+
       return { isSuccess: true, data: response };
     } catch (error) {
+      console.error(error);
       return { isSuccess: false };
     }
   }
