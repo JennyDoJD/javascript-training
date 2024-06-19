@@ -57,13 +57,7 @@ class BaseService {
    * @returns {Object} result - The result.
    */
   async getByID(id) {
-    try {
-      const response = await this.httpClient.get(`${this.endpoint}/${id}`);
-
-      return { isSuccess: true, data: response };
-    } catch (error) {
-      return { isSuccess: false };
-    }
+    return await this.httpClient.get(`${this.endpoint}/${id}`);
   }
 
   /**
@@ -72,15 +66,7 @@ class BaseService {
    * @param {Object} result - The result.
    */
   async edit(id, data) {
-    try {
-      const response = await this.httpClient.put(
-        `${this.endpoint}/${id}`,
-        data
-      );
-      return { isSuccess: true, data: response };
-    } catch (error) {
-      return { isSuccess: false };
-    }
+    return await this.httpClient.put(`${this.endpoint}/${id}`, data);
   }
 }
 
