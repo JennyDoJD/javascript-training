@@ -31,7 +31,7 @@ export default class ProductForm {
   async displayProductForm() {
     let data = {};
 
-    if (this.action === ACTION.EDIT) {
+    if (this.action === 'edit') {
       const urlParams = new URLSearchParams(window.location.search);
       const productId = urlParams.get('id');
 
@@ -77,7 +77,7 @@ export default class ProductForm {
         Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
 
         return this.productTemplate.redirectPage(URLS.HOME);
-      } else if (this.action === ACTION.EDIT) {
+      } else if (this.action === 'edit') {
         const urlParams = new URLSearchParams(window.location.search);
 
         const productId = urlParams.get('id');
@@ -87,18 +87,12 @@ export default class ProductForm {
           product
         );
 
-        if (!isSuccess) {
-          return Toast.error(UPDATE_ITEM_FAILED_MSG);
-        }
-
-        Toast.success(UPDATE_ITEM_SUCCESS_MSG);
-
         if (isSuccess) {
-          Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
+          Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
 
           this.productTemplate.redirectPage(URLS.HOME);
         } else {
-          Toast.error(MESSAGES.EDIT_PRODUCT_FAILED_MSG);
+          Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
         }
       }
 
