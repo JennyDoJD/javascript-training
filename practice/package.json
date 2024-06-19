@@ -16,8 +16,19 @@
     "eslint": "^9.3.0",
     "parcel": "^2.12.0"
   },
+  "browser": {
+    "process": false
+  },
   "dependencies": {
     "dotenv": "^16.4.5",
+    "process": "^0.11.10",
     "toastify-js": "^1.12.0"
+  },
+  "targets": {
+    "browser": {
+      "includeNodeModules": [
+        "process"
+      ]
+    }
   }
 }
