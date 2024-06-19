@@ -73,7 +73,7 @@ export default class ProductForm {
         Toast.success(ADD_PRODUCT_SUCCESS_MSG);
 
         return this.productTemplate.redirectPage(URLS.HOME);
-      } else if (this.action === 'edit') {
+      } else if (this.action === ACTION.EDIT) {
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
         const { isSuccess } = await this.productService.edit(
@@ -81,13 +81,13 @@ export default class ProductForm {
           product
         );
 
-        if (isSuccess) {
-          Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
-
-          this.productTemplate.redirectPage(URLS.HOME);
-        } else {
-          Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+        if (!isSuccess) {
+          return Toast.error(MESSAGES.EDIT_PRODUCT_FAILED_MSG);
         }
+
+        Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
+
+        return this.productTemplate.redirectPage(URLS.HOME);
       }
     });
   }
@@ -133,47 +133,5 @@ export default class ProductForm {
     };
 
     return { validationSchema, product };
-  }
-
-  /**
-   * Asynchronously adds a product.
-   * @param {Object} product - The product information to add.
-   */
-  async addProduct(product) {
-    try {
-      const response = await this.productService.add(product);
-
-      if (response.isSuccess) {
-        Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
-
-        this.productTemplate.redirectPage(URLS.HOME);
-      } else {
-        Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
-      }
-    } catch (error) {
-      Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
-    }
-  }
-
-  /**
-   * Asynchronously edits a product identified by the ID extracted from the URL query parameters.
-   * @param {object} product - The updated product data to be saved.
-   */
-  async editProduct(product) {
-    try {
-      const urlParams = new URLSearchParams(window.location.search);
-      const productId = urlParams.get('id');
-      const response = await this.productService.edit(productId, product);
-
-      if (response.isSuccess) {
-        Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
-
-        this.productTemplate.redirectPage(URLS.HOME);
-      } else {
-        Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
-      }
-    } catch (error) {
-      Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
-    }
   }
 }
