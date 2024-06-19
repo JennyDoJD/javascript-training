@@ -28,7 +28,7 @@ export default class ProductForm {
   async displayProductForm() {
     let data = {};
 
-    if (this.action === 'edit') {
+    if (this.action === ACTION.EDIT) {
       const urlParams = new URLSearchParams(window.location.search);
       const productId = urlParams.get('id');
       if (productId) {
