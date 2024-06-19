@@ -54,10 +54,21 @@ class BaseService {
   /**
    * Edit a data by its ID.
    * @param {string} id - The ID of the data.
-   * @param {Object} result - The result.
+   * @param {Object} data - The data object containing the updates to be applied to the resource.
+   * @returns {object} - An object indicating the success status and response data.
+   *                   - isSuccess: true if the operation was successful, false otherwise.
+   *                   - data: The response data from the server if isSuccess is true.
    */
   async edit(id, data) {
-    return await this.httpClient.put(`${this.endpoint}/${id}`, data);
+    try {
+      const response = await this.httpClient.put(
+        `${this.endpoint}/${id}`,
+        data
+      );
+      return { isSuccess: true, data: response };
+    } catch (error) {
+      return { isSuccess: false };
+    }
   }
 }
 
