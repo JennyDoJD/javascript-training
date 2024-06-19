@@ -13,7 +13,9 @@ class HttpClient {
   async fetchJSON(endpoint, options = {}) {
     const response = await fetch(this.baseURL + endpoint, {
       ...options,
-      headers: this.headers,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
     if (!response.ok) {
@@ -21,7 +23,7 @@ class HttpClient {
     }
 
     if (!options.parseResponse && response.status !== 204) {
-      return response.json();
+      return await response.json();
     }
 
     return undefined;
