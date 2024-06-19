@@ -59,6 +59,7 @@ class BaseService {
   async getByID(id) {
     try {
       const response = await this.httpClient.get(`${this.endpoint}/${id}`);
+
       return { isSuccess: true, data: response };
     } catch (error) {
       return { isSuccess: false };
