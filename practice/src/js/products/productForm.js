@@ -82,7 +82,7 @@ export default class ProductForm {
 
         Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
 
-        return this.productTemplate.redirectPage(URLS.HOME);
+        this.productTemplate.redirectPage(URLS.HOME);
       } else if (this.action === 'edit') {
         const urlParams = new URLSearchParams(window.location.search);
 
