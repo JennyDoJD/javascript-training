@@ -10,7 +10,7 @@ import {
   hasValidationErrors,
 } from '../helpers/validateForm';
 import Toast from '../helpers/toastify';
-import { ACTION } from '../constants/action';
+import { ACTION } from '../constants/actionType';
 import { MESSAGES } from '../constants/message';
 import { URLS } from '../constants/url';
 
