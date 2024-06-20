@@ -46,7 +46,6 @@ class BaseService {
 
       return { isSuccess: true, data: response };
     } catch (error) {
-      console.error(error);
       return { isSuccess: false };
     }
   }
