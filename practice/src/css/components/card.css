@@ -63,25 +63,3 @@
   width: 100%;
   object-fit: cover;
 }
-
-.card-product:nth-child(n + 4) {
-  display: none;
-}
-
-/* Tablet */
-@media (min-width: 768px) {
-  .card-product {
-    display: none;
-  }
-
-  .card-product:nth-child(-n + 5) {
-    display: block;
-  }
-}
-
-/* Desktop */
-@media (min-width: 1352px) {
-  .card-product:nth-child(-n + 9) {
-    display: block;
-  }
-}
