@@ -37,6 +37,7 @@ export default class ProductForm {
 
     if (this.action === 'edit') {
       const urlParams = new URLSearchParams(window.location.search);
+
       const productId = urlParams.get('id');
 
       if (productId) {
