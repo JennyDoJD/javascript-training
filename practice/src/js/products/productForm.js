@@ -55,6 +55,7 @@ export default class ProductForm {
    */
   bindProductForm() {
     const formElement = document.getElementById('form-content');
+
     formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
