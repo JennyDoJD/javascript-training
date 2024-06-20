@@ -85,7 +85,6 @@ export default class ProductForm {
         this.productTemplate.redirectPage(URLS.HOME);
       } else if (this.action === 'edit') {
         const urlParams = new URLSearchParams(window.location.search);
-
         const productId = urlParams.get('id');
 
         const { isSuccess } = await this.productService.edit(
