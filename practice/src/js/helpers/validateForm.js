@@ -1,6 +1,7 @@
 import { REGEX_PATTERNS } from '../constants/regex';
 
 let formError = {};
+
 /**
  * Validates if the value is empty (consisting only of whitespace characters)
  * @param {Object} params - An object containing key and value to validate
