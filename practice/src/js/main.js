@@ -2,8 +2,8 @@ import ProductList from './products/productList';
 import ProductForm from './products/productForm';
 import ProductTemplate from './templates/productTemplate';
 import ProductService from './services/productService';
-import action from './helpers/actionHandler';
-import { handleNavLinkClick } from './helpers/sidebarHandler';
+import handleNavLinkClick from './helpers/sidebarHandler';
+import ProductForm from './products/productForm';
 
 // Render products using ProductList instance
 const service = new ProductService();
