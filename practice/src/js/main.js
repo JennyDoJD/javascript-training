@@ -3,7 +3,7 @@ import ProductTemplate from './templates/productTemplate';
 import ProductService from './services/productService';
 import { handleNavLinkClick } from './helpers/sidebarHandler';
 import ProductForm from './products/productForm';
-import { ACTION } from './constants/action';
+import action from './helpers/action';
 
 // Render products using ProductList instance
 const service = new ProductService();
@@ -18,6 +18,6 @@ document
   .addEventListener('click', handleNavLinkClick);
 
 // Initialize the handler for the form
-const productForm = new ProductForm(service, template, ACTION.ADD);
+const productForm = new ProductForm(service, template, action);
 
 productForm.init();
