@@ -1,7 +1,10 @@
 class HttpClient {
   constructor(options = {}) {
     this.baseURL = options.baseURL || '';
-    this.headers = options.headers || {};
+    this.headers = {
+      ...(options.headers || {}),
+      'Content-Type': 'application/json',
+    };
   }
 
   /**
@@ -15,9 +18,7 @@ class HttpClient {
       ...options,
       headers: {
         ...this.headers,
-        ...((options.method === 'POST' || options.method === 'PUT') && {
-          'Content-Type': 'application/json',
-        }),
+        ...options.headers,
       },
     });
 
@@ -26,7 +27,7 @@ class HttpClient {
     }
 
     if (!options.parseResponse && response.status !== 204) {
-      return response.json();
+      return await response.json();
     }
 
     return undefined;
