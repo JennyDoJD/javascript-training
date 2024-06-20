@@ -2,7 +2,7 @@ import ProductList from './products/productList';
 import ProductForm from './products/productForm';
 import ProductTemplate from './templates/productTemplate';
 import ProductService from './services/productService';
-import action from './helpers/action';
+import action from './helpers/actionHandler';
 import { handleNavLinkClick } from './helpers/sidebarHandler';
 
 // Render products using ProductList instance
