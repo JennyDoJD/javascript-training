@@ -95,6 +95,7 @@ function validateForm(validationSchema) {
 
   for (const key in validationSchema) {
     const { field, value, validators } = validationSchema[key];
+
     validateEmpty({ key: field, value });
 
     for (const validator of validators) {
@@ -123,6 +124,7 @@ function displayValidationErrors(formError) {
     const errorMsgElement = document.querySelector(
       `[data-field-error='${key}']`
     );
+
     errorMsgElement.textContent = value;
   }
 }
