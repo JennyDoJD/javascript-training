@@ -1,7 +1,10 @@
 class HttpClient {
   constructor(options = {}) {
     this.baseURL = options.baseURL || '';
-    this.headers = options.headers || {};
+    this.headers = {
+      ...(options.headers || {}),
+      'Content-Type': 'application/json',
+    };
   }
 
   /**
@@ -13,7 +16,10 @@ class HttpClient {
   async fetchJSON(endpoint, options = {}) {
     const response = await fetch(this.baseURL + endpoint, {
       ...options,
-      headers: this.headers,
+      headers: {
+        ...this.headers,
+        ...options.headers,
+      },
     });
 
     if (!response.ok) {
@@ -21,7 +27,7 @@ class HttpClient {
     }
 
     if (!options.parseResponse && response.status !== 204) {
-      return response.json();
+      return await response.json();
     }
 
     return undefined;
