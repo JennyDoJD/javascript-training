@@ -119,7 +119,6 @@ function displayValidationErrors(formError) {
 
   for (const key in formError) {
     const value = formError[key];
-
     const errorMsgElement = document.querySelector(
       `[data-field-error="${key}"]`
     );
