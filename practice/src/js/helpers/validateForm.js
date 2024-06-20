@@ -125,6 +125,7 @@ function displayValidationErrors(formError) {
     const errorMsgElement = document.querySelector(
       `[data-field-error='${key}']`
     );
+
     errorMsgElement.textContent = value;
   }
 }
