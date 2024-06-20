@@ -22,12 +22,16 @@ export default class ProductForm {
   }
 
   /**
-   * Calls displaying product add form
+   * Calls displaying product add form.
    */
   async init() {
     this.displayProductForm();
   }
 
+  /**
+   * Displays the product form page.
+   * @returns {void}
+   */
   async displayProductForm() {
     let data = {};
 
