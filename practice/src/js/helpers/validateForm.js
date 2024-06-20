@@ -122,7 +122,7 @@ function displayValidationErrors(formError) {
     const value = formError[key];
 
     const errorMsgElement = document.querySelector(
-      `[data-field-error="${key}"]`
+      `[data-field-error='${key}']`
     );
     errorMsgElement.textContent = value;
   }
