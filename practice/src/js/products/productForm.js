@@ -31,9 +31,8 @@ export default class ProductForm {
     if (this.action === ACTION.EDIT) {
       const urlParams = new URLSearchParams(window.location.search);
       const productId = urlParams.get('id');
-      if (productId) {
-        data = await this.productService.getByID(productId);
-      }
+
+      data = await this.productService.getByID(productId);
     }
 
     this.productTemplate.renderProductFormPage(data);
@@ -74,10 +73,8 @@ export default class ProductForm {
 
         return this.productTemplate.redirectPage(URLS.HOME);
       } else if (this.action === ACTION.EDIT) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('id');
         const { isSuccess } = await this.productService.edit(
-          productId,
+          product.id,
           product
         );
 
@@ -126,6 +123,10 @@ export default class ProductForm {
     };
 
     const product = {
+      id:
+        this.action === ACTION.EDIT
+          ? document.getElementById('product-form').dataset.productId
+          : null,
       name: nameValue,
       price: priceValue,
       imageURL: imageURLValue,
