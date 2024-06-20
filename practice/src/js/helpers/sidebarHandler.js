@@ -5,16 +5,14 @@
 function handleNavLinkClick(event) {
   const navLinkItem = event.target.closest('.nav-item');
 
-  if (navLinkItem) {
-    if (!navLinkItem.classList.contains('active')) {
-      const activeNavItem = document.querySelector('.nav-item.active');
+  if (navLinkItem && !navLinkItem.classList.contains('active')) {
+    const activeNavItem = document.querySelector('.nav-item.active');
 
-      if (activeNavItem) {
-        activeNavItem.classList.remove('active');
-      }
-
-      navLinkItem.classList.add('active');
+    if (activeNavItem) {
+      activeNavItem.classList.remove('active');
     }
+
+    navLinkItem.classList.add('active');
   }
 }
 
