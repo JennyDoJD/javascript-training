@@ -1,4 +1,4 @@
-import { ACTION } from '../constants/action';
+import { ACTION } from '../constants/actionType';
 
 const currentURL = window.location.pathname;
 let action;
