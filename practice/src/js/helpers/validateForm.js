@@ -89,8 +89,8 @@ const validatePositive = ({ key, value }) =>
  * @param {Object} data - The product form data
  * @returns {Object} An object containing validation results
  */
-function validateForm(validationSchema) {
-  formError = {};
+const validateForm = (validationSchema) => {
+  let formError = {};
 
   for (const key in validationSchema) {
     const { field, value, validators } = validationSchema[key];
@@ -106,14 +106,14 @@ function validateForm(validationSchema) {
   }
 
   return { formError };
-}
+};
 
 /**
  * Displays validation errors next to the corresponding form fields.
  * @param {Object} errors - Object containing validation errors.
  * @returns {void}
  */
-function displayValidationErrors(formError) {
+const displayValidationErrors = (formError) => {
   const errorMsgElements = document.querySelectorAll('[data-field-error]');
   errorMsgElements.forEach((element) => (element.textContent = ''));
 
@@ -121,20 +121,23 @@ function displayValidationErrors(formError) {
     const value = formError[key];
 
     const errorMsgElement = document.querySelector(
-      `[data-field-error="${key}"]`
+      `[data-field-error='${key}']`
     );
-    errorMsgElement.textContent = value;
+
+    if (errorMsgElement) {
+      errorMsgElement.textContent = value;
+    }
   }
-}
+};
 
 /**
  * Checks if there are any validation errors in the form error object.
  * @param {Object} formError - The object containing validation errors for each form field.
  * @returns {boolean} - True if there are any validation errors, otherwise false.
  */
-function hasValidationErrors(formError) {
+const hasValidationErrors = (formError) => {
   return Object.values(formError).some((error) => error !== '');
-}
+};
 
 export {
   validateString,
