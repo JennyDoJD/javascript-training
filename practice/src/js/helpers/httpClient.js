@@ -1,7 +1,6 @@
 class HttpClient {
   constructor(options = {}) {
     this.baseURL = options.baseURL || '';
-    this.headers = options.headers || {};
   }
 
   /**
@@ -27,26 +26,6 @@ class HttpClient {
     }
 
     return undefined;
-  }
-
-  /**
-   * Set a header for the request.
-   * @param {string} key - The name of the header.
-   * @param {string} value - The value of the header.
-   * @returns {HttpClient} - Returns the HttpClient object itself for chaining.
-   */
-  setHeader(key, value) {
-    this.headers[key] = value;
-    return this;
-  }
-
-  /**
-   * Get the header set for the request.
-   * @param {string} key - The name of the header.
-   * @returns {string | undefined} - Returns the value of the header if exists, otherwise returns undefined.
-   */
-  getHeader(key) {
-    this.headers[key];
   }
 
   /**
