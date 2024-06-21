@@ -64,15 +64,19 @@ const validateImage = ({ key, value }) =>
  * @param {Object} params - An object.
  * @param {string} params.key - The field that needs to check.
  * @param {string} params.value - The value of that field.
- * @param {number} [params.min=2] - The minimum length required (default is 2).
- * @param {number} [params.max=50] - The maximum length required (default is 50).
+ * @param {number} [params] - The minimum length required.
+ * @param {number} [params] - The maximum length required.
  * @returns {string} - An error message if the length requirement is not met, otherwise an empty string.
  */
-const validateLength = ({ key, value, min = 2, max = 50 }) =>
-  (formError[key] =
-    value.trim().length < min || value.trim().length > max
+const validateLength = ({ key, value, min, max }) => {
+  const trimmedValue = value.trim();
+  const errorMessage =
+    trimmedValue.length < min || trimmedValue.length > max
       ? `${key} must have between ${min} and ${max} characters.`
-      : '');
+      : '';
+
+  formError[key] = errorMessage;
+};
 
 /**
  * Checks if the value is a positive number.
@@ -91,7 +95,7 @@ const validatePositive = ({ key, value }) =>
  * @returns {Object} An object containing validation results.
  */
 const validateForm = (validationSchema) => {
-  let formError = {};
+  formError = {};
 
   for (const key in validationSchema) {
     const { field, value, validators } = validationSchema[key];
@@ -99,11 +103,13 @@ const validateForm = (validationSchema) => {
     validateEmpty({ key: field, value });
 
     for (const validator of validators) {
+      if (typeof validator === 'function') {
+        validator(value);
+      }
+
       if (formError[field] !== '') {
         break;
       }
-
-      validator({ key: field, value });
     }
   }
 
@@ -117,7 +123,10 @@ const validateForm = (validationSchema) => {
  */
 const displayValidationErrors = (formError) => {
   const errorMsgElements = document.querySelectorAll('[data-field-error]');
-  errorMsgElements.forEach((element) => (element.textContent = ''));
+
+  errorMsgElements.forEach((element) => {
+    element.textContent = '';
+  });
 
   for (const key in formError) {
     const value = formError[key];
@@ -126,7 +135,9 @@ const displayValidationErrors = (formError) => {
       `[data-field-error='${key}']`
     );
 
-    errorMsgElement.textContent = value;
+    if (errorMsgElement) {
+      errorMsgElement.textContent = value;
+    }
   }
 };
 

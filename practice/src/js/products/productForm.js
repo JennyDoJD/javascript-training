@@ -118,7 +118,10 @@ export default class ProductForm {
       name: {
         field: 'Name',
         value: nameValue,
-        validators: [validateString, validateLength],
+        validators: [
+          validateString,
+          (value) => validateLength({ key: 'Name', value, min: 2, max: 50 }),
+        ],
       },
       price: {
         field: 'Price',
