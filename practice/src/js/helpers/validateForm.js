@@ -70,7 +70,6 @@ const validateImage = ({ key, value }) =>
  */
 const validateLength = ({ key, value, min, max }) => {
   const trimmedValue = value.trim();
-
   const errorMessage =
     trimmedValue.length < min || trimmedValue.length > max
       ? `${key} must have between ${min} and ${max} characters.`
