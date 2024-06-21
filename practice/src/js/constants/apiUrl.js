@@ -1,7 +1,5 @@
-import 'dotenv/config';
-
 const API = {
-  BASE_URL: process.env.BASE_URL,
+  BASE_URL: 'https://663896844253a866a24e6014.mockapi.io/api/',
   PRODUCTS_ENDPOINT: 'products',
 };
 
