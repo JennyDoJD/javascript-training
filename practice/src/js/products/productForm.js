@@ -10,6 +10,9 @@ import {
   hasValidationErrors,
 } from '../helpers/validateForm';
 import Toast from '../helpers/toastify';
+import { ACTION } from '../constants/actionType';
+import { MESSAGES } from '../constants/message';
+import { URLS } from '../constants/url';
 
 export default class ProductForm {
   constructor(service, template, action) {
@@ -19,12 +22,16 @@ export default class ProductForm {
   }
 
   /**
-   * Calls displaying product add form
+   * Calls displaying product add form.
    */
   async init() {
     this.displayProductForm();
   }
 
+  /**
+   * Displays the product form page.
+   * @returns {void}
+   */
   async displayProductForm() {
     let data = {};
 
@@ -45,6 +52,7 @@ export default class ProductForm {
    */
   bindProductForm() {
     const formElement = document.getElementById('form-content');
+
     formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -54,44 +62,45 @@ export default class ProductForm {
 
       displayValidationErrors(formError);
 
-      const formValid = !hasValidationErrors(formError);
+      const isValidForm = !hasValidationErrors(formError);
 
-      if (!formValid) {
+      if (!isValidForm) {
         return;
       }
 
       const product = formData.product;
 
-      if (this.action === 'add') {
-        const { isSuccess } = await this.productService.add(product);
+      try {
+        if (this.action === ACTION.ADD) {
+          const { isSuccess } = await this.productService.add(product);
 
-        if (!isSuccess) {
-          return Toast.error(ADD_PRODUCT_FAILED_MSG);
+          if (!isSuccess) {
+            throw new Error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+          }
+
+          Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+        } else if (this.action === ACTION.EDIT) {
+          const { isSuccess } = await this.productService.update(product);
+
+          if (!isSuccess) {
+            throw new Error(MESSAGES.EDIT_PRODUCT_FAILED_MSG);
+          }
+
+          Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
         }
 
-        Toast.success(ADD_PRODUCT_SUCCESS_MSG);
-
-        return this.productTemplate.redirectPage(URLS.HOME);
-      } else if (this.action === ACTION.EDIT) {
-        const { isSuccess } = await this.productService.edit(
-          product.id,
-          product
-        );
-
-        if (!isSuccess) {
-          return Toast.error(MESSAGES.EDIT_PRODUCT_FAILED_MSG);
-        }
-
-        Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
-
-        return this.productTemplate.redirectPage(URLS.HOME);
+        this.productTemplate.redirectPage(URLS.HOME);
+      } catch (error) {
+        Toast.error(error.message);
+      } finally {
+        this.displayProductForm();
       }
     });
   }
 
   /**
    * Retrieves form data from input fields and constructs a validation schema.
-   * @returns {Object} - Object containing validation schema for form fields.
+   * @returns {Object} - Object containing validation schema for form fields and product data.
    */
   getFormData() {
     const nameValue = document.getElementById('name').value;
@@ -123,10 +132,6 @@ export default class ProductForm {
     };
 
     const product = {
-      id:
-        this.action === ACTION.EDIT
-          ? document.getElementById('product-form').dataset.productId
-          : null,
       name: nameValue,
       price: priceValue,
       imageURL: imageURLValue,
