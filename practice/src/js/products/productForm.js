@@ -62,45 +62,46 @@ export default class ProductForm {
 
       displayValidationErrors(formError);
 
-      const isValidForm = !hasValidationErrors(formError);
+      const hasformValid = !hasValidationErrors(formError);
 
-      if (!isValidForm) {
+      if (!hasformValid) {
         return;
       }
 
       const product = formData.product;
 
-      try {
-        if (this.action === ACTION.ADD) {
-          const { isSuccess } = await this.productService.add(product);
+      if (this.action === ACTION.ADD) {
+        const { isSuccess } = await this.productService.add(product);
 
-          if (!isSuccess) {
-            throw new Error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
-          }
-
-          Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
-        } else if (this.action === ACTION.EDIT) {
-          const { isSuccess } = await this.productService.update(product);
-
-          if (!isSuccess) {
-            throw new Error(MESSAGES.EDIT_PRODUCT_FAILED_MSG);
-          }
-
-          Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
+        if (!isSuccess) {
+          return Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
         }
 
-        this.productTemplate.redirectPage(URLS.HOME);
-      } catch (error) {
-        Toast.error(error.message);
-      } finally {
-        this.displayProductForm();
+        Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+      } else if (this.action === ACTION.EDIT) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const { isSuccess } = await this.productService.edit(
+          productId,
+          product
+        );
+
+        if (!isSuccess) {
+          return Toast.error(MESSAGES.EDIT_PRODUCT_FAILED_MSG);
+        }
+
+        Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
       }
+
+      this.displayProductForm();
     });
+
+    this.productTemplate.redirectPage(URLS.HOME);
   }
 
   /**
    * Retrieves form data from input fields and constructs a validation schema.
-   * @returns {Object} - Object containing validation schema for form fields and product data.
+   * @returns {Object} - Object containing validation schema for form fields.
    */
   getFormData() {
     const nameValue = document.getElementById('name').value;
