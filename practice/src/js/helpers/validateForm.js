@@ -69,9 +69,10 @@ const validateImage = ({ key, value }) =>
  * @returns {string} - An error message if the length requirement is not met, otherwise an empty string.
  */
 const validateLength = ({ key, value, min, max }) => {
-  const trimmedValue = value.trim();
+  const trimmedValue = typeof value === 'string' ? value.trim() : value;
   const errorMessage =
-    trimmedValue.length < min || trimmedValue.length > max
+    typeof trimmedValue !== 'undefined' &&
+    (trimmedValue.length < min || trimmedValue.length > max)
       ? `${key} must have between ${min} and ${max} characters.`
       : '';
 
@@ -110,6 +111,8 @@ const validateForm = (validationSchema) => {
       if (formError[field] !== '') {
         break;
       }
+
+      validator({ key: field, value });
     }
   }
 
