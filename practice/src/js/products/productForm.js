@@ -12,7 +12,6 @@ import {
 import Toast from '../helpers/toastify';
 import { ACTION } from '../constants/actionType';
 import { MESSAGES } from '../constants/message';
-import { URLS } from '../constants/url';
 
 export default class ProductForm {
   constructor(service, template, action) {
@@ -80,8 +79,6 @@ export default class ProductForm {
         }
 
         Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
-
-        this.productTemplate.redirectPage(URLS.HOME);
       } else if (this.action === ACTION.EDIT) {
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
@@ -96,8 +93,6 @@ export default class ProductForm {
         }
 
         Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
-
-        this.productTemplate.redirectPage(URLS.HOME);
       }
 
       this.displayProductForm();
