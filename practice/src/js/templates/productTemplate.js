@@ -245,12 +245,4 @@ export default class ProductTemplate {
   showLoadFailureToast() {
     Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
   }
-
-  /**
-   * Redirects the user to a specified page.
-   * @param {string} page - The URL of the page to redirect to.
-   */
-  redirectPage = (page) => {
-    window.location.replace(page);
-  };
 }
