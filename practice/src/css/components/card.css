@@ -31,8 +31,14 @@
 }
 
 .card-name {
+  max-width: 100%;
+  height: auto;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding-bottom: 8px;
-  height: 36px;
 }
 
 .circle {
