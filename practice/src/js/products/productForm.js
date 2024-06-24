@@ -51,7 +51,7 @@ export default class ProductForm {
   /**
    * Binds the event listener to the product form.
    */
-  bindProductForm() {
+  bindProductForm = () => {
     const formElement = document.getElementById('form-content');
 
     formElement.addEventListener('submit', async (e) => {
@@ -95,13 +95,13 @@ export default class ProductForm {
         Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
       }
     });
-  }
+  };
 
   /**
    * Retrieves form data from input fields and constructs a validation schema.
    * @returns {Object} - Object containing validation schema for form fields.
    */
-  getFormData() {
+  getFormData = () => {
     const nameValue = document.getElementById('name').value;
     const priceValue = document.getElementById('price').value;
     const imageURLValue = document.getElementById('image-url').value;
@@ -141,5 +141,5 @@ export default class ProductForm {
     };
 
     return { validationSchema, product };
-  }
+  };
 }
