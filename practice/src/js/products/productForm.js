@@ -31,7 +31,7 @@ export default class ProductForm {
    * Displays the product form page.
    * @returns {void}
    */
-  async displayProductForm() {
+  displayProductForm = async () => {
     let data = {};
 
     if (this.action === ACTION.EDIT) {
@@ -46,7 +46,7 @@ export default class ProductForm {
     this.productTemplate.renderProductFormPage(data);
 
     this.bindProductForm();
-  }
+  };
 
   /**
    * Binds the event listener to the product form.
