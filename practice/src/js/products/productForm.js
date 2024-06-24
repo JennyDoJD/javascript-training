@@ -94,8 +94,6 @@ export default class ProductForm {
 
         Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
       }
-
-      this.displayProductForm();
     });
   }
 
