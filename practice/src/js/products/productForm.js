@@ -23,9 +23,9 @@ export default class ProductForm {
   /**
    * Calls displaying product add form.
    */
-  async init() {
+  init = async () => {
     this.displayProductForm();
-  }
+  };
 
   /**
    * Displays the product form page.
