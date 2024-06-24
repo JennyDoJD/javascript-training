@@ -78,7 +78,7 @@ export default class ProductTemplate {
         </div>
       </div>
       <div>
-        <a href="editProduct.html?id=${id}" class="btn btn-edit">
+        <a href="actionProduct.html?id=${id}" class="btn btn-edit">
           <svg width="20" height="20">
             <use xlink:href="${iconAction}#edit-icon" />
           </svg>
