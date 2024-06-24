@@ -39,7 +39,9 @@ export default class ProductForm {
       const urlParams = new URLSearchParams(window.location.search);
       const productId = urlParams.get('id');
 
-      data = await this.productService.getByID(productId);
+      if (productId) {
+        data = await this.productService.getByID(productId);
+      }
     }
 
     this.productTemplate.renderProductFormPage(data);
@@ -83,6 +85,7 @@ export default class ProductForm {
       } else if (this.action === ACTION.EDIT) {
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
+
         const { isSuccess } = await this.productService.edit(
           productId,
           product
