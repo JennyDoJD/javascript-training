@@ -226,13 +226,6 @@ export default class ProductTemplate {
   }
 
   /**
-   * Display a toast notification for failed when to load products.
-   */
-  showLoadFailureToast() {
-    Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
-  }
-
-  /**
    * Redirects the user to a specified page.
    * @param {string} page - The URL of the page to redirect to.
    */
