@@ -1,9 +1,10 @@
 .indicator {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
+  max-height: calc(100vh - 40px);
 }
 
 .indicator-load {
