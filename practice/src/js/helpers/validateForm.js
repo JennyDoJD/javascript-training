@@ -60,6 +60,18 @@ const validateImage = ({ key, value }) =>
     : '');
 
 /**
+ * Checks if the value does not exceed the maximum value.
+ * @param {Object} params - An object.
+ * @param {string} params.key - The field that needs to check.
+ * @param {number} params.value - The value of that field.
+ * @param {number} params.max - The maximum allowed value.
+ * @returns {string} - An error message if the value exceeds the max, otherwise an empty string.
+ */
+const validateMaxValue = ({ key, value, max }) =>
+  (formError[key] =
+    parseFloat(value) > max ? `${key} must not exceed ${max}.` : '');
+
+/**
  * Checks if the value is longer than minimum length.
  * @param {Object} params - An object.
  * @param {string} params.key - The field that needs to check.
@@ -162,6 +174,7 @@ export {
   validateLength,
   validatePositive,
   validateForm,
+  validateMaxValue,
   hasValidationErrors,
   displayValidationErrors,
 };
