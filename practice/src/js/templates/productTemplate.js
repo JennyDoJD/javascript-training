@@ -110,7 +110,7 @@ export default class ProductTemplate {
 
     formContent.innerHTML = `
       <div class="form-wrapper">
-        <h2 class="main-title">${headingPage}</h2>
+        <h2 class="main-title form-heading">${headingPage}</h2>
         <form data-product-id="${id}" id="product-form" action="javascript:void(0)" class="form-control">
           ${renderFormInputTemplate(formInputs)}
           <div class="form-button">
