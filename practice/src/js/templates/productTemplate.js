@@ -78,7 +78,7 @@ export default class ProductTemplate {
         </div>
       </div>
       <div>
-        <a href="editProduct.html?${id}" class="btn btn-edit">
+        <a href="productForm.html?id=${id}" class="btn btn-edit">
           <svg width="20" height="20">
             <use xlink:href="${iconAction}#edit-icon" />
           </svg>
@@ -192,7 +192,7 @@ export default class ProductTemplate {
    * Binds the search input to the search handler function and render the results.
    * @param {Function} handlerSearchProduct - The handler function to fetch and return search results.
    */
-  bindSearchProduct(handlerSearchProduct) {
+  bindSearchProduct = (handlerSearchProduct) => {
     const searchInput = document.getElementById('input-search');
 
     if (!searchInput) {
@@ -206,7 +206,7 @@ export default class ProductTemplate {
         await handlerSearchProduct({ name });
       }, 300)
     );
-  }
+  };
 
   /**
    * Binds the event for sorting products.
@@ -245,12 +245,4 @@ export default class ProductTemplate {
   showLoadFailureToast() {
     Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
   }
-
-  /**
-   * Redirects the user to a specified page.
-   * @param {string} page - The URL of the page to redirect to.
-   */
-  redirectPage = (page) => {
-    window.location.replace(page);
-  };
 }
