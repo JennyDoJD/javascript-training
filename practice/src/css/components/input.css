@@ -8,8 +8,8 @@
   line-height: var(--line-height-lg);
   color: var(--primary-text-color);
   outline: none;
-}
 
-.input-form-sm {
-  width: 47%;
+  &[data-field='Quantity'] {
+    width: 47%;
+  }
 }
