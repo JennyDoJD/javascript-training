@@ -1,5 +1,5 @@
 import iconAction from '../../assets/images/icons/icons.svg';
-import renderFormInputTemplate from './productFormInputTemplate';
+import renderFormInputTemplate from './formInputTemplate';
 import Toast from '../helpers/toastify';
 import debounce from '../helpers/debounce';
 import { MESSAGES } from '../constants/message';

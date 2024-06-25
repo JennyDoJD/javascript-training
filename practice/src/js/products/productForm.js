@@ -62,9 +62,9 @@ export default class ProductForm {
 
       displayValidationErrors(formError);
 
-      const hasformValid = !hasValidationErrors(formError);
+      const hasFormValid = !hasValidationErrors(formError);
 
-      if (!hasformValid) {
+      if (!hasFormValid) {
         return;
       }
 
