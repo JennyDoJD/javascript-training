@@ -1,5 +1,5 @@
 import iconAction from '../../assets/images/icons/icons.svg';
-import renderFormInputTemplate from './productFormInputTemplate';
+import renderFormInputTemplate from '../templates/formInputTemplate';
 import debounce from '../helpers/debounce';
 import { MESSAGES } from '../constants/message';
 
@@ -66,7 +66,7 @@ export default class ProductTemplate {
         </div>
       </div>
       <div>
-        <a href="editProduct.html?${id}" class="btn btn-edit">
+        <a href="productForm.html?id=${id}" class="btn btn-edit">
           <svg width="20" height="20">
             <use xlink:href="${iconAction}#edit-icon" />
           </svg>
@@ -98,7 +98,7 @@ export default class ProductTemplate {
 
     formContent.innerHTML = `
       <div class="form-wrapper">
-        <h2 class="main-title">${headingPage}</h2>
+        <h2 class="main-title form-heading">${headingPage}</h2>
         <form data-product-id="${id}" id="product-form" action="javascript:void(0)" class="form-control">
           ${renderFormInputTemplate(formInputs)}
           <div class="form-button">
@@ -166,7 +166,7 @@ export default class ProductTemplate {
    * Binds the search input to the search handler function and render the results.
    * @param {Function} handlerSearchProduct - The handler function to fetch and return search results.
    */
-  bindSearchProduct(handlerSearchProduct) {
+  bindSearchProduct = (handlerSearchProduct) => {
     const searchInput = document.getElementById('input-search');
 
     if (!searchInput) {
@@ -180,7 +180,7 @@ export default class ProductTemplate {
         await handlerSearchProduct({ name });
       }, 300)
     );
-  }
+  };
 
   /**
    * Binds the event for sorting products.
@@ -212,12 +212,4 @@ export default class ProductTemplate {
 
     indicatorElement.classList.toggle('hidden', !isHidden);
   }
-
-  /**
-   * Redirects the user to a specified page.
-   * @param {string} page - The URL of the page to redirect to.
-   */
-  redirectPage = (page) => {
-    window.location.replace(page);
-  };
 }

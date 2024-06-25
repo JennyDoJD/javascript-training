@@ -21,7 +21,11 @@ class BaseService {
 
     const url = `${this.endpoint}?${queryParams.toString()}`;
 
-    return await this.httpClient.get(url);
+    try {
+      return await this.httpClient.get(url);
+    } catch (error) {
+      return { isSuccess: false };
+    }
   }
 
   /**
@@ -30,7 +34,11 @@ class BaseService {
    * @param {Object} result - The result.
    */
   async deleteByID(id) {
-    return await this.httpClient.delete(`${this.endpoint}/${id}`);
+    try {
+      return await this.httpClient.delete(`${this.endpoint}/${id}`);
+    } catch (error) {
+      return { isSuccess: false };
+    }
   }
 
   /**
@@ -56,7 +64,11 @@ class BaseService {
    * @returns {Object} result - The result.
    */
   async getByID(id) {
-    return await this.httpClient.get(`${this.endpoint}/${id}`);
+    try {
+      return await this.httpClient.get(`${this.endpoint}/${id}`);
+    } catch (error) {
+      return { isSuccess: false };
+    }
   }
 
   /**
