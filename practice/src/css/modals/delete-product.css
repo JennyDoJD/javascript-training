@@ -1,10 +1,13 @@
 .delete-modal {
   background-color: var(--dark-background-color);
   border-radius: var(--secondary-border-radius);
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1000;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
 }
 
 .delete-modal-content {
