@@ -79,6 +79,8 @@ export default class ProductForm {
         }
 
         Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+
+        this.clearFormFields();
       } else if (this.action === ACTION.EDIT) {
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
@@ -141,5 +143,14 @@ export default class ProductForm {
     };
 
     return { validationSchema, product };
+  };
+
+  /**
+   * Clears all input fields in the form.
+   */
+  clearFormFields = () => {
+    const inputs = document.querySelectorAll('.input-form');
+
+    inputs.forEach((input) => (input.value = ''));
   };
 }
