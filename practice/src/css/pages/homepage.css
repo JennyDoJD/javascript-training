@@ -100,6 +100,7 @@
   position: absolute;
   inset: 20px 23px 21px 124px;
   height: max-content;
+  min-height: 100vh;
   border-radius: var(--primary-border-radius);
   background-color: var(--primary-background-color);
 }
