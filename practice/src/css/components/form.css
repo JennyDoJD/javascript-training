@@ -11,7 +11,7 @@
   background-color: var(--primary-background-color);
 }
 
-.form-heading-feature {
+.form-heading {
   padding-bottom: 26px;
   border-bottom: 1px solid var(--tertiary-border-color);
   width: 280px;
