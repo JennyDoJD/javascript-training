@@ -9,17 +9,17 @@ export default class ProductList {
    * Initializes the ProductList instance.
    * This method renders the products initially and binds event handlers.
    */
-  async init() {
+  init = async () => {
     await this.displayProducts();
 
     this.handlerEventHandlers();
-  }
+  };
 
   /**
    * Fetch all products from the ProductService.
    * Render the products using the ProductTemplate component.
    */
-  async displayProducts(params = {}) {
+  displayProducts = async (params = {}) => {
     try {
       this.productTemplate.toggleIndicator(true);
       this.currentParams = { ...this.currentParams, ...params };
@@ -32,7 +32,7 @@ export default class ProductList {
     } finally {
       this.productTemplate.toggleIndicator(false);
     }
-  }
+  };
 
   /**
    * Binds event handlers for managing product.
@@ -40,8 +40,8 @@ export default class ProductList {
   handlerEventHandlers = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
-    this.productTemplate.bindSearchProduct(this.handlerSearchProducts);
-    this.productTemplate.bindSortProducts(this.handlerSortProducts);
+    this.productTemplate.bindSearchProduct(this.displayProducts);
+    this.productTemplate.bindSortProducts(this.displayProducts);
   };
 
   /**
@@ -61,21 +61,5 @@ export default class ProductList {
     } finally {
       this.productTemplate.toggleDeleteModal();
     }
-  };
-
-  /**
-   * Handles searching of products.
-   * @param {Object} params - The searching parameters.
-   */
-  handlerSearchProducts = async (params = {}) => {
-    await this.displayProducts(params);
-  };
-
-  /**
-   * Handles sorting of products.
-   * @param {Object} params - The sorting parameters.
-   */
-  handlerSortProducts = async (params) => {
-    await this.displayProducts(params);
   };
 }
