@@ -44,11 +44,10 @@
 }
 
 .card-desc {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
   padding-top: 8px;
-
-  span {
-    padding-right: 8px;
-  }
 }
 
 .card-add-product {
