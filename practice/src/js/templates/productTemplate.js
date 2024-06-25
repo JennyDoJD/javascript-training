@@ -192,7 +192,7 @@ export default class ProductTemplate {
    * Binds the search input to the search handler function and render the results.
    * @param {Function} handlerSearchProduct - The handler function to fetch and return search results.
    */
-  bindSearchProduct(handlerSearchProduct) {
+  bindSearchProduct = (handlerSearchProduct) => {
     const searchInput = document.getElementById('input-search');
 
     if (!searchInput) {
@@ -206,7 +206,7 @@ export default class ProductTemplate {
         await handlerSearchProduct({ name });
       }, 300)
     );
-  }
+  };
 
   /**
    * Binds the event for sorting products.
