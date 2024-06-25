@@ -41,6 +41,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding-top: 70px;
+  gap: 8px;
 }
 
 .btn-confirm {
@@ -66,6 +67,10 @@
   .btn-confirm {
     padding-left: 67px;
     padding-right: 67px;
+  }
+
+  .form-button {
+    gap: 40px;
   }
 }
 
