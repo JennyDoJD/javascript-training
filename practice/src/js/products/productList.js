@@ -32,6 +32,8 @@ export default class ProductList {
       this.productTemplate.renderProducts(products);
     } catch (error) {
       this.productTemplate.renderProducts();
+
+      Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
     } finally {
       this.productTemplate.toggleIndicator(false);
     }
