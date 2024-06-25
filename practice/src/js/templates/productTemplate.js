@@ -9,21 +9,10 @@ export default class ProductTemplate {
   }
 
   /**
-   * Clears the main content container on the page.
-   * Effectively removing all of its child elements.
-   */
-  clearMainContainer() {
-    const mainContent = document.getElementById('product-list');
-    mainContent.innerHTML = '';
-  }
-
-  /**
    * Displays product list of products on the view.
    * @param {Object[]} products - An array of product objects to be displayed.
    */
   renderProducts(products) {
-    this.clearMainContainer();
-
     const mainContent = document.getElementById('product-list');
 
     if (!Array.isArray(products)) {
