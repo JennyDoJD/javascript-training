@@ -1,6 +1,5 @@
 import iconAction from '../../assets/images/icons/icons.svg';
-import renderFormInputTemplate from './formInputTemplate';
-import Toast from '../helpers/toastify';
+import renderFormInputTemplate from '../templates/formInputTemplate';
 import debounce from '../helpers/debounce';
 import { MESSAGES } from '../constants/message';
 
@@ -10,21 +9,10 @@ export default class ProductTemplate {
   }
 
   /**
-   * Clears the main content container on the page.
-   * Effectively removing all of its child elements.
-   */
-  clearMainContainer() {
-    const mainContent = document.getElementById('product-list');
-    mainContent.innerHTML = '';
-  }
-
-  /**
    * Displays product list of products on the view.
    * @param {Object[]} products - An array of product objects to be displayed.
    */
   renderProducts(products) {
-    this.clearMainContainer();
-
     const mainContent = document.getElementById('product-list');
 
     if (!Array.isArray(products)) {
@@ -175,20 +163,6 @@ export default class ProductTemplate {
   };
 
   /**
-   * Display a toast notification for successful deletion.
-   */
-  showDeleteSuccessToast() {
-    Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MSG);
-  }
-
-  /**
-   * Display a toast notification for deletion failure.
-   */
-  showDeleteFailureToast() {
-    Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
-  }
-
-  /**
    * Binds the search input to the search handler function and render the results.
    * @param {Function} handlerSearchProduct - The handler function to fetch and return search results.
    */
@@ -237,12 +211,5 @@ export default class ProductTemplate {
     const indicatorElement = document.querySelector('.indicator');
 
     indicatorElement.classList.toggle('hidden', !isHidden);
-  }
-
-  /**
-   * Display a toast notification for failed when to load products.
-   */
-  showLoadFailureToast() {
-    Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
   }
 }
