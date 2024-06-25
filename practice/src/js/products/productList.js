@@ -1,3 +1,6 @@
+import { MESSAGES } from '../constants/message';
+import Toast from '../helpers/toastify';
+
 export default class ProductList {
   constructor(service, template) {
     this.productService = service;
@@ -55,9 +58,9 @@ export default class ProductList {
       await this.productService.deleteByID(id);
       await this.displayProducts();
 
-      this.productTemplate.showDeleteSuccessToast();
+      Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MSG);
     } catch (error) {
-      this.productTemplate.showDeleteFailureToast();
+      Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
     } finally {
       this.productTemplate.toggleDeleteModal();
     }
