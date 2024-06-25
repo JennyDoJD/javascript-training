@@ -57,7 +57,7 @@ export default class ProductTemplate {
           <img src="${imageURL}" alt="food-image" class="card-item" />
         </figure>
         <div class="card-text">
-          <p class="tertiary-title card-name">${name}</p>
+          <p class="tertiary-title card-name" title="${name}">${name}</p>
           <div class="main-desc card-desc">
             <span>$ ${price}</span>
             <span class="circle">&#8729;</span>
