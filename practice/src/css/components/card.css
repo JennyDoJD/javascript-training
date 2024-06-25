@@ -37,15 +37,18 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-bottom: 8px;
 }
 
 .circle {
   color: var(--gray-background-color);
 }
 
-.card-desc span {
-  padding-right: 8px;
+.card-desc {
+  padding-top: 8px;
+
+  span {
+    padding-right: 8px;
+  }
 }
 
 .card-add-product {
