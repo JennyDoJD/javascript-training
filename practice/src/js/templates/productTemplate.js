@@ -168,7 +168,7 @@ export default class ProductTemplate {
     searchInput.addEventListener(
       'keyup',
       debounce(async (e) => {
-        const name = e.target.value;
+        const name = e.target.value.trim();
         await handlerSearchProduct({ name });
       }, 300)
     );
