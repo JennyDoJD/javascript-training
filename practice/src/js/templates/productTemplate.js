@@ -4,10 +4,6 @@ import debounce from '../helpers/debounce';
 import { MESSAGES } from '../constants/message';
 
 export default class ProductTemplate {
-  constructor() {
-    this.deleteModal = document.getElementById('delete-product-modal');
-  }
-
   /**
    * Displays product list of products on the view.
    * @param {Object[]} products - An array of product objects to be displayed.
@@ -38,19 +34,14 @@ export default class ProductTemplate {
   createProductCard(product) {
     const { id, name, price, imageURL, quantity } = product;
 
-    const deleteIcon = document.createElement('svg');
-    deleteIcon.dataset.productId = product.id;
-
-    deleteIcon.addEventListener('click', () => {
-      this.toggleDeleteModal(product.id);
-    });
-
     return `
     <div class="card card-product" data-id="${id}">
       <div class="card-header">
-      <svg width="15" height="15" data-product-id="${id}" class="delete-product-icon">
-        <use xlink:href="${iconAction}#delete-icon" />
-      </svg>
+        <div class="delete-product-icon" data-product-id="${id}">
+          <svg width="15" height="15">
+            <use xlink:href="${iconAction}#delete-icon" />
+          </svg>
+        </div>
       </div>
       <div>
         <figure class="card-image">
@@ -118,7 +109,7 @@ export default class ProductTemplate {
   }
 
   /**
-   *  Show the delete product modal and set the dataset for confirmation.
+   * Show the delete product modal and set the dataset for confirmation.
    * @param {string} productId - The ID of the product to be deleted.
    */
   toggleDeleteModal = (productId) => {
@@ -127,6 +118,22 @@ export default class ProductTemplate {
 
     const confirmBtn = document.getElementById('confirm-btn-delete');
     confirmBtn.dataset.productId = productId;
+  };
+
+  /**
+   * Binds event listener to toggle the delete product modal when clicking on delete product icons.
+   */
+  bindToggleModal = () => {
+    const productList = document.querySelector('#product-list');
+
+    productList.addEventListener('click', (event) => {
+      const deleteIcon = event.target.closest('.delete-product-icon');
+
+      if (deleteIcon) {
+        const id = deleteIcon.dataset.productId;
+        this.toggleDeleteModal(id);
+      }
+    });
   };
 
   /**
@@ -144,21 +151,6 @@ export default class ProductTemplate {
 
     cancelBtn.addEventListener('click', () => {
       this.toggleDeleteModal();
-    });
-  };
-
-  /**
-   * Binds event listener to toggle the delete product modal when clicking on delete product icons.
-   */
-  bindToggleModal = () => {
-    document.addEventListener('click', (e) => {
-      const target = e.target;
-
-      if (target.classList.contains('delete-product-icon')) {
-        const id = target.parentElement.parentElement.dataset.id;
-
-        this.toggleDeleteModal(id);
-      }
     });
   };
 
