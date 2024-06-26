@@ -24,8 +24,6 @@ export default class ProductTemplate {
     productListHTML += '</div>';
 
     mainContent.innerHTML = productListHTML;
-
-    this.bindDeleteProductEvents(this.handleDeleteProduct);
   }
 
   /**
@@ -123,6 +121,21 @@ export default class ProductTemplate {
   };
 
   /**
+   * Binds event listener to toggle the delete product modal when clicking on delete product icons.
+   */
+  bindToggleModal = () => {
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+
+      if (target.classList.contains('delete-product-icon')) {
+        const id = target.parentElement.parentElement.dataset.id;
+
+        this.toggleDeleteModal(id);
+      }
+    });
+  };
+
+  /**
    * Bind events for delete modal confirmation and cancellation.
    * @param {Function} handleConfirmDelete - Callback function to handle delete confirmation.
    */
@@ -137,40 +150,6 @@ export default class ProductTemplate {
 
     cancelBtn.addEventListener('click', () => {
       this.toggleDeleteModal();
-    });
-  };
-
-  /**
-   * Binds event listeners for delete product icons to show delete confirmation modal.
-   * @param {Function} handleDeleteProduct - Callback function to handle product deletion.
-   */
-  bindDeleteProductEvents = (handleDeleteProduct) => {
-    const deleteIcons = document.querySelectorAll('.delete-product-icon');
-
-    deleteIcons.forEach((icon) => {
-      icon.addEventListener('click', (e) => {
-        const productId =
-          e.currentTarget.parentElement.parentElement.dataset.id;
-
-        this.toggleDeleteModal(productId);
-      });
-    });
-
-    this.bindDeleteModalEvents(handleDeleteProduct);
-  };
-
-  /**
-   * Binds event listener to toggle the delete product modal when clicking on delete product icons.
-   */
-  bindToggleModal = () => {
-    document.addEventListener('click', (e) => {
-      const target = e.target;
-
-      if (target.classList.contains('delete-product-icon')) {
-        const id = target.parentElement.parentElement.dataset.id;
-
-        this.toggleDeleteModal(id);
-      }
     });
   };
 
