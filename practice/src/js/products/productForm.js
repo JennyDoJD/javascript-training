@@ -13,11 +13,13 @@ import {
 import Toast from '../helpers/toastify';
 import { ACTION } from '../constants/actionType';
 import { MESSAGES } from '../constants/message';
+import ProductService from '../services/productService';
+import ProductTemplate from '../templates/productTemplate';
 
 export default class ProductForm {
-  constructor(service, template, action) {
-    this.productService = service;
-    this.productTemplate = template;
+  constructor(action) {
+    this.productService = new ProductService();
+    this.productTemplate = new ProductTemplate();
     this.action = action;
   }
 
