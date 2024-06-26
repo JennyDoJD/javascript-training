@@ -6,7 +6,7 @@
 
 ## TIMELINE
 
-- 121.5 hours (2024/05/04 - 2024/05/28)
+- 2024/05/04 - 2024/06/26
 
 ## TEAM SIZE
 
@@ -53,7 +53,7 @@
   - Firefox: 122.0.1
 - Follow the design and implement the features below:
   - User can view all products on the home page with basic info such as image, name, price, quantity
-    - User can see the text **_No result data_** if there are no products available
+    - User can see the text **_No Results Found!_** if there are no products available
   - User can add a new product with name, price, image, quantity and all these fields are required
     - Display an error message when the user creates a new product with an invalid value
     - Display a message when the user submits the form successfully/failed
@@ -97,7 +97,7 @@ cd practice
 ```
 
 - Install packages
-  
+
 ```bash
 npm install
 ```
