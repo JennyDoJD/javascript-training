@@ -34,6 +34,8 @@ export default class ProductTemplate {
   createProductCard(product) {
     const { id, name, price, imageURL, quantity } = product;
 
+    const defaultImage = require('../../assets/images/default.png');
+
     return `
     <div class="card card-product" data-id="${id}">
       <div class="card-header">
@@ -45,7 +47,7 @@ export default class ProductTemplate {
       </div>
       <div>
         <figure class="card-image">
-          <img src="${imageURL}" alt="food-image" class="card-item" />
+          <img src="${imageURL}" alt="food-image" class="card-item" onerror="this.onerror=null; this.src='${defaultImage}'" />
         </figure>
         <div class="card-text">
           <p class="tertiary-title card-name" title="${name}">${name}</p>
