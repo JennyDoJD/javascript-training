@@ -24,6 +24,8 @@ export default class ProductTemplate {
     productListHTML += '</div>';
 
     mainContent.innerHTML = productListHTML;
+
+    this.bindDeleteProductEvents(this.handleDeleteProduct);
   }
 
   /**
@@ -34,19 +36,14 @@ export default class ProductTemplate {
   createProductCard(product) {
     const { id, name, price, imageURL, quantity } = product;
 
-    const deleteIcon = document.createElement('svg');
-    deleteIcon.dataset.productId = product.id;
-
-    deleteIcon.addEventListener('click', () => {
-      this.toggleDeleteModal(product.id);
-    });
-
     return `
     <div class="card card-product" data-id="${id}">
       <div class="card-header">
-        <svg width="15" height="15" class="delete-product-icon" data-product-id="${id}">
-          <use xlink:href="${iconAction}#delete-icon" />
-        </svg>
+        <div class="delete-product-icon" data-product-id="${id}">
+          <svg width="15" height="15">
+            <use xlink:href="${iconAction}#delete-icon" />
+          </svg>
+        </div>
       </div>
       <div>
         <figure class="card-image">
@@ -141,6 +138,25 @@ export default class ProductTemplate {
     cancelBtn.addEventListener('click', () => {
       this.toggleDeleteModal();
     });
+  };
+
+  /**
+   * Binds event listeners for delete product icons to show delete confirmation modal.
+   * @param {Function} handleDeleteProduct - Callback function to handle product deletion.
+   */
+  bindDeleteProductEvents = (handleDeleteProduct) => {
+    const deleteIcons = document.querySelectorAll('.delete-product-icon');
+
+    deleteIcons.forEach((icon) => {
+      icon.addEventListener('click', (e) => {
+        const productId =
+          e.currentTarget.parentElement.parentElement.dataset.id;
+
+        this.toggleDeleteModal(productId);
+      });
+    });
+
+    this.bindDeleteModalEvents(handleDeleteProduct);
   };
 
   /**
