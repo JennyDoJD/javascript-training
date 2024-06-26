@@ -124,14 +124,14 @@ export default class ProductTemplate {
    * Binds event listener to toggle the delete product modal when clicking on delete product icons.
    */
   bindToggleModal = () => {
-    document.addEventListener('click', (e) => {
-      const target = e.target;
+    const deleteIcons = document.querySelectorAll('.delete-product-icon');
 
-      if (target.classList.contains('delete-product-icon')) {
-        const id = target.parentElement.parentElement.dataset.id;
+    deleteIcons.forEach((icon) => {
+      icon.addEventListener('click', () => {
+        const id = icon.dataset.productId;
 
         this.toggleDeleteModal(id);
-      }
+      });
     });
   };
 
