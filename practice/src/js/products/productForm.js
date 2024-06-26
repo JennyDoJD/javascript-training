@@ -35,6 +35,8 @@ export default class ProductForm {
    * @returns {void}
    */
   displayProductForm = async () => {
+    this.productTemplate.toggleIndicator(true);
+
     let data = {};
 
     if (this.action === ACTION.EDIT) {
@@ -47,6 +49,8 @@ export default class ProductForm {
     }
 
     this.productTemplate.renderProductFormPage(data);
+
+    this.productTemplate.toggleIndicator(false);
 
     this.bindProductForm();
   };
