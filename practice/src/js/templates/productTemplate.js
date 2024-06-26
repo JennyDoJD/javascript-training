@@ -4,10 +4,6 @@ import debounce from '../helpers/debounce';
 import { MESSAGES } from '../constants/message';
 
 export default class ProductTemplate {
-  constructor() {
-    this.deleteModal = document.getElementById('delete-product-modal');
-  }
-
   /**
    * Displays product list of products on the view.
    * @param {Object[]} products - An array of product objects to be displayed.
@@ -48,9 +44,9 @@ export default class ProductTemplate {
     return `
     <div class="card card-product" data-id="${id}">
       <div class="card-header">
-      <svg width="15" height="15" data-product-id="${id}" class="delete-product-icon">
-        <use xlink:href="${iconAction}#delete-icon" />
-      </svg>
+        <svg width="15" height="15" class="delete-product-icon" data-product-id="${id}">
+          <use xlink:href="${iconAction}#delete-icon" />
+        </svg>
       </div>
       <div>
         <figure class="card-image">
