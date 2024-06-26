@@ -114,7 +114,7 @@ export default class ProductTemplate {
   }
 
   /**
-   *  Show the delete product modal and set the dataset for confirmation.
+   * Show the delete product modal and set the dataset for confirmation.
    * @param {string} productId - The ID of the product to be deleted.
    */
   toggleDeleteModal = (productId) => {
