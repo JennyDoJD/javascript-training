@@ -7,6 +7,7 @@ import {
   validateLength,
   validatePositive,
   validateMaxValue,
+  validateAlphaNumericCharacter,
   displayValidationErrors,
   hasValidationErrors,
 } from '../helpers/validateForm';
@@ -117,8 +118,9 @@ export default class ProductForm {
         field: 'Name',
         value: nameValue,
         validators: [
-          validateString,
           (value) => validateLength({ key: 'Name', value, min: 2, max: 50 }),
+          validateString,
+          validateAlphaNumericCharacter,
         ],
       },
       price: {
