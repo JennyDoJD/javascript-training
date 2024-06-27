@@ -2,6 +2,7 @@ import iconAction from '../../assets/images/icons/icons.svg';
 import renderFormInputTemplate from '../templates/formInputTemplate';
 import debounce from '../helpers/debounce';
 import { MESSAGES } from '../constants/message';
+import defaultImage from '../constants/image';
 
 export default class ProductTemplate {
   /**
@@ -33,8 +34,6 @@ export default class ProductTemplate {
    */
   createProductCard(product) {
     const { id, name, price, imageURL, quantity } = product;
-
-    const defaultImage = require('../../assets/images/default.png');
 
     return `
     <div class="card card-product" data-id="${id}">
