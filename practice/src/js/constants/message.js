@@ -9,6 +9,7 @@ const MESSAGES = {
   NOT_FOUND: 'No Results Found!',
   ADD_PRODUCT_HEADING: 'Create a new product',
   EDIT_PRODUCT_HEADING: 'Edit product',
+  GENERAL_ERROR_MSG: 'An unexpected error occurred. Please try again later!',
 };
 
 export { MESSAGES };

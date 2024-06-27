@@ -35,6 +35,8 @@ export default class ProductForm {
    * @returns {void}
    */
   displayProductForm = async () => {
+    this.productTemplate.toggleIndicator(true);
+
     let data = {};
 
     if (this.action === ACTION.EDIT) {
@@ -48,6 +50,8 @@ export default class ProductForm {
 
     this.productTemplate.renderProductFormPage(data);
 
+    this.productTemplate.toggleIndicator(false);
+
     this.bindProductForm();
   };
 
@@ -60,6 +64,8 @@ export default class ProductForm {
     formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      this.productTemplate.toggleIndicator(true);
+
       const formData = this.getFormData();
 
       const { formError } = validateForm(formData.validationSchema);
@@ -69,35 +75,45 @@ export default class ProductForm {
       const hasFormValid = !hasValidationErrors(formError);
 
       if (!hasFormValid) {
+        this.productTemplate.toggleIndicator(false);
         return;
       }
 
       const product = formData.product;
 
-      if (this.action === ACTION.ADD) {
-        const { isSuccess } = await this.productService.add(product);
+      try {
+        let response;
 
-        if (!isSuccess) {
-          return Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MSG);
+        if (this.action === ACTION.ADD) {
+          response = await this.productService.add(product);
+        } else if (this.action === ACTION.EDIT) {
+          const urlParams = new URLSearchParams(window.location.search);
+          const productId = urlParams.get('id');
+
+          response = await this.productService.edit(productId, product);
         }
 
-        Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MSG);
+        if (response.isSuccess) {
+          Toast.success(
+            this.action === ACTION.ADD
+              ? MESSAGES.ADD_PRODUCT_SUCCESS_MSG
+              : MESSAGES.EDIT_PRODUCT_SUCCESS_MSG
+          );
 
-        this.clearFormFields();
-      } else if (this.action === ACTION.EDIT) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('id');
-
-        const { isSuccess } = await this.productService.edit(
-          productId,
-          product
-        );
-
-        if (!isSuccess) {
-          return Toast.error(MESSAGES.EDIT_PRODUCT_FAILED_MSG);
+          if (this.action === ACTION.ADD) {
+            this.clearFormFields();
+          }
+        } else {
+          Toast.error(
+            this.action === ACTION.ADD
+              ? MESSAGES.ADD_PRODUCT_FAILED_MSG
+              : MESSAGES.EDIT_PRODUCT_FAILED_MSG
+          );
         }
-
-        Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MSG);
+      } catch (error) {
+        Toast.error(MESSAGES.GENERAL_ERROR_MSG);
+      } finally {
+        this.productTemplate.toggleIndicator(false);
       }
     });
   };
