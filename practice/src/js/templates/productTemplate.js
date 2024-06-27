@@ -2,6 +2,7 @@ import iconAction from '../../assets/images/icons/icons.svg';
 import renderFormInputTemplate from '../templates/formInputTemplate';
 import debounce from '../helpers/debounce';
 import { MESSAGES } from '../constants/message';
+import defaultImage from '../constants/image';
 
 export default class ProductTemplate {
   /**
@@ -45,7 +46,7 @@ export default class ProductTemplate {
       </div>
       <div>
         <figure class="card-image">
-          <img src="${imageURL}" alt="food-image" class="card-item" />
+          <img src="${imageURL}" alt="food-image" class="card-item" onerror="this.onerror=null; this.src='${defaultImage}'" />
         </figure>
         <div class="card-text">
           <p class="tertiary-title card-name" title="${name}">${name}</p>
