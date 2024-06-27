@@ -117,6 +117,10 @@ const validateForm = (validationSchema) => {
 
     validateEmpty({ key: field, value });
 
+    if (formError[field] !== '') {
+      continue;
+    }
+
     for (const validator of validators) {
       if (typeof validator === 'function') {
         validator(value);
