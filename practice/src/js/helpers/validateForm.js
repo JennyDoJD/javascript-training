@@ -100,7 +100,21 @@ const validateLength = ({ key, value, min, max }) => {
  */
 const validatePositive = ({ key, value }) =>
   (formError[key] =
-    parseFloat(value) <= 0 ? `${key} must be a positive number.` : '');
+    parseFloat(value) <= 0
+      ? `${key} must be a positive number greater than zero.`
+      : '');
+
+/**
+ * Checks the value contains at least one letter and can include letters, numbers, and special characters.
+ * @param {Object} params - An object.
+ * @param {string} params.key - The field that needs to check.
+ * @param {string} params.value - The value of that field.
+ * @returns {string} - An error message if the value does not meet the criteria, otherwise an empty string.
+ */
+const validateAlphaNumericCharacter = ({ key, value }) =>
+  (formError[key] = !REGEX_PATTERNS.alphaNumericCharacterRegex.test(value)
+    ? `${key} must contain at least one letter and can include numbers, and special characters.`
+    : '');
 
 /**
  * Validates the product form data.
@@ -114,6 +128,10 @@ const validateForm = (validationSchema) => {
     const { field, value, validators } = validationSchema[key];
 
     validateEmpty({ key: field, value });
+
+    if (formError[field] !== '') {
+      continue;
+    }
 
     for (const validator of validators) {
       if (typeof validator === 'function') {
@@ -175,6 +193,7 @@ export {
   validatePositive,
   validateForm,
   validateMaxValue,
+  validateAlphaNumericCharacter,
   hasValidationErrors,
   displayValidationErrors,
 };

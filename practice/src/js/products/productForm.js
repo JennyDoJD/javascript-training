@@ -7,6 +7,7 @@ import {
   validateLength,
   validatePositive,
   validateMaxValue,
+  validateAlphaNumericCharacter,
   displayValidationErrors,
   hasValidationErrors,
 } from '../helpers/validateForm';
@@ -133,17 +134,18 @@ export default class ProductForm {
         field: 'Name',
         value: nameValue,
         validators: [
-          validateString,
           (value) => validateLength({ key: 'Name', value, min: 2, max: 50 }),
+          validateString,
+          validateAlphaNumericCharacter,
         ],
       },
       price: {
         field: 'Price',
         value: priceValue,
         validators: [
+          (value) => validateMaxValue({ key: 'Price', value, max: 50 }),
           validateFloat,
           validatePositive,
-          (value) => validateMaxValue({ key: 'Price', value, max: 50 }),
         ],
       },
       imageURL: {
@@ -155,9 +157,9 @@ export default class ProductForm {
         field: 'Quantity',
         value: quantityValue,
         validators: [
+          (value) => validateMaxValue({ key: 'Quantity', value, max: 10000 }),
           validateInteger,
           validatePositive,
-          (value) => validateMaxValue({ key: 'Quantity', value, max: 10000 }),
         ],
       },
     };
