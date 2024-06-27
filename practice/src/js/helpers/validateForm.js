@@ -113,7 +113,7 @@ const validatePositive = ({ key, value }) =>
  */
 const validateAlphaNumericCharacter = ({ key, value }) =>
   (formError[key] = !REGEX_PATTERNS.alphaNumericCharacterRegex.test(value)
-    ? `${key} must contain at least one letter and can include letters, numbers, and special characters.`
+    ? `${key} must contain at least one letter and can include numbers, and special characters.`
     : '');
 
 /**
