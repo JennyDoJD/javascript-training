@@ -3,7 +3,7 @@ import { ACTION } from '../constants/actionType';
 const currentURL = window.location.pathname;
 let action;
 
-if (currentURL.includes('productForm.html')) {
+if (currentURL.includes('product.html')) {
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id');
 
