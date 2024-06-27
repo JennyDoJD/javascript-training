@@ -1,9 +1,7 @@
 import { ACTION } from '../constants/actionType';
 
-const currentURL = window.location.pathname;
-let action;
-
-if (currentURL.includes('product.html')) {
+function getActionFromUrl() {
+  let action;
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id');
 
@@ -14,6 +12,8 @@ if (currentURL.includes('product.html')) {
     action = ACTION.ADD;
     document.title = 'Create a new product';
   }
+
+  return action;
 }
 
-export default action;
+export default getActionFromUrl;
