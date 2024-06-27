@@ -1,5 +1,3 @@
-const navList = document.querySelector('.nav-list');
-
 /**
  * Handles the click event on a navigation link item.
  * @param {Event} event - The click event triggered by the navigation link.
@@ -17,8 +15,5 @@ function handleNavLinkClick(event) {
     navLinkItem.classList.add('active');
   }
 }
-
-// Add event listener to the nav-list to handle clicks on navigation links
-navList.addEventListener('click', handleNavLinkClick);
 
 export default handleNavLinkClick;
