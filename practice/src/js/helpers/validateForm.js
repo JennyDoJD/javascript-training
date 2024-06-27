@@ -105,6 +105,18 @@ const validatePositive = ({ key, value }) =>
       : '');
 
 /**
+ * Checks the value contains at least one letter and can include letters, numbers, and special characters.
+ * @param {Object} params - An object.
+ * @param {string} params.key - The field that needs to check.
+ * @param {string} params.value - The value of that field.
+ * @returns {string} - An error message if the value does not meet the criteria, otherwise an empty string.
+ */
+const validateAlphaNumericCharacter = ({ key, value }) =>
+  (formError[key] = !REGEX_PATTERNS.alphaNumericCharacterRegex.test(value)
+    ? `${key} must contain at least one letter and can include letters, numbers, and special characters.`
+    : '');
+
+/**
  * Validates the product form data.
  * @param {Object} data - The product form data.
  * @returns {Object} An object containing validation results.
@@ -181,6 +193,7 @@ export {
   validatePositive,
   validateForm,
   validateMaxValue,
+  validateAlphaNumericCharacter,
   hasValidationErrors,
   displayValidationErrors,
 };
