@@ -101,7 +101,7 @@ const validateLength = ({ key, value, min, max }) => {
 const validatePositive = ({ key, value }) =>
   (formError[key] =
     parseFloat(value) <= 0
-      ? `${key} must be a positive number and cannot be zero.`
+      ? `${key} must be a positive number greater than zero.`
       : '');
 
 /**
