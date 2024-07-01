@@ -1,10 +1,14 @@
 import ProductForm from './products/productForm';
 import handleNavLinkClick from './helpers/sidebarHandler';
-import action from './helpers/actionHandler';
+import getActionFromUrl from './helpers/actionHandler';
 
 (function () {
-  // Initialize the ProductForm with appropriate action (add or edit)
-  const productForm = new ProductForm(action);
+  const action = getActionFromUrl();
+  const navList = document.querySelector('.nav-list');
 
-  productForm.init();
+  // Initialize the ProductForm with appropriate action (add or edit)
+  new ProductForm(action);
+
+  // Add event listener to the nav-list to handle clicks on navigation links
+  navList.addEventListener('click', handleNavLinkClick);
 })();

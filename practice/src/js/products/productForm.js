@@ -22,14 +22,8 @@ export default class ProductForm {
     this.productService = new ProductService();
     this.productTemplate = new ProductTemplate();
     this.action = action;
-  }
-
-  /**
-   * Calls displaying product add form.
-   */
-  init = async () => {
     this.displayProductForm();
-  };
+  }
 
   /**
    * Displays the product form page.

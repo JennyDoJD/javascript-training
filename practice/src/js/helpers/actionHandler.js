@@ -1,19 +1,20 @@
 import { ACTION } from '../constants/actionType';
 
-const currentURL = window.location.pathname;
-let action;
-
-if (currentURL.includes('product.html')) {
+/**
+ * Determines the action to be taken based on the URL parameters.
+ * @returns {string} - Returns the appropriate action type, either ACTION.EDIT or ACTION.ADD.
+ */
+function getActionFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id');
 
   if (productId) {
-    action = ACTION.EDIT;
     document.title = 'Edit Product';
+    return ACTION.EDIT;
   } else {
-    action = ACTION.ADD;
     document.title = 'Create a new product';
+    return ACTION.ADD;
   }
 }
 
-export default action;
+export default getActionFromUrl;
