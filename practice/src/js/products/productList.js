@@ -44,7 +44,7 @@ export default class ProductList {
    */
   bindEventHandles = () => {
     this.productTemplate.bindToggleModal();
-    this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
+    this.productTemplate.bindDeleteModalEvents(this.handleConfirmDelete);
     this.productTemplate.bindSearchProduct(this.displayProducts);
     this.productTemplate.bindSortProducts(this.displayProducts);
   };
@@ -55,7 +55,7 @@ export default class ProductList {
    * and displays success or failure messages accordingly.
    * @param {string} id - The ID of the product to be deleted.
    */
-  handlerConfirmDelete = async (id) => {
+  handleConfirmDelete = async (id) => {
     try {
       await this.productService.deleteByID(id);
       await this.displayProducts();
