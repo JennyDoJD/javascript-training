@@ -30,7 +30,7 @@ export default class ProductForm {
    * @returns {void}
    */
   displayProductForm = async () => {
-    this.productTemplate.bindToggleIndicator(true);
+    this.productTemplate.toggleIndicator(true);
 
     let data = {};
 
@@ -45,7 +45,7 @@ export default class ProductForm {
 
     this.productTemplate.renderProductFormPage(data);
 
-    this.productTemplate.bindToggleIndicator(false);
+    this.productTemplate.toggleIndicator(false);
 
     this.bindProductForm();
   };
@@ -59,7 +59,7 @@ export default class ProductForm {
     formElement.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      this.productTemplate.bindToggleIndicator(true);
+      this.productTemplate.toggleIndicator(true);
 
       const formData = this.getFormData();
 
@@ -70,7 +70,7 @@ export default class ProductForm {
       const hasFormValid = !hasValidationErrors(formError);
 
       if (!hasFormValid) {
-        this.productTemplate.bindToggleIndicator(false);
+        this.productTemplate.toggleIndicator(false);
         return;
       }
 
@@ -108,7 +108,7 @@ export default class ProductForm {
       } catch (error) {
         Toast.error(MESSAGES.GENERAL_ERROR_MESSAGE);
       } finally {
-        this.productTemplate.bindToggleIndicator(false);
+        this.productTemplate.toggleIndicator(false);
       }
     });
   };

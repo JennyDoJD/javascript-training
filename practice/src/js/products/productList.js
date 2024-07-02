@@ -24,7 +24,7 @@ export default class ProductList {
    */
   displayProducts = async (params = {}) => {
     try {
-      this.productTemplate.bindToggleIndicator(true);
+      this.productTemplate.toggleIndicator(true);
       this.currentParams = { ...this.currentParams, ...params };
 
       const products = await this.productService.getList(this.currentParams);
@@ -35,7 +35,7 @@ export default class ProductList {
 
       Toast.error(MESSAGES.GET_PRODUCT_FAILED_MESSAGE);
     } finally {
-      this.productTemplate.bindToggleIndicator(false);
+      this.productTemplate.toggleIndicator(false);
     }
   };
 
