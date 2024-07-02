@@ -33,7 +33,7 @@ export default class ProductList {
     } catch (error) {
       this.productTemplate.renderProducts();
 
-      Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
+      Toast.error(MESSAGES.GET_PRODUCT_FAILED_MESSAGE);
     } finally {
       this.productTemplate.toggleIndicator(false);
     }
@@ -60,9 +60,9 @@ export default class ProductList {
       await this.productService.deleteByID(id);
       await this.displayProducts();
 
-      Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MSG);
+      Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MESSAGE);
     } catch (error) {
-      Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
+      Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MESSAGE);
     } finally {
       this.productTemplate.toggleDeleteModal();
     }
