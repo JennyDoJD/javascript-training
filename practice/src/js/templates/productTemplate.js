@@ -76,9 +76,9 @@ export default class ProductTemplate {
     const { id, name = '', price = '', imageURL = '', quantity = '' } = data;
     const formInputs = [
       { field: 'Name', value: name, id: 'name' },
-      { field: 'Price', value: price, id: 'price' },
+      { field: 'Price', value: price, id: 'price', type: 'number' },
       { field: 'Image URL', value: imageURL, id: 'image-url' },
-      { field: 'Quantity', value: quantity, id: 'quantity' },
+      { field: 'Quantity', value: quantity, id: 'quantity', type: 'number' },
     ];
 
     const headingPage =
