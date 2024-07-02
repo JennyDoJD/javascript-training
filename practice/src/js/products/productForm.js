@@ -12,7 +12,7 @@ import {
   hasValidationErrors,
 } from '../helpers/validateForm';
 import Toast from '../helpers/toastify';
-import { ACTION } from '../constants/actionType';
+import { ACTIONS } from '../constants/actionType';
 import { MESSAGES } from '../constants/message';
 import ProductService from '../services/productService';
 import ProductTemplate from '../templates/productTemplate';
@@ -34,7 +34,7 @@ export default class ProductForm {
 
     let data = {};
 
-    if (this.action === ACTION.EDIT) {
+    if (this.action === ACTIONS.EDIT) {
       const urlParams = new URLSearchParams(window.location.search);
       const productId = urlParams.get('id');
 
@@ -79,9 +79,9 @@ export default class ProductForm {
       try {
         let response;
 
-        if (this.action === ACTION.ADD) {
+        if (this.action === ACTIONS.ADD) {
           response = await this.productService.add(product);
-        } else if (this.action === ACTION.EDIT) {
+        } else if (this.action === ACTIONS.EDIT) {
           const urlParams = new URLSearchParams(window.location.search);
           const productId = urlParams.get('id');
 
@@ -90,23 +90,23 @@ export default class ProductForm {
 
         if (response.isSuccess) {
           Toast.success(
-            this.action === ACTION.ADD
-              ? MESSAGES.ADD_PRODUCT_SUCCESS_MSG
-              : MESSAGES.EDIT_PRODUCT_SUCCESS_MSG
+            this.action === ACTIONS.ADD
+              ? MESSAGES.ADD_PRODUCT_SUCCESS_MESSAGE
+              : MESSAGES.EDIT_PRODUCT_SUCCESS_MESSAGE
           );
 
-          if (this.action === ACTION.ADD) {
+          if (this.action === ACTIONS.ADD) {
             this.clearFormFields();
           }
         } else {
           Toast.error(
-            this.action === ACTION.ADD
-              ? MESSAGES.ADD_PRODUCT_FAILED_MSG
-              : MESSAGES.EDIT_PRODUCT_FAILED_MSG
+            this.action === ACTIONS.ADD
+              ? MESSAGES.ADD_PRODUCT_FAILED_MESSAGE
+              : MESSAGES.EDIT_PRODUCT_FAILED_MESSAGE
           );
         }
       } catch (error) {
-        Toast.error(MESSAGES.GENERAL_ERROR_MSG);
+        Toast.error(MESSAGES.GENERAL_ERROR_MESSAGE);
       } finally {
         this.productTemplate.toggleIndicator(false);
       }
