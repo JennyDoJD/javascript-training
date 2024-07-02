@@ -200,7 +200,7 @@ export default class ProductTemplate {
    * Show the loading indicator.
    * @param {boolean} isHidden - A flag indicating whether the indicator should be hidden.
    */
-  toggleIndicator(isHidden) {
+  bindToggleIndicator(isHidden) {
     const indicatorElement = document.querySelector('.indicator');
 
     indicatorElement.classList.toggle('hidden', !isHidden);
