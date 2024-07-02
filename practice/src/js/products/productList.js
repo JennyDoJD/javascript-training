@@ -15,7 +15,7 @@ export default class ProductList {
   init = async () => {
     await this.displayProducts();
 
-    this.handlerEventHandlers();
+    this.bindEventHandles();
   };
 
   /**
@@ -42,7 +42,7 @@ export default class ProductList {
   /**
    * Binds event handlers for managing product.
    */
-  handlerEventHandlers = () => {
+  bindEventHandles = () => {
     this.productTemplate.bindToggleModal();
     this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
     this.productTemplate.bindSearchProduct(this.displayProducts);
