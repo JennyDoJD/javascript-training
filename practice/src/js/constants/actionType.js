@@ -1,6 +1,6 @@
-const ACTION = {
+const ACTIONS = {
   ADD: 'add',
   EDIT: 'edit',
 };
 
-export { ACTION };
+export { ACTIONS };

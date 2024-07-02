@@ -20,7 +20,7 @@ const validateEmpty = ({ key, value }) =>
  * @returns {string} - An error message if the value is not an integer, otherwise an empty string.
  */
 const validateInteger = ({ key, value }) =>
-  (formError[key] = !REGEX_PATTERNS.integerRegex.test(value)
+  (formError[key] = !REGEX_PATTERNS.INTEGER_REGEX.test(value)
     ? `${key} must be an integer.`
     : '');
 
@@ -32,7 +32,7 @@ const validateInteger = ({ key, value }) =>
  * @returns {string} - An error message if the value is not a float, otherwise an empty string.
  */
 const validateFloat = ({ key, value }) =>
-  (formError[key] = !REGEX_PATTERNS.digitRegex.test(value)
+  (formError[key] = !REGEX_PATTERNS.DECIMAL_NUMBER_REGEX.test(value)
     ? `${key} must be a float.`
     : '');
 
@@ -55,8 +55,8 @@ const validateString = ({ key, value }) =>
  * @returns {string} - An error message if the value is not a valid image URL, otherwise an empty string.
  */
 const validateImage = ({ key, value }) =>
-  (formError[key] = !REGEX_PATTERNS.imageUrlRegex.test(value)
-    ? `Please make sure ${key} starts with 'http://' or 'https://' and ends with .jpg, .png, .gif, .svg, .jpeg or .webp.`
+  (formError[key] = !REGEX_PATTERNS.IMAGE_URL_REGEX.test(value)
+    ? `Please make sure ${key} ends with .jpg, .png, .gif, .svg, .jpeg or .webp.`
     : '');
 
 /**
@@ -112,7 +112,7 @@ const validatePositive = ({ key, value }) =>
  * @returns {string} - An error message if the value does not meet the criteria, otherwise an empty string.
  */
 const validateAlphaNumericCharacter = ({ key, value }) =>
-  (formError[key] = !REGEX_PATTERNS.alphaNumericCharacterRegex.test(value)
+  (formError[key] = !REGEX_PATTERNS.ALPHA_NUMERIC_CHARACTER_REGEX.test(value)
     ? `${key} must contain at least one letter and can include numbers, and special characters.`
     : '');
 
