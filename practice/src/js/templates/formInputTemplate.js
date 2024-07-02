@@ -7,12 +7,12 @@ const renderFormInputTemplate = (formInputs) => {
   let formInputsHTML = '';
 
   for (const item of formInputs) {
-    const { field, id, value = '' } = item;
+    const { field, id, value = '', type = 'text' } = item;
 
     formInputsHTML += `
       <div class="form-group">
         <label for="${id}" class="tertiary-title">${field}</label>
-        <input class="input-form input-form-lg" id="${id}" type="text" value="${value}" data-field="${field}"/>
+        <input class="input-form input-form-lg" id="${id}" type="${type}" value="${value}" data-field="${field}"/>
         <div class="error-message" id="${id}-error" data-field-error="${field}"></div>
       </div>
     `;
