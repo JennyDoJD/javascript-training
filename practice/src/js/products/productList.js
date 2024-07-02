@@ -15,7 +15,7 @@ export default class ProductList {
   init = async () => {
     await this.displayProducts();
 
-    this.handlerEventHandlers();
+    this.bindEventHandles();
   };
 
   /**
@@ -33,7 +33,7 @@ export default class ProductList {
     } catch (error) {
       this.productTemplate.renderProducts();
 
-      Toast.error(MESSAGES.GET_PRODUCT_FAILED_MSG);
+      Toast.error(MESSAGES.GET_PRODUCT_FAILED_MESSAGE);
     } finally {
       this.productTemplate.toggleIndicator(false);
     }
@@ -42,9 +42,9 @@ export default class ProductList {
   /**
    * Binds event handlers for managing product.
    */
-  handlerEventHandlers = () => {
+  bindEventHandles = () => {
     this.productTemplate.bindToggleModal();
-    this.productTemplate.bindDeleteModalEvents(this.handlerConfirmDelete);
+    this.productTemplate.bindDeleteModalEvents(this.handleConfirmDelete);
     this.productTemplate.bindSearchProduct(this.displayProducts);
     this.productTemplate.bindSortProducts(this.displayProducts);
   };
@@ -55,14 +55,14 @@ export default class ProductList {
    * and displays success or failure messages accordingly.
    * @param {string} id - The ID of the product to be deleted.
    */
-  handlerConfirmDelete = async (id) => {
+  handleConfirmDelete = async (id) => {
     try {
       await this.productService.deleteByID(id);
       await this.displayProducts();
 
-      Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MSG);
+      Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MESSAGE);
     } catch (error) {
-      Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MSG);
+      Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MESSAGE);
     } finally {
       this.productTemplate.toggleDeleteModal();
     }

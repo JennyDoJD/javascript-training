@@ -20,7 +20,7 @@ export default class ProductTemplate {
 
     let productListHTML = '<div class="card-product-list">';
     products.forEach((product) => {
-      productListHTML += this.createProductCard(product);
+      productListHTML += this.renderProductCard(product);
     });
     productListHTML += '</div>';
 
@@ -32,7 +32,7 @@ export default class ProductTemplate {
    * @param {Object} product - The product object containing id, name, price, imageURL, and quantity.
    * @returns {string} - The HTML markup for the product card.
    */
-  createProductCard(product) {
+  renderProductCard(product) {
     const { id, name, price, imageURL, quantity } = product;
 
     return `
