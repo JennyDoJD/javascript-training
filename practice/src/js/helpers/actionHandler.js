@@ -1,4 +1,4 @@
-import { ACTION } from '../constants/actionType';
+import { ACTIONS } from '../constants/actionType';
 
 /**
  * Determines the action to be taken based on the URL parameters.
@@ -10,10 +10,10 @@ function getActionFromUrl() {
 
   if (productId) {
     document.title = 'Edit Product';
-    return ACTION.EDIT;
+    return ACTIONS.EDIT;
   } else {
     document.title = 'Create a new product';
-    return ACTION.ADD;
+    return ACTIONS.ADD;
   }
 }
 
