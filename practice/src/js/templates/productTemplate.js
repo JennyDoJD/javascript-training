@@ -2,7 +2,7 @@ import iconAction from '../../assets/images/icons/icons.svg';
 import renderFormInputTemplate from '../templates/formInputTemplate';
 import debounce from '../helpers/debounce';
 import { MESSAGES } from '../constants/message';
-import defaultImage from '../constants/image';
+import defaultImage from '../../assets/images/default.png';
 
 export default class ProductTemplate {
   /**
