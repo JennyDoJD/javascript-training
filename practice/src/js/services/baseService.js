@@ -24,7 +24,8 @@ class BaseService {
     try {
       return await this.httpClient.get(url);
     } catch (error) {
-      return { error };
+      console.error('Error getting product: ', error);
+      return false;
     }
   }
 
@@ -37,7 +38,8 @@ class BaseService {
     try {
       return await this.httpClient.delete(`${this.endpoint}/${id}`);
     } catch (error) {
-      return { error };
+      console.error('Error deleting product: ', error);
+      return false;
     }
   }
 
@@ -67,7 +69,8 @@ class BaseService {
     try {
       return await this.httpClient.get(`${this.endpoint}/${id}`);
     } catch (error) {
-      return { error };
+      console.error('Error getting product by ID: ', error);
+      return false;
     }
   }
 
