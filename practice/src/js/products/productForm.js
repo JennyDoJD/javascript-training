@@ -35,8 +35,7 @@ export default class ProductForm {
     let data = {};
 
     if (this.action === ACTIONS.EDIT) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const productId = urlParams.get('id');
+      const productId = new URLSearchParams(window.location.search).get('id');
 
       if (productId) {
         data = await this.productService.getByID(productId);
@@ -82,8 +81,9 @@ export default class ProductForm {
         if (this.action === ACTIONS.ADD) {
           response = await this.productService.add(product);
         } else if (this.action === ACTIONS.EDIT) {
-          const urlParams = new URLSearchParams(window.location.search);
-          const productId = urlParams.get('id');
+          const productId = new URLSearchParams(window.location.search).get(
+            'id'
+          );
 
           response = await this.productService.edit(productId, product);
         }
