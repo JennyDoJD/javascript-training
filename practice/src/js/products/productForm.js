@@ -118,11 +118,11 @@ export default class ProductForm {
    * @returns {Object} - Object containing validation schema for form fields.
    */
   getFormData = () => {
-    const formElement = document.getElementById('product-form');
-    const nameValue = formElement.querySelector('#name').value;
-    const priceValue = formElement.querySelector('#price').value;
-    const imageURLValue = formElement.querySelector('#image-url').value;
-    const quantityValue = formElement.querySelector('#quantity').value;
+    const productForm = document.getElementById('product-form');
+    const nameValue = productForm.querySelector('#name').value;
+    const priceValue = productForm.querySelector('#price').value;
+    const imageURLValue = productForm.querySelector('#image-url').value;
+    const quantityValue = productForm.querySelector('#quantity').value;
 
     const validationSchema = {
       name: {
@@ -173,8 +173,8 @@ export default class ProductForm {
    * Clears all input fields in the form.
    */
   clearFormFields = () => {
-    const formElement = document.getElementById('product-form');
-    const inputs = formElement.querySelectorAll('.input-form');
+    const productForm = document.getElementById('product-form');
+    const inputs = productForm.querySelectorAll('.input-form');
 
     inputs.forEach((input) => (input.value = ''));
   };
