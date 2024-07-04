@@ -4,16 +4,11 @@ import getActionFromUrl from './helpers/actionHandler';
 
 (function () {
   const action = getActionFromUrl();
+  const navList = document.querySelector('.nav-list');
 
   // Initialize the ProductForm with appropriate action (add or edit)
   new ProductForm(action);
 
-  // Add event listener to handle clicks on navigation links
-  document.addEventListener('DOMContentLoaded', function () {
-    const navList = document.querySelector('.nav-list');
-
-    if (navList) {
-      navList.addEventListener('click', handleNavLinkClick);
-    }
-  });
+  // Add event listener to the nav-list to handle clicks on navigation links
+  navList.addEventListener('click', handleNavLinkClick);
 })();
