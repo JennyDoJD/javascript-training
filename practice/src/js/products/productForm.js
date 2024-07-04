@@ -75,41 +75,35 @@ export default class ProductForm {
 
       const product = formData.product;
 
-      try {
-        let response;
+      let response;
+
+      if (this.action === ACTIONS.ADD) {
+        response = await this.productService.add(product);
+      } else if (this.action === ACTIONS.EDIT) {
+        const productId = new URLSearchParams(window.location.search).get('id');
+
+        response = await this.productService.edit(productId, product);
+      }
+
+      if (response.isSuccess) {
+        Toast.success(
+          this.action === ACTIONS.ADD
+            ? MESSAGES.ADD_PRODUCT_SUCCESS_MESSAGE
+            : MESSAGES.EDIT_PRODUCT_SUCCESS_MESSAGE
+        );
 
         if (this.action === ACTIONS.ADD) {
-          response = await this.productService.add(product);
-        } else if (this.action === ACTIONS.EDIT) {
-          const productId = new URLSearchParams(window.location.search).get(
-            'id'
-          );
-
-          response = await this.productService.edit(productId, product);
+          this.clearFormFields();
         }
-
-        if (response.isSuccess) {
-          Toast.success(
-            this.action === ACTIONS.ADD
-              ? MESSAGES.ADD_PRODUCT_SUCCESS_MESSAGE
-              : MESSAGES.EDIT_PRODUCT_SUCCESS_MESSAGE
-          );
-
-          if (this.action === ACTIONS.ADD) {
-            this.clearFormFields();
-          }
-        } else {
-          Toast.error(
-            this.action === ACTIONS.ADD
-              ? MESSAGES.ADD_PRODUCT_FAILED_MESSAGE
-              : MESSAGES.EDIT_PRODUCT_FAILED_MESSAGE
-          );
-        }
-      } catch (error) {
-        Toast.error(MESSAGES.GENERAL_ERROR_MESSAGE);
-      } finally {
-        this.productTemplate.toggleIndicator(false);
+      } else {
+        Toast.error(
+          this.action === ACTIONS.ADD
+            ? MESSAGES.ADD_PRODUCT_FAILED_MESSAGE
+            : MESSAGES.EDIT_PRODUCT_FAILED_MESSAGE
+        );
       }
+
+      this.productTemplate.toggleIndicator(false);
     });
   };
 
