@@ -14,7 +14,7 @@ import {
 import Toast from '../helpers/toastify';
 import { ACTIONS } from '../constants/actionType';
 import { MESSAGES } from '../constants/message';
-import ProductService from '../services/productService';
+import ProductService from '../services/product';
 import ProductTemplate from '../templates/productTemplate';
 
 export default class ProductForm {

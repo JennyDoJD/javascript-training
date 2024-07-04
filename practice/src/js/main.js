@@ -1,6 +1,6 @@
 import ProductList from './products/productList';
 import ProductTemplate from './templates/productTemplate';
-import ProductService from './services/productService';
+import ProductService from './services/product';
 import handleNavLinkClick from './helpers/sidebarHandler';
 
 (function () {
