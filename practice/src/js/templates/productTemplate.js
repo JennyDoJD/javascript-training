@@ -116,7 +116,7 @@ export default class ProductTemplate {
     const deleteModal = document.createElement('div');
 
     deleteModal.id = 'delete-product-modal';
-    deleteModal.className = 'delete-modal hidden';
+    deleteModal.className = 'delete-modal';
     deleteModal.innerHTML = `
       <div class="delete-modal-content">
         <p class="delete-modal-text">Are you sure you want to delete this product?</p>
@@ -140,8 +140,6 @@ export default class ProductTemplate {
     if (!deleteModal) {
       this.renderDeleteModal();
     }
-
-    deleteModal.classList.toggle('hidden');
 
     const confirmBtn = document.getElementById('confirm-btn-delete');
 
@@ -173,19 +171,31 @@ export default class ProductTemplate {
   bindDeleteModalEvents = (handleConfirmDelete) => {
     document.addEventListener('click', async (event) => {
       const confirmBtn = event.target.closest('#confirm-btn-delete');
+      const cancelBtn = event.target.closest('#cancel-btn-delete');
 
       if (confirmBtn) {
         const id = confirmBtn.dataset.productId;
 
         await handleConfirmDelete(id);
-      }
 
-      const cancelBtn = event.target.closest('#cancel-btn-delete');
+        this.removeDeleteModal();
+      }
 
       if (cancelBtn) {
-        this.toggleDeleteModal();
+        this.removeDeleteModal();
       }
     });
+  };
+
+  /**
+   * Removes the delete modal from the DOM.
+   */
+  removeDeleteModal = () => {
+    const deleteModal = document.getElementById('delete-product-modal');
+
+    if (deleteModal) {
+      deleteModal.remove();
+    }
   };
 
   /**
