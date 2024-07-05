@@ -192,10 +192,7 @@ export default class ProductTemplate {
    */
   removeDeleteModal = () => {
     const deleteModal = document.getElementById('delete-product-modal');
-
-    if (deleteModal) {
-      deleteModal.remove();
-    }
+    deleteModal.remove();
   };
 
   /**
