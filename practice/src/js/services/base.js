@@ -24,7 +24,6 @@ class BaseService {
     try {
       return await this.httpClient.get(url);
     } catch (error) {
-      console.error('Error getting data: ', error);
       return error;
     }
   }
@@ -38,7 +37,6 @@ class BaseService {
     try {
       return await this.httpClient.delete(`${this.endpoint}/${id}`);
     } catch (error) {
-      console.error('Error deleting data: ', error);
       return error;
     }
   }
@@ -69,7 +67,6 @@ class BaseService {
     try {
       return await this.httpClient.get(`${this.endpoint}/${id}`);
     } catch (error) {
-      console.error('Error getting data by ID: ', error);
       return error;
     }
   }
