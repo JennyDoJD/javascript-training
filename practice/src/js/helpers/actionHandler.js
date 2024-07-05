@@ -5,8 +5,7 @@ import { ACTIONS } from '../constants/actionType';
  * @returns {string} - Returns the appropriate action type, either ACTIONS.EDIT or ACTIONS.ADD.
  */
 function getActionFromUrl() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const productId = urlParams.get('id');
+  const productId = new URLSearchParams(window.location.search).get('id');
 
   document.title = productId ? 'Edit product' : 'Create a new product';
   return productId ? ACTIONS.EDIT : ACTIONS.ADD;
