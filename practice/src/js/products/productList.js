@@ -28,12 +28,12 @@ export default class ProductList {
 
     const products = await this.productService.getList(this.currentParams);
 
-    if (!products) {
+    if (products) {
+      this.productTemplate.renderProducts(products);
+    } else {
       this.productTemplate.renderProducts();
 
       Toast.error(MESSAGES.GET_PRODUCT_FAILED_MESSAGE);
-    } else {
-      this.productTemplate.renderProducts(products);
     }
 
     this.productTemplate.toggleIndicator(false);
