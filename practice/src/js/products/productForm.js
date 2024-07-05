@@ -77,33 +77,40 @@ export default class ProductForm {
 
       let response;
 
-      if (this.action === ACTIONS.ADD) {
-        response = await this.productService.add(product);
-      } else if (this.action === ACTIONS.EDIT) {
-        const productId = new URLSearchParams(window.location.search).get('id');
+      switch (this.action) {
+        case ACTIONS.ADD: {
+          response = await this.productService.add(product);
 
-        response = await this.productService.edit(productId, product);
-      }
+          if (response.isSuccess) {
+            Toast.success(MESSAGES.ADD_PRODUCT_SUCCESS_MESSAGE);
 
-      if (response.isSuccess) {
-        Toast.success(
-          this.action === ACTIONS.ADD
-            ? MESSAGES.ADD_PRODUCT_SUCCESS_MESSAGE
-            : MESSAGES.EDIT_PRODUCT_SUCCESS_MESSAGE
-        );
+            this.clearFormFields();
+          } else {
+            Toast.error(MESSAGES.ADD_PRODUCT_FAILED_MESSAGE);
+          }
 
-        if (this.action === ACTIONS.ADD) {
-          this.clearFormFields();
+          this.productTemplate.toggleIndicator(false);
+
+          break;
         }
-      } else {
-        Toast.error(
-          this.action === ACTIONS.ADD
-            ? MESSAGES.ADD_PRODUCT_FAILED_MESSAGE
-            : MESSAGES.EDIT_PRODUCT_FAILED_MESSAGE
-        );
-      }
+        case ACTIONS.EDIT: {
+          const productId = new URLSearchParams(window.location.search).get(
+            'id'
+          );
 
-      this.productTemplate.toggleIndicator(false);
+          response = await this.productService.edit(productId, product);
+
+          if (response.isSuccess) {
+            Toast.success(MESSAGES.EDIT_PRODUCT_SUCCESS_MESSAGE);
+          } else {
+            Toast.error(MESSAGES.EDIT_PRODUCT_FAILED_MESSAGE);
+          }
+
+          this.productTemplate.toggleIndicator(false);
+
+          break;
+        }
+      }
     });
   };
 
