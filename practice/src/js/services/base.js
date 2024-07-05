@@ -24,7 +24,7 @@ class BaseService {
     try {
       return await this.httpClient.get(url);
     } catch (error) {
-      return { isSuccess: false };
+      return error;
     }
   }
 
@@ -37,7 +37,7 @@ class BaseService {
     try {
       return await this.httpClient.delete(`${this.endpoint}/${id}`);
     } catch (error) {
-      return { isSuccess: false };
+      return error;
     }
   }
 
@@ -67,7 +67,7 @@ class BaseService {
     try {
       return await this.httpClient.get(`${this.endpoint}/${id}`);
     } catch (error) {
-      return { isSuccess: false };
+      return error;
     }
   }
 
