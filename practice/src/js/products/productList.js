@@ -23,20 +23,20 @@ export default class ProductList {
    * Render the products using the ProductTemplate component.
    */
   displayProducts = async (params = {}) => {
-    try {
-      this.productTemplate.toggleIndicator(true);
-      this.currentParams = { ...this.currentParams, ...params };
+    this.productTemplate.toggleIndicator(true);
+    this.currentParams = { ...this.currentParams, ...params };
 
-      const products = await this.productService.getList(this.currentParams);
+    const products = await this.productService.getList(this.currentParams);
 
+    if (products) {
       this.productTemplate.renderProducts(products);
-    } catch (error) {
+    } else {
       this.productTemplate.renderProducts();
 
       Toast.error(MESSAGES.GET_PRODUCT_FAILED_MESSAGE);
-    } finally {
-      this.productTemplate.toggleIndicator(false);
     }
+
+    this.productTemplate.toggleIndicator(false);
   };
 
   /**
