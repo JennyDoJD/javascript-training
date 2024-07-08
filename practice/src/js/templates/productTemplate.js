@@ -110,15 +110,42 @@ export default class ProductTemplate {
   }
 
   /**
+   * Creates and appends a delete confirmation modal to the DOM
+   */
+  renderDeleteModal() {
+    const deleteModal = document.createElement('div');
+
+    deleteModal.id = 'delete-product-modal';
+    deleteModal.className = 'delete-modal';
+    deleteModal.innerHTML = `
+      <div class="delete-modal-content">
+        <p class="delete-modal-text">Are you sure you want to delete this product?</p>
+        <div class="delete-modal-button">
+          <button class="btn btn-primary btn-confirm" type="button" id="cancel-btn-delete">Cancel</button>
+          <button class="btn btn-secondary btn-confirm" type="button" id="confirm-btn-delete">Yes</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(deleteModal);
+  }
+
+  /**
    * Show the delete product modal and set the dataset for confirmation.
    * @param {string} productId - The ID of the product to be deleted.
    */
   toggleDeleteModal = (productId) => {
     const deleteModal = document.getElementById('delete-product-modal');
-    deleteModal.classList.toggle('hidden');
+
+    if (!deleteModal) {
+      this.renderDeleteModal();
+    }
 
     const confirmBtn = document.getElementById('confirm-btn-delete');
-    confirmBtn.dataset.productId = productId;
+
+    if (confirmBtn) {
+      confirmBtn.dataset.productId = productId;
+    }
   };
 
   /**
@@ -142,17 +169,30 @@ export default class ProductTemplate {
    * @param {Function} handleConfirmDelete - Callback function to handle delete confirmation.
    */
   bindDeleteModalEvents = (handleConfirmDelete) => {
-    const confirmBtn = document.getElementById('confirm-btn-delete');
-    const cancelBtn = document.getElementById('cancel-btn-delete');
+    document.addEventListener('click', async (event) => {
+      const confirmBtn = event.target.closest('#confirm-btn-delete');
+      const cancelBtn = event.target.closest('#cancel-btn-delete');
 
-    confirmBtn.addEventListener('click', async () => {
-      const id = confirmBtn.dataset.productId;
-      await handleConfirmDelete(id);
-    });
+      if (confirmBtn) {
+        const id = confirmBtn.dataset.productId;
 
-    cancelBtn.addEventListener('click', () => {
-      this.toggleDeleteModal();
+        await handleConfirmDelete(id);
+
+        this.removeDeleteModal();
+      }
+
+      if (cancelBtn) {
+        this.removeDeleteModal();
+      }
     });
+  };
+
+  /**
+   * Removes the delete modal from the DOM.
+   */
+  removeDeleteModal = () => {
+    const deleteModal = document.getElementById('delete-product-modal');
+    deleteModal.remove();
   };
 
   /**

@@ -56,15 +56,16 @@ export default class ProductList {
    * @param {string} id - The ID of the product to be deleted.
    */
   handleConfirmDelete = async (id) => {
-    try {
-      await this.productService.deleteByID(id);
+    const success = await this.productService.deleteByID(id);
+
+    if (success) {
       await this.displayProducts();
 
       Toast.success(MESSAGES.DELETE_PRODUCT_SUCCESS_MESSAGE);
-    } catch (error) {
+    } else {
       Toast.error(MESSAGES.DELETE_PRODUCT_FAILED_MESSAGE);
-    } finally {
-      this.productTemplate.toggleDeleteModal();
     }
+
+    this.productTemplate.toggleDeleteModal();
   };
 }
